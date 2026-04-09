@@ -1,0 +1,174 @@
+// Version: 1.0.0
+type AdmissionRecord__674691513 =
+  {
+    city : Text;
+    course : Text;
+    email : Text;
+    id : Nat;
+    message : Text;
+    name : Text;
+    phone : Text;
+    timestamp : Int
+  };
+type Announcement__674333181 =
+  {content : Text; id : Nat; postedBy : Text; timestamp : Int; title : Text};
+type BrochureRequest__1072138475 =
+  {
+    courseId : Nat;
+    courseName : Text;
+    email : Text;
+    id : Nat;
+    name : Text;
+    phone : Text;
+    timestamp : Int
+  };
+type BrochureUrl__790305718 =
+  {courseId : Nat; id : Nat; url : Text; urlType : Text};
+type ContactRecord__700157622 =
+  {
+    email : Text;
+    id : Nat;
+    message : Text;
+    name : Text;
+    phone : Text;
+    timestamp : Int
+  };
+type CourseLead__867146394 =
+  {
+    courseId : Nat;
+    courseName : Text;
+    downloadCount : Nat;
+    email : Text;
+    id : Nat;
+    message : Text;
+    name : Text;
+    phone : Text;
+    timestamp : Int
+  };
+type Course__388460598 =
+  {
+    badge : Text;
+    colorKey : Text;
+    description : Text;
+    duration : Text;
+    fee : Text;
+    id : Nat;
+    isActive : Bool;
+    subtitle : Text;
+    title : Text;
+    topics : [Text]
+  };
+type Data__791452850<K, V> =
+  {var count : Nat__490723111; kvs : [var ?(K, V)]};
+type FranchiseLead__437227277 =
+  {
+    city : Text;
+    downloadCount : Nat;
+    email : Text;
+    id : Nat;
+    investment : Text;
+    leadType : Text;
+    message : Text;
+    name : Text;
+    phone : Text;
+    timestamp : Int
+  };
+type FranchiseRecord__67129689 =
+  {
+    city : Text;
+    email : Text;
+    id : Nat;
+    investment : Text;
+    message : Text;
+    name : Text;
+    phone : Text;
+    timestamp : Int
+  };
+type Internal__8484328<K, V> =
+  {children : [var ?Node__46230540<K, V>]; data : Data__791452850<K, V>};
+type Leaf__809889148<K, V> = {data : Data__791452850<K, V>};
+type Map__158565046<K, V> = Map__297112838<K, V>;
+type Map__297112838<K, V> =
+  {var root : Node__46230540<K, V>; var size : Nat__490723111};
+type Map__605269027<K, V> = Map__158565046<K, V>;
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Node__46230540<K, V> =
+  {#internal : Internal__8484328<K, V>; #leaf : Leaf__809889148<K, V>};
+type UserProfile__491224006 =
+  {
+    course : Text;
+    email : Text;
+    enrolledDate : Int;
+    fullName : Text;
+    id : Nat;
+    isActive : Bool;
+    password : Text;
+    phone : Text;
+    progress : Nat;
+    role : Text;
+    username : Text
+  };
+type UserRole__1054455867 = {#admin; #guest; #user};
+actor {
+  stable accessControlState :
+    {
+      var adminAssigned : Bool;
+      userRoles : Map__605269027<Principal, UserRole__1054455867>
+    };
+  stable var admissionCounter : Nat;
+  stable var admissions : [AdmissionRecord__674691513];
+  stable var announcementCounter : Nat;
+  stable var announcements :
+    {
+      var root : Node__46230540<Nat, Announcement__674333181>;
+      var size : Nat__490723111
+    };
+  stable var brochureRequests :
+    {
+      var root : Node__46230540<Nat, BrochureRequest__1072138475>;
+      var size : Nat__490723111
+    };
+  stable var brochureUrls :
+    {
+      var root : Node__46230540<Nat, BrochureUrl__790305718>;
+      var size : Nat__490723111
+    };
+  stable var contactCounter : Nat;
+  stable var contactMessages : [ContactRecord__700157622];
+  stable var courseLeads :
+    {
+      var root : Node__46230540<Nat, CourseLead__867146394>;
+      var size : Nat__490723111
+    };
+  stable var courses :
+    {
+      var root : Node__46230540<Nat, Course__388460598>;
+      var size : Nat__490723111
+    };
+  stable var franchiseCounter : Nat;
+  stable var franchiseInquiries : [FranchiseRecord__67129689];
+  stable var franchiseLeads :
+    {
+      var root : Node__46230540<Nat, FranchiseLead__437227277>;
+      var size : Nat__490723111
+    };
+  stable var maxBrochureRequestId : Nat;
+  stable var maxBrochureUrlId : Nat;
+  stable var maxCourseId : Nat;
+  stable var maxCourseLeadId : Nat;
+  stable var maxFranchiseLeadId : Nat;
+  stable var principalProfiles :
+    {
+      var root : Node__46230540<Principal, UserProfile__491224006>;
+      var size : Nat__490723111
+    };
+  stable var userIdCounter : Nat;
+  stable var userPrincipals :
+    {var root : Node__46230540<Text, Principal>; var size : Nat__490723111};
+  stable var users :
+    {
+      var root : Node__46230540<Text, UserProfile__491224006>;
+      var size : Nat__490723111
+    }
+};

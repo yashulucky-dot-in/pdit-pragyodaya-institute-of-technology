@@ -1,0 +1,194 @@
+type _ImmutableObjectStorageRefillResult = 
+ record {
+   success: opt bool;
+   topped_up_amount: opt nat;
+ };
+type _ImmutableObjectStorageRefillInformation = record {
+                                                  proposed_top_up_amount:
+                                                   opt nat;};
+type _ImmutableObjectStorageCreateCertificateResult = 
+ record {
+   blob_hash: text;
+   method: text;
+ };
+type UserRole = 
+ variant {
+   admin;
+   guest;
+   user;
+ };
+type UserProfile = 
+ record {
+   course: text;
+   email: text;
+   enrolledDate: int;
+   fullName: text;
+   id: nat;
+   isActive: bool;
+   password: text;
+   phone: text;
+   progress: nat;
+   role: text;
+   username: text;
+ };
+type FranchiseRecord = 
+ record {
+   city: text;
+   email: text;
+   id: nat;
+   investment: text;
+   message: text;
+   name: text;
+   phone: text;
+   timestamp: int;
+ };
+type FranchiseLead = 
+ record {
+   city: text;
+   downloadCount: nat;
+   email: text;
+   id: nat;
+   investment: text;
+   leadType: text;
+   message: text;
+   name: text;
+   phone: text;
+   timestamp: int;
+ };
+type CourseLead = 
+ record {
+   courseId: nat;
+   courseName: text;
+   downloadCount: nat;
+   email: text;
+   id: nat;
+   message: text;
+   name: text;
+   phone: text;
+   timestamp: int;
+ };
+type Course = 
+ record {
+   badge: text;
+   colorKey: text;
+   description: text;
+   duration: text;
+   fee: text;
+   id: nat;
+   isActive: bool;
+   subtitle: text;
+   title: text;
+   topics: vec text;
+ };
+type ContactRecord = 
+ record {
+   email: text;
+   id: nat;
+   message: text;
+   name: text;
+   phone: text;
+   timestamp: int;
+ };
+type BrochureUrl = 
+ record {
+   courseId: nat;
+   id: nat;
+   url: text;
+   urlType: text;
+ };
+type BrochureRequest = 
+ record {
+   courseId: nat;
+   courseName: text;
+   email: text;
+   id: nat;
+   name: text;
+   phone: text;
+   timestamp: int;
+ };
+type Announcement = 
+ record {
+   content: text;
+   id: nat;
+   postedBy: text;
+   timestamp: int;
+   title: text;
+ };
+type AdmissionRecord = 
+ record {
+   city: text;
+   course: text;
+   email: text;
+   id: nat;
+   message: text;
+   name: text;
+   phone: text;
+   timestamp: int;
+ };
+service : {
+  _immutableObjectStorageBlobsAreLive: (hashes: vec blob) -> (vec bool) query;
+  _immutableObjectStorageBlobsToDelete: () -> (vec blob) query;
+  _immutableObjectStorageConfirmBlobDeletion: (blobs: vec blob) -> ();
+  _immutableObjectStorageCreateCertificate: (blobHash: text) ->
+   (_ImmutableObjectStorageCreateCertificateResult);
+  _immutableObjectStorageRefillCashier: (refillInformation:
+   opt _ImmutableObjectStorageRefillInformation) ->
+   (_ImmutableObjectStorageRefillResult);
+  _immutableObjectStorageUpdateGatewayPrincipals: () -> ();
+  _initializeAccessControl: () -> ();
+  addAnnouncement: (title: text, content: text, postedBy: text) ->
+   (record {ok: nat;});
+  assignCallerUserRole: (user: principal, role: UserRole) -> ();
+  createCourse: (title: text, subtitle: text, description: text, duration:
+   text, fee: text, badge: text, topics: vec text, colorKey: text) -> (
+   nat);
+  deleteAnnouncement: (id: nat) -> (bool);
+  deleteCourse: (id: nat) -> (bool);
+  getAdmissions: () -> (record {ok: vec AdmissionRecord;}) query;
+  getAllLeads: () ->
+   (record {
+      courseLeads: vec CourseLead;
+      franchiseLeads: vec FranchiseLead;
+    }) query;
+  getAllStudents: () -> (record {ok: vec UserProfile;}) query;
+  getAnnouncements: () -> (record {ok: vec Announcement;}) query;
+  getBrochureRequests: () -> (vec BrochureRequest) query;
+  getBrochureUrlByCourseId: (courseId: nat) -> (opt BrochureUrl) query;
+  getBrochureUrls: () -> (vec BrochureUrl) query;
+  getCallerUserProfile: () -> (opt UserProfile) query;
+  getCallerUserRole: () -> (UserRole) query;
+  getContactMessages: () -> (record {ok: vec ContactRecord;}) query;
+  getCourses: () -> (record {ok: vec Course;}) query;
+  getFranchiseBrochureUrl: () -> (opt BrochureUrl) query;
+  getFranchiseInquiries: () -> (record {ok: vec FranchiseRecord;}) query;
+  getStudentProgress: (username: text) -> (nat) query;
+  getUserProfile: (user: principal) -> (opt UserProfile) query;
+  getUserProfileByUsername: (username: text) ->
+   (record {ok: UserProfile;}) query;
+  isCallerAdmin: () -> (bool) query;
+  loginUser: (username: text, password: text) ->
+   (record {ok: UserProfile;}) query;
+  registerUser: (username: text, password: text, fullName: text, email: 
+   text, phone: text, course: text) -> (record {ok: UserProfile;});
+  saveCallerUserProfile: (profile: UserProfile) -> ();
+  setBrochureUrl: (courseId: nat, url: text, urlType: text) -> (bool);
+  submitAdmission: (name: text, phone: text, email: text, course: text, city:
+   text, message: text) -> (record {ok: nat;});
+  submitBrochureRequest: (name: text, phone: text, email: text, courseId:
+   opt nat, courseName: text) -> (nat);
+  submitContact: (name: text, email: text, phone: text, message: text) ->
+   (record {ok: nat;});
+  submitCourseLead: (name: text, email: text, phone: text, courseId: 
+   nat, courseName: text, message: text) -> (nat);
+  submitFranchiseInquiry: (name: text, phone: text, email: text, city: 
+   text, investment: text, message: text) -> (record {ok: nat;});
+  submitFranchiseLead: (name: text, email: text, phone: text, city: text,
+   investment: text, message: text) -> (nat);
+  trackDownload: (leadId: nat, leadType: text) -> (bool);
+  updateCourse: (id: nat, title: text, subtitle: text, description: text,
+   duration: text, fee: text, badge: text, topics: vec text, colorKey:
+   text) -> (bool);
+  updateStudentProgress: (username: text, progress: nat) -> (bool);
+  updateUserProfile: (username: text, fullName: text, email: text, phone:
+   text) -> (record {ok: UserProfile;});
+}
