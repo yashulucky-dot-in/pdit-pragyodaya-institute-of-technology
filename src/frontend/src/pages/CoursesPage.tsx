@@ -23,7 +23,7 @@ import CourseBrochurePopup from "../components/CourseBrochurePopup";
 import type { PageType } from "../components/Navbar";
 import { useActor } from "../hooks/useActor";
 
-// ── Fallback static courses ──────────────────────────────────────────────────
+// -- Fallback static courses --
 const FALLBACK_COURSES: Course[] = [
   {
     id: BigInt(1),
@@ -40,7 +40,7 @@ const FALLBACK_COURSES: Course[] = [
       "Project Portfolio",
     ],
     duration: "3 months",
-    fee: "₹8,000",
+    fee: "Rs.8,000",
     badge: "Popular",
     colorKey: "#3B82F6",
     isActive: true,
@@ -50,7 +50,7 @@ const FALLBACK_COURSES: Course[] = [
     title: "Full Stack Development",
     subtitle: "Build complete web applications",
     description:
-      "Become a complete web developer with the MERN stack. From database design to API development to beautiful frontends — this comprehensive course covers everything you need to build production-ready applications.",
+      "Become a complete web developer with the MERN stack. From database design to API development to beautiful frontends - this comprehensive course covers everything you need to build production-ready applications.",
     topics: [
       "MongoDB & Mongoose",
       "Express.js & REST APIs",
@@ -60,7 +60,7 @@ const FALLBACK_COURSES: Course[] = [
       "Deployment & DevOps",
     ],
     duration: "6 months",
-    fee: "₹15,000",
+    fee: "Rs.15,000",
     badge: "Best Value",
     colorKey: "#7C3AED",
     isActive: true,
@@ -80,7 +80,7 @@ const FALLBACK_COURSES: Course[] = [
       "Marketing Analytics",
     ],
     duration: "2 months",
-    fee: "₹6,000",
+    fee: "Rs.6,000",
     badge: "Fast Track",
     colorKey: "#059669",
     isActive: true,
@@ -100,7 +100,7 @@ const FALLBACK_COURSES: Course[] = [
       "Social Media Graphics",
     ],
     duration: "2 months",
-    fee: "₹5,000",
+    fee: "Rs.5,000",
     badge: "Creative",
     colorKey: "#DB2777",
     isActive: true,
@@ -120,7 +120,7 @@ const FALLBACK_COURSES: Course[] = [
       "Google Workspace",
     ],
     duration: "3 months",
-    fee: "₹4,000",
+    fee: "Rs.4,000",
     badge: "Foundation",
     colorKey: "#EA580C",
     isActive: true,
@@ -140,14 +140,32 @@ const FALLBACK_COURSES: Course[] = [
       "Growing Your Business",
     ],
     duration: "1 month",
-    fee: "₹3,000",
+    fee: "Rs.3,000",
     badge: "Quick Start",
     colorKey: "#0891B2",
     isActive: true,
   },
 ];
 
-// ── Icon mapper ───────────────────────────────────────────────────────────────
+// -- Course image map --
+const COURSE_IMAGES: Record<string, string> = {
+  "Web Development":
+    "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=300&fit=crop",
+  "Full Stack Development":
+    "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=600&h=300&fit=crop",
+  "Digital Marketing":
+    "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=600&h=300&fit=crop",
+  "Graphic Design":
+    "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=300&fit=crop",
+  "Computer Applications":
+    "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=300&fit=crop",
+  "Data Analytics":
+    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=300&fit=crop",
+  "Freelancing Skills":
+    "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&h=300&fit=crop",
+};
+
+// -- Icon mapper --
 function getCourseIcon(title: string) {
   const t = title.toLowerCase();
   if (t.includes("web")) return Code;
@@ -159,25 +177,25 @@ function getCourseIcon(title: string) {
   return BookOpen;
 }
 
-// ── Page skeleton ─────────────────────────────────────────────────────────────
+// -- Page skeleton --
 function CourseSkeletonCard() {
   return (
-    <div className="bg-white rounded-3xl shadow-card overflow-hidden animate-pulse">
-      <div className="h-36 bg-gray-200" />
+    <div className="bg-white rounded-2xl border border-[#E5E7EB] overflow-hidden animate-pulse">
+      <div className="h-36 bg-[#F1F5F9]" />
       <div className="p-6 space-y-3">
-        <div className="h-4 bg-gray-200 rounded w-3/4" />
-        <div className="h-3 bg-gray-100 rounded w-full" />
-        <div className="h-3 bg-gray-100 rounded w-5/6" />
+        <div className="h-4 bg-[#E5E7EB] rounded-full w-3/4" />
+        <div className="h-3 bg-[#F1F5F9] rounded-full w-full" />
+        <div className="h-3 bg-[#F1F5F9] rounded-full w-5/6" />
         <div className="flex justify-between pt-4">
-          <div className="h-8 bg-gray-200 rounded w-24" />
-          <div className="h-8 bg-gray-200 rounded w-32" />
+          <div className="h-8 bg-[#E5E7EB] rounded-full w-24" />
+          <div className="h-8 bg-[#E5E7EB] rounded-full w-32" />
         </div>
       </div>
     </div>
   );
 }
 
-// ── Main component ────────────────────────────────────────────────────────────
+// -- Main component --
 interface CoursesPageProps {
   onNavigate: (page: PageType) => void;
 }
@@ -275,27 +293,25 @@ export default function CoursesPage({ onNavigate }: CoursesPageProps) {
       />
 
       {/* Header */}
-      <section
-        className="py-20 relative overflow-hidden"
-        style={{
-          background:
-            "linear-gradient(135deg, #1a1660 0%, #2d2994 60%, #1e6bb8 100%)",
-        }}
-      >
-        <div className="container mx-auto px-4 max-w-7xl text-center">
+      <section className="py-20 relative overflow-hidden gradient-primary">
+        {/* Decorative background rings */}
+        <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-white/5 -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-white/5 translate-y-1/2 -translate-x-1/3 pointer-events-none" />
+
+        <div className="container mx-auto px-4 max-w-7xl text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-cyan-300 text-sm px-4 py-2 rounded-full mb-6">
+            <div className="inline-flex items-center gap-2 bg-white/15 border border-white/25 text-cyan-200 text-sm px-4 py-2 rounded-full mb-6 font-medium backdrop-blur-sm">
               <BookOpen className="w-4 h-4" />
               All Courses
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 font-display">
               Choose Your Learning Path
             </h1>
-            <p className="text-indigo-200 text-lg max-w-2xl mx-auto">
+            <p className="text-white/80 text-lg max-w-2xl mx-auto font-body">
               6 professionally designed courses to match your goals and budget.
               All include certification and placement support.
             </p>
@@ -309,7 +325,7 @@ export default function CoursesPage({ onNavigate }: CoursesPageProps) {
                   setShowPopup(true);
                 }}
                 data-ocid="courses.download_brochure.button"
-                className="inline-flex items-center gap-2 bg-white text-indigo-700 hover:bg-indigo-50 font-semibold px-8 py-3 rounded-full shadow-lg transition-all duration-200 hover:scale-105"
+                className="btn-primary inline-flex items-center gap-2 bg-white text-[#4F46E5] hover:bg-white/95 font-semibold px-8 py-3 rounded-full shadow-lg transition-all duration-200 hover:scale-105 border-0"
               >
                 <FileDown className="w-4 h-4" />
                 Download Course Brochure
@@ -320,8 +336,23 @@ export default function CoursesPage({ onNavigate }: CoursesPageProps) {
       </section>
 
       {/* Courses Grid */}
-      <section className="py-20" style={{ background: "#F9FAFB" }}>
+      <section className="py-20 bg-[#F8FAFC]">
         <div className="container mx-auto px-4 max-w-7xl">
+          {/* Section heading */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <p className="text-[#4F46E5] text-sm font-semibold uppercase tracking-wider mb-2">
+              Our Programs
+            </p>
+            <h2 className="text-3xl font-bold text-[#111827] font-display">
+              Explore All Courses
+            </h2>
+          </motion.div>
+
           {loadingCourses ? (
             <div
               className="grid grid-cols-1 lg:grid-cols-2 gap-8"
@@ -350,50 +381,70 @@ export default function CoursesPage({ onNavigate }: CoursesPageProps) {
                       viewport={{ once: true }}
                       transition={{ delay: i * 0.1 }}
                       data-ocid={`courses.item.${i + 1}`}
-                      className="bg-white rounded-3xl shadow-card overflow-hidden hover:shadow-card-hover transition-all duration-300"
+                      className="bg-white rounded-2xl shadow-card card-hover border border-[#E5E7EB] overflow-hidden"
                     >
+                      {/* Course image */}
+                      {COURSE_IMAGES[course.title] && (
+                        <div className="h-40 overflow-hidden relative">
+                          <img
+                            src={COURSE_IMAGES[course.title]}
+                            alt={course.title}
+                            className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                          />
+                          {/* Gradient overlay */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                          {/* Duration badge on image */}
+                          <span className="absolute top-3 right-3 bg-[#F59E0B] text-white rounded-full px-3 py-1 text-xs font-semibold shadow-md">
+                            <Clock className="w-3 h-3 inline mr-1" />
+                            {course.duration}
+                          </span>
+                          {/* Course icon badge on image */}
+                          <div className="absolute bottom-3 left-3 w-10 h-10 bg-[#4F46E5] text-white rounded-full flex items-center justify-center shadow-lg">
+                            <Icon className="w-5 h-5" />
+                          </div>
+                        </div>
+                      )}
+
                       {/* Card Header */}
-                      <div className="p-6 relative" style={gradientStyle}>
+                      <div className="p-5 relative" style={gradientStyle}>
                         <div className="flex items-start justify-between">
-                          <div className="flex items-center gap-4">
-                            <div className="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center">
-                              <Icon className="w-8 h-8 text-white" />
-                            </div>
+                          <div className="flex items-center gap-3">
+                            {!COURSE_IMAGES[course.title] && (
+                              <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center shrink-0">
+                                <Icon className="w-7 h-7 text-white" />
+                              </div>
+                            )}
                             <div>
-                              <div className="text-white/70 text-xs font-medium mb-1">
+                              <div className="text-white/75 text-xs font-medium mb-0.5">
                                 {course.subtitle}
                               </div>
-                              <h3 className="text-xl font-bold text-white">
+                              <h3 className="text-lg font-semibold text-white font-display">
                                 {course.title}
                               </h3>
                             </div>
                           </div>
                           {course.badge && (
-                            <span className="bg-white/20 text-white text-xs px-3 py-1 rounded-full font-medium shrink-0">
+                            <span className="bg-white/20 text-white text-xs px-3 py-1 rounded-full font-medium shrink-0 border border-white/30">
                               {course.badge}
                             </span>
                           )}
                         </div>
 
-                        <div className="flex items-center gap-5 mt-5">
-                          <div className="flex items-center gap-1.5 text-white/80 text-sm">
-                            <Clock className="w-4 h-4" />
-                            {course.duration}
-                          </div>
-                          <div className="flex items-center gap-1.5 text-white/80 text-sm">
-                            <Users className="w-4 h-4" />
+                        <div className="flex items-center gap-5 mt-4">
+                          <div className="flex items-center gap-1.5 text-white/85 text-sm">
+                            <Users className="w-3.5 h-3.5" />
                             Certified
                           </div>
-                          <div className="flex items-center gap-1.5 text-white/80 text-sm">
-                            <Star className="w-4 h-4" fill="white" />
-                            4.8
+                          <div className="flex items-center gap-1.5 text-white/85 text-sm">
+                            <Star className="w-3.5 h-3.5" fill="white" />
+                            4.8 Rating
                           </div>
                         </div>
                       </div>
 
                       {/* Card Body */}
                       <div className="p-6">
-                        <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                        <p className="text-[#6B7280] text-sm leading-relaxed mb-4 font-body">
                           {course.description}
                         </p>
 
@@ -406,7 +457,7 @@ export default function CoursesPage({ onNavigate }: CoursesPageProps) {
                             )
                           }
                           data-ocid="courses.topics.toggle"
-                          className="flex items-center gap-2 text-pdit-indigo text-sm font-medium mb-4 hover:text-pdit-indigo-dark transition-colors"
+                          className="flex items-center gap-2 text-[#4F46E5] text-sm font-medium mb-4 hover:text-[#4338CA] transition-colors"
                         >
                           {expandedId === course.id ? (
                             <>
@@ -431,9 +482,9 @@ export default function CoursesPage({ onNavigate }: CoursesPageProps) {
                               {course.topics.map((topic) => (
                                 <div
                                   key={topic}
-                                  className="flex items-center gap-2 text-gray-600 text-sm"
+                                  className="flex items-center gap-2 text-[#374151] text-sm"
                                 >
-                                  <CheckCircle className="w-4 h-4 text-green-500 shrink-0" />
+                                  <CheckCircle className="w-4 h-4 text-[#10B981] shrink-0" />
                                   {topic}
                                 </div>
                               ))}
@@ -441,13 +492,13 @@ export default function CoursesPage({ onNavigate }: CoursesPageProps) {
                           )}
                         </AnimatePresence>
 
-                        <div className="flex items-center justify-between pt-4 border-t border-gray-100 gap-3 flex-wrap">
+                        <div className="flex items-center justify-between pt-4 border-t border-[#E5E7EB] gap-3 flex-wrap">
                           <div className="flex items-center gap-1">
-                            <IndianRupee className="w-5 h-5 text-pdit-indigo" />
-                            <span className="text-2xl font-bold text-pdit-indigo">
-                              {course.fee.replace("₹", "")}
+                            <IndianRupee className="w-5 h-5 text-[#4F46E5]" />
+                            <span className="text-xl font-bold text-[#4F46E5] font-display">
+                              {course.fee.replace("Rs.", "")}
                             </span>
-                            <span className="text-gray-400 text-sm ml-1">
+                            <span className="text-[#9CA3AF] text-sm ml-1">
                               / full course
                             </span>
                           </div>
@@ -456,7 +507,7 @@ export default function CoursesPage({ onNavigate }: CoursesPageProps) {
                               type="button"
                               onClick={() => openBrochurePopup(course)}
                               data-ocid={`courses.brochure.button.${i + 1}`}
-                              className="flex items-center gap-1.5 border border-pdit-indigo text-pdit-indigo hover:bg-indigo-50 font-medium px-4 py-2 rounded-full text-sm transition-all duration-200"
+                              className="flex items-center gap-1.5 border border-[#4F46E5] text-[#4F46E5] hover:bg-indigo-50 font-medium px-4 py-2 rounded-full text-sm transition-all duration-200"
                             >
                               <FileDown className="w-4 h-4" />
                               Brochure
@@ -468,7 +519,7 @@ export default function CoursesPage({ onNavigate }: CoursesPageProps) {
                                 window.scrollTo({ top: 0, behavior: "smooth" });
                               }}
                               data-ocid="courses.enroll.button"
-                              className="bg-pdit-indigo hover:bg-pdit-indigo-dark text-white font-semibold px-6 py-2.5 rounded-full text-sm transition-all duration-200 hover:shadow-lg hover:scale-105"
+                              className="btn-primary text-sm px-5 py-2"
                             >
                               Enroll Now
                             </button>
@@ -486,12 +537,15 @@ export default function CoursesPage({ onNavigate }: CoursesPageProps) {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-12 bg-white rounded-2xl p-8 text-center shadow-card"
+            className="mt-12 bg-white rounded-2xl p-8 text-center shadow-card border border-[#E5E7EB]"
           >
-            <h3 className="text-xl font-bold text-gray-900 mb-2">
+            <p className="text-[#4F46E5] text-sm font-semibold uppercase tracking-wider mb-2">
+              Free Guidance
+            </p>
+            <h3 className="text-xl font-bold text-[#111827] mb-2 font-display">
               Not Sure Which Course to Pick?
             </h3>
-            <p className="text-gray-500 mb-5">
+            <p className="text-[#6B7280] mb-5 font-body">
               Talk to our career counsellors for free. We'll help you choose the
               right path based on your background and goals.
             </p>
@@ -502,7 +556,7 @@ export default function CoursesPage({ onNavigate }: CoursesPageProps) {
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
               data-ocid="courses.counsellor.button"
-              className="bg-pdit-indigo text-white font-semibold px-8 py-3 rounded-full hover:bg-pdit-indigo-dark hover:shadow-lg transition-all duration-200"
+              className="btn-primary"
             >
               Free Career Counselling
             </button>

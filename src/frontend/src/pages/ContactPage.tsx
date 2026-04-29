@@ -33,25 +33,21 @@ const contactInfo = [
     icon: MapPin,
     title: "Our Address",
     lines: ["Sector 15, Rohini", "Delhi - 110089, India"],
-    color: "bg-indigo-100 text-pdit-indigo",
   },
   {
     icon: Phone,
     title: "Phone",
     lines: ["+91 99999 99999", "+91 88888 88888"],
-    color: "bg-cyan-100 text-pdit-cyan",
   },
   {
     icon: Mail,
     title: "Email",
     lines: ["info@pdit.in", "admissions@pdit.in"],
-    color: "bg-green-100 text-green-600",
   },
   {
     icon: Clock,
     title: "Working Hours",
     lines: ["Mon-Sat: 9:00 AM - 7:00 PM", "Sunday: 10:00 AM - 3:00 PM"],
-    color: "bg-orange-100 text-orange-600",
   },
 ];
 
@@ -109,26 +105,25 @@ export default function ContactPage() {
   return (
     <main className="pt-20">
       {/* Header */}
-      <section
-        className="py-20"
-        style={{
-          background:
-            "linear-gradient(135deg, #1a1660 0%, #2d2994 60%, #1e6bb8 100%)",
-        }}
-      >
+      <section className="py-20 gradient-primary">
         <div className="container mx-auto px-4 max-w-7xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-cyan-300 text-sm px-4 py-2 rounded-full mb-6">
+            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white/90 text-sm px-4 py-2 rounded-full mb-6">
               <MessageSquare className="w-4 h-4" />
-              Get In Touch
+              <span
+                className="text-[#4F46E5] uppercase tracking-wider text-sm font-semibold"
+                style={{ color: "rgba(255,255,255,0.9)" }}
+              >
+                Get In Touch
+              </span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-white font-display mb-4">
               Contact Us
             </h1>
-            <p className="text-indigo-200 text-lg max-w-xl mx-auto">
+            <p className="text-white/80 text-lg max-w-xl mx-auto font-body">
               Have questions? We're here to help. Reach out via form, phone, or
               visit us in Delhi.
             </p>
@@ -136,8 +131,15 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="py-20" style={{ background: "#F9FAFB" }}>
+      <section className="py-20 bg-[#F8FAFC]">
         <div className="container mx-auto px-4 max-w-7xl">
+          {/* Eyebrow */}
+          <div className="text-center mb-10">
+            <span className="text-[#4F46E5] uppercase tracking-wider text-sm font-semibold">
+              Reach Out To Us
+            </span>
+          </div>
+
           {/* Contact Info Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-14">
             {contactInfo.map((item, i) => (
@@ -147,18 +149,16 @@ export default function ContactPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white rounded-2xl p-5 shadow-card text-center"
+                className="bg-white rounded-2xl p-5 shadow-card card-hover border border-[#E5E7EB] text-center"
               >
-                <div
-                  className={`w-11 h-11 ${item.color} rounded-xl flex items-center justify-center mx-auto mb-3`}
-                >
-                  <item.icon className="w-5 h-5" />
+                <div className="w-11 h-11 gradient-primary rounded-xl flex items-center justify-center mx-auto mb-3">
+                  <item.icon className="w-5 h-5 text-white" />
                 </div>
-                <h3 className="font-semibold text-gray-900 text-sm mb-2">
+                <h3 className="font-semibold text-[#111827] font-display text-sm mb-2">
                   {item.title}
                 </h3>
                 {item.lines.map((line) => (
-                  <p key={line} className="text-gray-500 text-sm">
+                  <p key={line} className="text-[#6B7280] text-sm font-body">
                     {line}
                   </p>
                 ))}
@@ -175,13 +175,13 @@ export default function ContactPage() {
               viewport={{ once: true }}
             >
               <div
-                className="bg-white rounded-3xl shadow-card p-8"
+                className="bg-white rounded-2xl shadow-card border border-[#E5E7EB] p-6 md:p-8"
                 data-ocid="contact.panel"
               >
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                <h2 className="text-2xl font-bold text-[#111827] font-display mb-2">
                   Send Us a Message
                 </h2>
-                <p className="text-gray-500 text-sm mb-6">
+                <p className="text-[#6B7280] text-sm mb-6 font-body">
                   We typically respond within 2-4 hours on business days.
                 </p>
 
@@ -190,20 +190,20 @@ export default function ContactPage() {
                     className="text-center py-10"
                     data-ocid="contact.success_state"
                   >
-                    <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <CheckCircle className="w-9 h-9 text-green-500" />
+                    <div className="w-16 h-16 bg-emerald-50 border border-emerald-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <CheckCircle className="w-9 h-9 text-[#10B981]" />
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    <h3 className="text-xl font-bold text-[#111827] font-display mb-2">
                       Message Sent!
                     </h3>
-                    <p className="text-gray-500 mb-5">
+                    <p className="text-[#6B7280] mb-5 font-body">
                       We'll get back to you within 4 hours.
                     </p>
                     <button
                       type="button"
                       onClick={() => setStatus("idle")}
                       data-ocid="contact.new_message.button"
-                      className="bg-pdit-indigo text-white font-semibold px-6 py-2.5 rounded-full hover:bg-pdit-indigo-dark transition-colors"
+                      className="btn-primary px-6 py-2.5"
                     >
                       Send Another Message
                     </button>
@@ -218,7 +218,7 @@ export default function ContactPage() {
                       <div>
                         <Label
                           htmlFor="ct-name"
-                          className="text-gray-700 font-medium mb-1.5 block"
+                          className="text-sm font-medium text-[#374151] mb-1.5 block"
                         >
                           <User className="w-3.5 h-3.5 inline mr-1" /> Your Name
                           *
@@ -229,11 +229,11 @@ export default function ContactPage() {
                           placeholder="Full name"
                           value={form.name}
                           onChange={(e) => updateField("name", e.target.value)}
-                          className={errors.name ? "border-red-400" : ""}
+                          className={`rounded-xl border px-4 py-3 text-[#111827] placeholder-[#9CA3AF] focus:border-[#4F46E5] focus:ring-2 focus:ring-indigo-100 transition-colors ${errors.name ? "border-[#EF4444]" : "border-[#E5E7EB]"}`}
                         />
                         {errors.name && (
                           <p
-                            className="text-red-500 text-xs mt-1"
+                            className="text-[#EF4444] text-xs mt-1"
                             data-ocid="contact.name.error_state"
                           >
                             {errors.name}
@@ -244,7 +244,7 @@ export default function ContactPage() {
                       <div>
                         <Label
                           htmlFor="ct-email"
-                          className="text-gray-700 font-medium mb-1.5 block"
+                          className="text-sm font-medium text-[#374151] mb-1.5 block"
                         >
                           <Mail className="w-3.5 h-3.5 inline mr-1" /> Email
                           Address *
@@ -256,11 +256,11 @@ export default function ContactPage() {
                           placeholder="your@email.com"
                           value={form.email}
                           onChange={(e) => updateField("email", e.target.value)}
-                          className={errors.email ? "border-red-400" : ""}
+                          className={`rounded-xl border px-4 py-3 text-[#111827] placeholder-[#9CA3AF] focus:border-[#4F46E5] focus:ring-2 focus:ring-indigo-100 transition-colors ${errors.email ? "border-[#EF4444]" : "border-[#E5E7EB]"}`}
                         />
                         {errors.email && (
                           <p
-                            className="text-red-500 text-xs mt-1"
+                            className="text-[#EF4444] text-xs mt-1"
                             data-ocid="contact.email.error_state"
                           >
                             {errors.email}
@@ -271,7 +271,7 @@ export default function ContactPage() {
                       <div>
                         <Label
                           htmlFor="ct-phone"
-                          className="text-gray-700 font-medium mb-1.5 block"
+                          className="text-sm font-medium text-[#374151] mb-1.5 block"
                         >
                           <Phone className="w-3.5 h-3.5 inline mr-1" /> Phone
                           (Optional)
@@ -283,13 +283,14 @@ export default function ContactPage() {
                           placeholder="Your phone number"
                           value={form.phone}
                           onChange={(e) => updateField("phone", e.target.value)}
+                          className="rounded-xl border border-[#E5E7EB] px-4 py-3 text-[#111827] placeholder-[#9CA3AF] focus:border-[#4F46E5] focus:ring-2 focus:ring-indigo-100 transition-colors"
                         />
                       </div>
 
                       <div>
                         <Label
                           htmlFor="ct-message"
-                          className="text-gray-700 font-medium mb-1.5 block"
+                          className="text-sm font-medium text-[#374151] mb-1.5 block"
                         >
                           <MessageSquare className="w-3.5 h-3.5 inline mr-1" />{" "}
                           Message *
@@ -303,11 +304,11 @@ export default function ContactPage() {
                           onChange={(e) =>
                             updateField("message", e.target.value)
                           }
-                          className={errors.message ? "border-red-400" : ""}
+                          className={`rounded-xl border px-4 py-3 text-[#111827] placeholder-[#9CA3AF] focus:border-[#4F46E5] focus:ring-2 focus:ring-indigo-100 transition-colors resize-none ${errors.message ? "border-[#EF4444]" : "border-[#E5E7EB]"}`}
                         />
                         {errors.message && (
                           <p
-                            className="text-red-500 text-xs mt-1"
+                            className="text-[#EF4444] text-xs mt-1"
                             data-ocid="contact.message.error_state"
                           >
                             {errors.message}
@@ -318,7 +319,7 @@ export default function ContactPage() {
 
                     {status === "error" && (
                       <div
-                        className="flex items-center gap-2 bg-red-50 text-red-600 p-4 rounded-xl mb-4 text-sm"
+                        className="flex items-center gap-2 bg-red-50 border border-red-200 text-[#EF4444] px-4 py-3 rounded-xl mb-4 text-sm"
                         data-ocid="contact.error_state"
                       >
                         <AlertCircle className="w-5 h-5 shrink-0" />
@@ -330,7 +331,7 @@ export default function ContactPage() {
                       type="submit"
                       disabled={status === "loading"}
                       data-ocid="contact.submit.submit_button"
-                      className="w-full bg-pdit-indigo hover:bg-pdit-indigo-dark disabled:opacity-60 text-white font-bold py-3.5 rounded-xl transition-all hover:shadow-lg flex items-center justify-center gap-2"
+                      className="btn-primary w-full flex items-center justify-center gap-2 disabled:opacity-60"
                     >
                       {status === "loading" ? (
                         <>
@@ -358,15 +359,15 @@ export default function ContactPage() {
               viewport={{ once: true }}
             >
               <div
-                className="bg-white rounded-3xl shadow-card overflow-hidden h-full min-h-[500px]"
+                className="bg-white rounded-2xl shadow-card border border-[#E5E7EB] overflow-hidden h-full min-h-[500px]"
                 data-ocid="contact.map_marker"
               >
                 <div className="gradient-primary p-5">
-                  <h3 className="font-bold text-white flex items-center gap-2">
+                  <h3 className="font-bold text-white font-display flex items-center gap-2">
                     <MapPin className="w-5 h-5" />
                     Find Us on Map
                   </h3>
-                  <p className="text-indigo-200 text-sm mt-1">
+                  <p className="text-white/80 text-sm mt-1 font-body">
                     Sector 15, Rohini, Delhi - 110089
                   </p>
                 </div>

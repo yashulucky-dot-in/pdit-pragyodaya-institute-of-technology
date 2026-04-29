@@ -183,40 +183,40 @@ export default function CourseBrochurePopup({
             className="fixed inset-0 z-50 flex items-center justify-center p-4"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="bg-white rounded-3xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
+            <div className="bg-white rounded-3xl shadow-2xl border border-[#E5E7EB] w-full max-w-lg max-h-[90vh] overflow-y-auto">
               {/* Header */}
               <div
                 className="relative px-7 pt-8 pb-6 rounded-t-3xl"
                 style={{
                   background:
-                    "linear-gradient(135deg, #4F46E5 0%, #7C3AED 60%, #6366F1 100%)",
+                    "linear-gradient(135deg, #4F46E5 0%, #6366F1 60%, #818CF8 100%)",
                 }}
               >
                 <button
                   type="button"
                   onClick={handleClose}
                   data-ocid="course_brochure.close_button"
-                  className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors"
+                  className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/20 hover:bg-white/35 flex items-center justify-center transition-all duration-200"
                   aria-label="Close"
                 >
                   <X className="w-4 h-4 text-white" />
                 </button>
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 rounded-2xl bg-white/20 border border-white/30 flex items-center justify-center flex-shrink-0 shadow-sm">
                     <BookOpen className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <p className="text-indigo-200 text-xs font-medium uppercase tracking-wider mb-1">
+                    <p className="text-indigo-200 text-xs font-semibold uppercase tracking-widest mb-1 font-body">
                       Free Download
                     </p>
-                    <h2 className="text-xl font-bold text-white leading-tight">
+                    <h2 className="text-xl font-bold text-white leading-tight font-display">
                       Download Course Brochure
                     </h2>
                   </div>
                 </div>
                 {courseName && (
-                  <div className="mt-4 bg-white/15 rounded-xl px-4 py-2.5 text-white/90 text-sm font-medium">
-                    📘 {courseName}
+                  <div className="mt-4 bg-white/15 border border-white/20 rounded-xl px-4 py-2.5 text-white/90 text-sm font-medium font-body">
+                    {courseName}
                   </div>
                 )}
               </div>
@@ -230,13 +230,13 @@ export default function CourseBrochurePopup({
                     className="text-center py-6"
                     data-ocid="course_brochure.success_state"
                   >
-                    <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <CheckCircle className="w-9 h-9 text-green-500" />
+                    <div className="w-16 h-16 bg-emerald-50 border-2 border-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <CheckCircle className="w-9 h-9 text-[#10B981]" />
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    <h3 className="text-xl font-bold text-[#111827] mb-2 font-display">
                       Your course brochure is ready!
                     </h3>
-                    <p className="text-gray-500 text-sm mb-6">
+                    <p className="text-[#6B7280] text-sm mb-6 font-body">
                       Download has started. Our team will reach out to you soon.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -246,7 +246,11 @@ export default function CourseBrochurePopup({
                           target="_blank"
                           rel="noopener noreferrer"
                           data-ocid="course_brochure.download.button"
-                          className="inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-xl transition-colors text-sm"
+                          className="inline-flex items-center justify-center gap-2 text-white font-semibold px-6 py-3 rounded-full transition-all duration-200 text-sm shadow-md hover:shadow-lg hover:-translate-y-0.5"
+                          style={{
+                            background:
+                              "linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%)",
+                          }}
                         >
                           <Download className="w-4 h-4" /> Download Now
                         </a>
@@ -256,7 +260,7 @@ export default function CourseBrochurePopup({
                         target="_blank"
                         rel="noopener noreferrer"
                         data-ocid="course_brochure.whatsapp.button"
-                        className="inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-xl transition-colors text-sm"
+                        className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#22C55E] text-white font-semibold px-6 py-3 rounded-full transition-all duration-200 text-sm shadow-md hover:shadow-[0_4px_15px_rgba(37,211,102,0.35)] hover:-translate-y-0.5"
                       >
                         <MessageSquare className="w-4 h-4" /> Chat on WhatsApp
                       </a>
@@ -264,7 +268,7 @@ export default function CourseBrochurePopup({
                   </motion.div>
                 ) : (
                   <>
-                    <p className="text-gray-500 text-sm mb-5">
+                    <p className="text-[#6B7280] text-sm mb-5 font-body">
                       Fill in your details to get the brochure instantly.
                     </p>
                     <form
@@ -276,9 +280,9 @@ export default function CourseBrochurePopup({
                       <div className="space-y-1.5">
                         <Label
                           htmlFor="cb-name"
-                          className="text-sm font-medium text-gray-700"
+                          className="text-sm font-medium text-[#374151] font-body"
                         >
-                          Full Name <span className="text-red-500">*</span>
+                          Full Name <span className="text-[#EF4444]">*</span>
                         </Label>
                         <Input
                           id="cb-name"
@@ -286,15 +290,17 @@ export default function CourseBrochurePopup({
                           placeholder="e.g. Rahul Sharma"
                           value={form.name}
                           onChange={(e) => updateField("name", e.target.value)}
-                          className={`h-11 rounded-xl ${
-                            errors.name ? "border-red-400" : ""
+                          className={`h-11 rounded-xl border border-[#E5E7EB] bg-white text-[#111827] placeholder-[#9CA3AF] px-4 focus:border-[#4F46E5] focus:ring-2 focus:ring-indigo-100 transition-all text-sm font-body ${
+                            errors.name
+                              ? "border-[#EF4444] focus:border-[#EF4444] focus:ring-red-100"
+                              : ""
                           }`}
                           data-ocid="course_brochure.name.input"
                           autoComplete="name"
                         />
                         {errors.name && (
                           <p
-                            className="text-red-500 text-xs"
+                            className="text-[#EF4444] text-xs mt-1 font-body"
                             data-ocid="course_brochure.name.error_state"
                           >
                             {errors.name}
@@ -306,9 +312,10 @@ export default function CourseBrochurePopup({
                       <div className="space-y-1.5">
                         <Label
                           htmlFor="cb-email"
-                          className="text-sm font-medium text-gray-700"
+                          className="text-sm font-medium text-[#374151] font-body"
                         >
-                          Email Address <span className="text-red-500">*</span>
+                          Email Address{" "}
+                          <span className="text-[#EF4444]">*</span>
                         </Label>
                         <Input
                           id="cb-email"
@@ -316,15 +323,17 @@ export default function CourseBrochurePopup({
                           placeholder="e.g. rahul@example.com"
                           value={form.email}
                           onChange={(e) => updateField("email", e.target.value)}
-                          className={`h-11 rounded-xl ${
-                            errors.email ? "border-red-400" : ""
+                          className={`h-11 rounded-xl border border-[#E5E7EB] bg-white text-[#111827] placeholder-[#9CA3AF] px-4 focus:border-[#4F46E5] focus:ring-2 focus:ring-indigo-100 transition-all text-sm font-body ${
+                            errors.email
+                              ? "border-[#EF4444] focus:border-[#EF4444] focus:ring-red-100"
+                              : ""
                           }`}
                           data-ocid="course_brochure.email.input"
                           autoComplete="email"
                         />
                         {errors.email && (
                           <p
-                            className="text-red-500 text-xs"
+                            className="text-[#EF4444] text-xs mt-1 font-body"
                             data-ocid="course_brochure.email.error_state"
                           >
                             {errors.email}
@@ -336,9 +345,9 @@ export default function CourseBrochurePopup({
                       <div className="space-y-1.5">
                         <Label
                           htmlFor="cb-phone"
-                          className="text-sm font-medium text-gray-700"
+                          className="text-sm font-medium text-[#374151] font-body"
                         >
-                          Phone Number <span className="text-red-500">*</span>
+                          Phone Number <span className="text-[#EF4444]">*</span>
                         </Label>
                         <Input
                           id="cb-phone"
@@ -346,15 +355,17 @@ export default function CourseBrochurePopup({
                           placeholder="e.g. 9876543210"
                           value={form.phone}
                           onChange={(e) => updateField("phone", e.target.value)}
-                          className={`h-11 rounded-xl ${
-                            errors.phone ? "border-red-400" : ""
+                          className={`h-11 rounded-xl border border-[#E5E7EB] bg-white text-[#111827] placeholder-[#9CA3AF] px-4 focus:border-[#4F46E5] focus:ring-2 focus:ring-indigo-100 transition-all text-sm font-body ${
+                            errors.phone
+                              ? "border-[#EF4444] focus:border-[#EF4444] focus:ring-red-100"
+                              : ""
                           }`}
                           data-ocid="course_brochure.phone.input"
                           autoComplete="tel"
                         />
                         {errors.phone && (
                           <p
-                            className="text-red-500 text-xs"
+                            className="text-[#EF4444] text-xs mt-1 font-body"
                             data-ocid="course_brochure.phone.error_state"
                           >
                             {errors.phone}
@@ -364,8 +375,9 @@ export default function CourseBrochurePopup({
 
                       {/* Course Select */}
                       <div className="space-y-1.5">
-                        <Label className="text-sm font-medium text-gray-700">
-                          Select Course <span className="text-red-500">*</span>
+                        <Label className="text-sm font-medium text-[#374151] font-body">
+                          Select Course{" "}
+                          <span className="text-[#EF4444]">*</span>
                         </Label>
                         <Select
                           value={form.courseId}
@@ -373,8 +385,10 @@ export default function CourseBrochurePopup({
                         >
                           <SelectTrigger
                             data-ocid="course_brochure.course.select"
-                            className={`h-11 rounded-xl ${
-                              errors.courseId ? "border-red-400" : ""
+                            className={`h-11 rounded-xl border border-[#E5E7EB] bg-white text-[#111827] focus:border-[#4F46E5] focus:ring-2 focus:ring-indigo-100 transition-all text-sm font-body ${
+                              errors.courseId
+                                ? "border-[#EF4444] focus:border-[#EF4444] focus:ring-red-100"
+                                : ""
                             }`}
                           >
                             <SelectValue placeholder="Select a course" />
@@ -394,7 +408,7 @@ export default function CourseBrochurePopup({
                         </Select>
                         {errors.courseId && (
                           <p
-                            className="text-red-500 text-xs"
+                            className="text-[#EF4444] text-xs mt-1 font-body"
                             data-ocid="course_brochure.course.error_state"
                           >
                             {errors.courseId}
@@ -406,10 +420,10 @@ export default function CourseBrochurePopup({
                       <div className="space-y-1.5">
                         <Label
                           htmlFor="cb-message"
-                          className="text-sm font-medium text-gray-700"
+                          className="text-sm font-medium text-[#374151] font-body"
                         >
                           Short Message{" "}
-                          <span className="text-gray-400 text-xs font-normal">
+                          <span className="text-[#9CA3AF] text-xs font-normal">
                             (optional)
                           </span>
                         </Label>
@@ -420,7 +434,7 @@ export default function CourseBrochurePopup({
                           onChange={(e) =>
                             updateField("message", e.target.value)
                           }
-                          className="rounded-xl resize-none"
+                          className="rounded-xl resize-none border border-[#E5E7EB] bg-white text-[#111827] placeholder-[#9CA3AF] px-4 focus:border-[#4F46E5] focus:ring-2 focus:ring-indigo-100 transition-all text-sm font-body"
                           rows={2}
                           data-ocid="course_brochure.message.textarea"
                         />
@@ -430,7 +444,7 @@ export default function CourseBrochurePopup({
                         type="submit"
                         disabled={submitting}
                         data-ocid="course_brochure.submit_button"
-                        className="w-full h-12 rounded-xl text-white font-semibold text-base border-0"
+                        className="w-full h-12 rounded-full text-white font-semibold text-base border-0 shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
                         style={{
                           background:
                             "linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%)",
@@ -449,8 +463,8 @@ export default function CourseBrochurePopup({
                         )}
                       </Button>
 
-                      <p className="text-center text-xs text-gray-400">
-                        🔒 Your information is secure and will not be shared.
+                      <p className="text-center text-xs text-[#9CA3AF] font-body">
+                        Your information is secure and will not be shared.
                       </p>
                     </form>
                   </>

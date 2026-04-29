@@ -88,8 +88,8 @@ function EmptyState({
 }: { icon: React.ElementType; message: string }) {
   return (
     <div className="text-center py-12" data-ocid="admin.empty_state">
-      <Icon className="w-10 h-10 text-gray-300 mx-auto mb-3" />
-      <p className="text-gray-400 text-sm">{message}</p>
+      <Icon className="w-10 h-10 text-[#E5E7EB] mx-auto mb-3" />
+      <p className="text-[#9CA3AF] text-sm">{message}</p>
     </div>
   );
 }
@@ -106,7 +106,7 @@ function formatDate(ts: bigint) {
   }
 }
 
-// ── CSV Export ────────────────────────────────────────────────────────────────
+// -- CSV Export --
 function exportLeadsCSV(leads: (CourseLead | FranchiseLead)[], filter: string) {
   const rows = leads.map((l) => {
     if ("courseId" in l) {
@@ -156,7 +156,7 @@ function exportLeadsCSV(leads: (CourseLead | FranchiseLead)[], filter: string) {
   URL.revokeObjectURL(url);
 }
 
-// ── Course Modal ────────────────────────────────────────────────────────────────
+// -- Course Modal --
 interface CourseForm {
   title: string;
   subtitle: string;
@@ -280,92 +280,96 @@ function CourseModal({
       }}
     >
       <DialogContent
-        className="max-w-lg w-full max-h-[90vh] overflow-y-auto"
+        className="max-w-lg w-full max-h-[90vh] overflow-y-auto bg-white rounded-2xl shadow-2xl border border-[#E5E7EB]"
         data-ocid="admin.courses.dialog"
       >
-        <DialogHeader>
-          <DialogTitle>
+        <DialogHeader className="gradient-primary -mx-6 -mt-6 px-6 pt-6 pb-4 rounded-t-2xl">
+          <DialogTitle className="text-white font-display font-bold">
             {editingCourse ? "Edit Course" : "Add New Course"}
           </DialogTitle>
-          <DialogDescription>
+          <DialogDescription className="text-indigo-100 text-sm">
             {editingCourse
               ? "Update course details below."
               : "Fill in details to create a new course."}
           </DialogDescription>
         </DialogHeader>
-        <form onSubmit={handleSave} className="space-y-4 py-2">
+        <form onSubmit={handleSave} className="space-y-4 py-2 mt-2">
           <div className="grid grid-cols-2 gap-4">
             <div className="col-span-2 space-y-1.5">
-              <Label className="text-sm font-medium text-gray-700">
+              <Label className="text-sm font-medium text-[#111827]">
                 Title <span className="text-red-500">*</span>
               </Label>
               <Input
                 placeholder="e.g. Web Development"
                 value={form.title}
                 onChange={set("title")}
-                className="h-10 rounded-xl"
+                className="h-10 rounded-xl border-[#E5E7EB] focus:border-[#4F46E5] focus:ring-2 focus:ring-indigo-100"
                 data-ocid="admin.courses.title.input"
               />
             </div>
             <div className="col-span-2 space-y-1.5">
-              <Label className="text-sm font-medium text-gray-700">
+              <Label className="text-sm font-medium text-[#111827]">
                 Subtitle <span className="text-red-500">*</span>
               </Label>
               <Input
                 placeholder="e.g. Build beautiful websites"
                 value={form.subtitle}
                 onChange={set("subtitle")}
-                className="h-10 rounded-xl"
+                className="h-10 rounded-xl border-[#E5E7EB] focus:border-[#4F46E5] focus:ring-2 focus:ring-indigo-100"
                 data-ocid="admin.courses.subtitle.input"
               />
             </div>
             <div className="col-span-2 space-y-1.5">
-              <Label className="text-sm font-medium text-gray-700">
+              <Label className="text-sm font-medium text-[#111827]">
                 Description <span className="text-red-500">*</span>
               </Label>
               <Textarea
                 placeholder="Describe the course..."
                 value={form.description}
                 onChange={set("description")}
-                className="rounded-xl resize-none"
+                className="rounded-xl resize-none border-[#E5E7EB] focus:border-[#4F46E5] focus:ring-2 focus:ring-indigo-100"
                 rows={3}
                 data-ocid="admin.courses.description.textarea"
               />
             </div>
             <div className="space-y-1.5">
-              <Label className="text-sm font-medium text-gray-700">
+              <Label className="text-sm font-medium text-[#111827]">
                 Duration
               </Label>
               <Input
                 placeholder="e.g. 3 months"
                 value={form.duration}
                 onChange={set("duration")}
-                className="h-10 rounded-xl"
+                className="h-10 rounded-xl border-[#E5E7EB] focus:border-[#4F46E5] focus:ring-2 focus:ring-indigo-100"
                 data-ocid="admin.courses.duration.input"
               />
             </div>
             <div className="space-y-1.5">
-              <Label className="text-sm font-medium text-gray-700">Fee</Label>
+              <Label className="text-sm font-medium text-[#111827]">Fee</Label>
               <Input
-                placeholder="e.g. ₹8,000"
+                placeholder="e.g. Rs.8,000"
                 value={form.fee}
                 onChange={set("fee")}
-                className="h-10 rounded-xl"
+                className="h-10 rounded-xl border-[#E5E7EB] focus:border-[#4F46E5] focus:ring-2 focus:ring-indigo-100"
                 data-ocid="admin.courses.fee.input"
               />
             </div>
             <div className="space-y-1.5">
-              <Label className="text-sm font-medium text-gray-700">Badge</Label>
+              <Label className="text-sm font-medium text-[#111827]">
+                Badge
+              </Label>
               <Input
                 placeholder="e.g. Popular"
                 value={form.badge}
                 onChange={set("badge")}
-                className="h-10 rounded-xl"
+                className="h-10 rounded-xl border-[#E5E7EB] focus:border-[#4F46E5] focus:ring-2 focus:ring-indigo-100"
                 data-ocid="admin.courses.badge.input"
               />
             </div>
             <div className="space-y-1.5">
-              <Label className="text-sm font-medium text-gray-700">Color</Label>
+              <Label className="text-sm font-medium text-[#111827]">
+                Color
+              </Label>
               <div className="flex items-center gap-2">
                 <input
                   type="color"
@@ -373,7 +377,7 @@ function CourseModal({
                   onChange={(e) =>
                     setForm((p) => ({ ...p, colorKey: e.target.value }))
                   }
-                  className="h-10 w-10 rounded-lg cursor-pointer border border-gray-200"
+                  className="h-10 w-10 rounded-lg cursor-pointer border border-[#E5E7EB]"
                   data-ocid="admin.courses.color.input"
                 />
                 <Input
@@ -382,14 +386,14 @@ function CourseModal({
                     setForm((p) => ({ ...p, colorKey: e.target.value }))
                   }
                   placeholder="#4F46E5"
-                  className="h-10 rounded-xl flex-1 font-mono text-sm"
+                  className="h-10 rounded-xl flex-1 font-mono text-sm border-[#E5E7EB] focus:border-[#4F46E5]"
                 />
               </div>
             </div>
             <div className="col-span-2 space-y-1.5">
-              <Label className="text-sm font-medium text-gray-700">
+              <Label className="text-sm font-medium text-[#111827]">
                 Topics{" "}
-                <span className="text-gray-400 text-xs font-normal">
+                <span className="text-[#9CA3AF] text-xs font-normal">
                   (comma-separated)
                 </span>
               </Label>
@@ -397,11 +401,11 @@ function CourseModal({
                 placeholder="HTML5 & CSS3, JavaScript, React.js, Git & GitHub"
                 value={form.topicsRaw}
                 onChange={set("topicsRaw")}
-                className="rounded-xl resize-none"
+                className="rounded-xl resize-none border-[#E5E7EB] focus:border-[#4F46E5] focus:ring-2 focus:ring-indigo-100"
                 rows={2}
                 data-ocid="admin.courses.topics.textarea"
               />
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-[#9CA3AF]">
                 Enter topics separated by commas
               </p>
             </div>
@@ -411,7 +415,7 @@ function CourseModal({
               type="button"
               variant="outline"
               onClick={onClose}
-              className="rounded-xl"
+              className="rounded-xl border-[#E5E7EB] text-[#6B7280] hover:text-[#111827] hover:border-[#4F46E5] transition-all"
               data-ocid="admin.courses.cancel_button"
             >
               Cancel
@@ -419,7 +423,7 @@ function CourseModal({
             <Button
               type="submit"
               disabled={saving}
-              className="gradient-primary text-white border-0 rounded-xl hover:opacity-90"
+              className="btn-primary rounded-xl border-0"
               data-ocid="admin.courses.save_button"
             >
               {saving ? (
@@ -439,7 +443,7 @@ function CourseModal({
   );
 }
 
-// ── Delete Confirm ──────────────────────────────────────────────────────────────
+// -- Delete Confirm --
 interface DeleteConfirmProps {
   open: boolean;
   onClose: () => void;
@@ -463,13 +467,16 @@ function DeleteConfirmDialog({
       }}
     >
       <DialogContent
-        className="max-w-sm"
+        className="max-w-sm bg-white rounded-2xl shadow-2xl border border-[#E5E7EB]"
         data-ocid="admin.courses.delete.dialog"
       >
         <DialogHeader>
-          <DialogTitle>Delete Course?</DialogTitle>
-          <DialogDescription>
-            Are you sure you want to delete <strong>{courseName}</strong>? This
+          <DialogTitle className="font-display font-bold text-[#111827]">
+            Delete Course?
+          </DialogTitle>
+          <DialogDescription className="text-[#6B7280]">
+            Are you sure you want to delete{" "}
+            <strong className="text-[#111827]">{courseName}</strong>? This
             action cannot be undone.
           </DialogDescription>
         </DialogHeader>
@@ -478,7 +485,7 @@ function DeleteConfirmDialog({
             variant="outline"
             onClick={onClose}
             disabled={deleting}
-            className="rounded-xl"
+            className="rounded-xl border-[#E5E7EB] text-[#6B7280] hover:text-[#111827] hover:border-[#4F46E5] transition-all"
             data-ocid="admin.courses.delete.cancel_button"
           >
             Cancel
@@ -486,7 +493,7 @@ function DeleteConfirmDialog({
           <Button
             onClick={onConfirm}
             disabled={deleting}
-            className="bg-red-600 hover:bg-red-700 text-white border-0 rounded-xl"
+            className="bg-[#EF4444] hover:bg-red-600 text-white border-0 rounded-xl transition-all"
             data-ocid="admin.courses.delete.confirm_button"
           >
             {deleting ? (
@@ -503,7 +510,7 @@ function DeleteConfirmDialog({
   );
 }
 
-// ── Main Component ────────────────────────────────────────────────────────────────
+// -- Main Component --
 export default function AdminPanel({ onNavigate }: AdminPanelProps) {
   const { currentUser, logout } = useAuth();
   const { actor, isFetching } = useActor();
@@ -834,12 +841,14 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
       {/* Brand */}
       <div className="px-6 py-5 border-b border-white/10">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-indigo-500 flex items-center justify-center shadow">
+          <div className="w-9 h-9 rounded-xl gradient-primary flex items-center justify-center shadow">
             <GraduationCap className="w-5 h-5 text-white" />
           </div>
           <div>
-            <div className="text-white font-bold text-sm">PDIT Admin</div>
-            <div className="text-slate-400 text-[10px]">Management Panel</div>
+            <div className="text-white font-display font-bold text-sm">
+              PDIT Admin
+            </div>
+            <div className="text-[#9CA3AF] text-[10px]">Management Panel</div>
           </div>
         </div>
       </div>
@@ -847,8 +856,8 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
       {/* Admin User */}
       <div className="px-6 py-4 border-b border-white/10">
         <div className="flex items-center gap-3">
-          <Avatar className="w-10 h-10">
-            <AvatarFallback className="bg-amber-500 text-white font-semibold text-sm">
+          <Avatar className="w-10 h-10 ring-2 ring-[#F59E0B]/30 border-2 border-white/10">
+            <AvatarFallback className="bg-[#F59E0B] text-white font-semibold text-sm">
               {currentUser?.fullName?.charAt(0)?.toUpperCase() ?? "A"}
             </AvatarFallback>
           </Avatar>
@@ -856,9 +865,9 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
             <div className="text-white text-sm font-semibold truncate">
               {currentUser?.fullName ?? "Admin"}
             </div>
-            <Badge className="bg-amber-500/20 text-amber-300 border-0 text-[10px] px-2 py-0 mt-0.5">
+            <span className="inline-block bg-[#F59E0B] text-white text-[10px] rounded-full px-2 py-0.5 mt-0.5 font-medium">
               Administrator
-            </Badge>
+            </span>
           </div>
         </div>
       </div>
@@ -877,10 +886,10 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
               setSidebarOpen(false);
             }}
             data-ocid={`admin.${item.id}.link`}
-            className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
+            className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${
               activeSection === item.id
-                ? "bg-white/15 text-white shadow-sm"
-                : "text-slate-400 hover:bg-white/10 hover:text-white"
+                ? "bg-[#4F46E5] text-white shadow-sm font-semibold"
+                : "text-[#9CA3AF] hover:bg-white/10 hover:text-white"
             }`}
           >
             {item.icon}
@@ -899,7 +908,7 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
         <button
           type="button"
           onClick={() => onNavigate("home")}
-          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-slate-400 hover:text-white hover:bg-white/10 transition-all"
+          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#9CA3AF] hover:text-white hover:bg-white/10 transition-all"
           data-ocid="admin.back_to_website.link"
         >
           <ArrowLeft className="w-4 h-4" />
@@ -908,7 +917,7 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
         <button
           type="button"
           onClick={handleLogout}
-          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-red-400 hover:text-white hover:bg-red-500/20 transition-all"
+          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-red-400 hover:text-white hover:bg-red-500/20 transition-all"
           data-ocid="admin.logout.button"
         >
           <LogOut className="w-4 h-4" />
@@ -919,7 +928,7 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
   );
 
   return (
-    <div className="min-h-screen flex bg-gray-50">
+    <div className="min-h-screen flex bg-[#F8FAFC]">
       {/* Modals */}
       <CourseModal
         open={courseModalOpen}
@@ -943,7 +952,7 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
       />
 
       {/* Desktop Sidebar */}
-      <aside className="hidden lg:flex flex-col w-64 bg-gradient-to-b from-[#1e293b] to-[#0f172a] flex-shrink-0">
+      <aside className="hidden lg:flex flex-col w-64 bg-[#111827] flex-shrink-0">
         <SidebarContent />
       </aside>
 
@@ -963,7 +972,7 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
               animate={{ x: 0 }}
               exit={{ x: -256 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="fixed left-0 top-0 bottom-0 w-64 bg-gradient-to-b from-[#1e293b] to-[#0f172a] z-50 lg:hidden"
+              className="fixed left-0 top-0 bottom-0 w-64 bg-[#111827] z-50 lg:hidden"
             >
               <SidebarContent />
             </motion.aside>
@@ -974,26 +983,26 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
       {/* Main */}
       <main className="flex-1 min-w-0 flex flex-col">
         {/* Top bar */}
-        <div className="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between sticky top-0 z-30">
+        <div className="bg-white border-b border-[#E5E7EB] px-6 py-4 flex items-center justify-between sticky top-0 z-30 shadow-sm">
           <div className="flex items-center gap-3">
             <button
               type="button"
               onClick={() => setSidebarOpen(true)}
-              className="lg:hidden p-2 rounded-lg hover:bg-gray-100 text-gray-600"
+              className="lg:hidden p-2 rounded-lg hover:bg-[#F8FAFC] text-[#6B7280] transition-colors"
               aria-label="Open sidebar"
               data-ocid="admin.menu.button"
             >
               <Home className="w-5 h-5" />
             </button>
             <div>
-              <h1 className="text-base font-semibold text-gray-900 capitalize">
+              <h1 className="text-base font-display font-bold text-[#111827] capitalize">
                 {navItems.find((n) => n.id === activeSection)?.label ??
                   "Dashboard"}
               </h1>
-              <p className="text-xs text-gray-500">PDIT Admin Panel</p>
+              <p className="text-xs text-[#6B7280]">PDIT Admin Panel</p>
             </div>
           </div>
-          <Badge className="bg-amber-100 text-amber-700 border-0">
+          <Badge className="bg-[#FEF3C7] text-[#D97706] border-0 rounded-full px-3 py-1 text-xs font-semibold">
             Administrator
           </Badge>
         </div>
@@ -1004,7 +1013,7 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
               className="flex items-center justify-center py-16"
               data-ocid="admin.loading_state"
             >
-              <Loader2 className="w-6 h-6 animate-spin text-pdit-indigo" />
+              <Loader2 className="w-6 h-6 animate-spin text-[#4F46E5]" />
             </div>
           )}
 
@@ -1017,17 +1026,17 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                 exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.2 }}
               >
-                {/* ── Dashboard ─────────────────────────────────────────────────── */}
+                {/* Dashboard */}
                 {activeSection === "dashboard" && (
                   <div
                     className="space-y-6"
                     data-ocid="admin.dashboard.section"
                   >
-                    <div className="bg-gradient-to-r from-slate-800 to-slate-900 rounded-2xl p-6 text-white">
-                      <h2 className="text-xl font-bold">
-                        Welcome, {currentUser?.fullName ?? "Admin"} 👋
+                    <div className="bg-gradient-to-r from-[#111827] to-[#1e293b] rounded-2xl p-6 text-white">
+                      <h2 className="text-xl font-display font-bold">
+                        Welcome, {currentUser?.fullName ?? "Admin"}
                       </h2>
-                      <p className="text-slate-300 text-sm mt-1">
+                      <p className="text-[#9CA3AF] text-sm mt-1">
                         Here's an overview of PDIT's activity.
                       </p>
                     </div>
@@ -1038,43 +1047,37 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                           label: "Total Students",
                           value: students.filter((s) => s.role !== "admin")
                             .length,
-                          icon: <Users className="w-5 h-5" />,
-                          color: "text-pdit-indigo bg-indigo-50",
+                          icon: <Users className="w-5 h-5 text-white" />,
                         },
                         {
                           label: "Admissions",
                           value: admissions.length,
-                          icon: <BookOpen className="w-5 h-5" />,
-                          color: "text-emerald-600 bg-emerald-50",
+                          icon: <BookOpen className="w-5 h-5 text-white" />,
                         },
                         {
                           label: "Franchise Leads",
                           value: franchise.length,
-                          icon: <Briefcase className="w-5 h-5" />,
-                          color: "text-amber-600 bg-amber-50",
+                          icon: <Briefcase className="w-5 h-5 text-white" />,
                         },
                         {
                           label: "Messages",
                           value: messages.length,
-                          icon: <Mail className="w-5 h-5" />,
-                          color: "text-cyan-600 bg-cyan-50",
+                          icon: <Mail className="w-5 h-5 text-white" />,
                         },
                       ].map((stat) => (
                         <Card
                           key={stat.label}
-                          className="border-0 shadow-card rounded-2xl"
+                          className="bg-white border border-[#E5E7EB] shadow-card rounded-2xl hover-lift"
                           data-ocid="admin.stats.card"
                         >
                           <CardContent className="p-4">
-                            <div
-                              className={`w-10 h-10 rounded-xl ${stat.color} flex items-center justify-center mb-3`}
-                            >
+                            <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center mb-3">
                               {stat.icon}
                             </div>
-                            <div className="text-2xl font-bold text-gray-900">
+                            <div className="text-2xl font-display font-bold text-[#4F46E5]">
                               {stat.value}
                             </div>
-                            <div className="text-xs text-gray-500 mt-0.5">
+                            <div className="text-xs text-[#6B7280] mt-0.5">
                               {stat.label}
                             </div>
                           </CardContent>
@@ -1083,9 +1086,9 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                     </div>
 
                     {/* Recent Admissions */}
-                    <Card className="border-0 shadow-card rounded-2xl">
+                    <Card className="bg-white border border-[#E5E7EB] shadow-card rounded-2xl">
                       <CardHeader className="pb-3">
-                        <CardTitle className="text-base font-semibold">
+                        <CardTitle className="text-base font-display font-semibold text-[#111827]">
                           Recent Admissions
                         </CardTitle>
                       </CardHeader>
@@ -1099,25 +1102,38 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                           <div className="overflow-x-auto">
                             <Table data-ocid="admin.admissions.table">
                               <TableHeader>
-                                <TableRow>
-                                  <TableHead>Name</TableHead>
-                                  <TableHead>Course</TableHead>
-                                  <TableHead>City</TableHead>
-                                  <TableHead>Date</TableHead>
+                                <TableRow className="bg-[#F8FAFC] border-b border-[#E5E7EB]">
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Name
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Course
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    City
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Date
+                                  </TableHead>
                                 </TableRow>
                               </TableHeader>
                               <TableBody>
                                 {admissions.slice(0, 5).map((a, i) => (
                                   <TableRow
                                     key={String(a.id)}
+                                    className="border-b border-[#F3F4F6] hover:bg-[#F8FAFC] transition-colors"
                                     data-ocid={`admin.admissions.item.${i + 1}`}
                                   >
-                                    <TableCell className="font-medium">
+                                    <TableCell className="font-medium text-[#111827] text-sm">
                                       {a.name}
                                     </TableCell>
-                                    <TableCell>{a.course}</TableCell>
-                                    <TableCell>{a.city}</TableCell>
-                                    <TableCell className="text-gray-500 text-sm">
+                                    <TableCell className="text-[#111827] text-sm">
+                                      {a.course}
+                                    </TableCell>
+                                    <TableCell className="text-[#111827] text-sm">
+                                      {a.city}
+                                    </TableCell>
+                                    <TableCell className="text-[#6B7280] text-sm">
                                       {formatDate(a.timestamp)}
                                     </TableCell>
                                   </TableRow>
@@ -1131,14 +1147,14 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                   </div>
                 )}
 
-                {/* ── Students ──────────────────────────────────────────────────── */}
+                {/* Students */}
                 {activeSection === "students" && (
                   <div className="space-y-6" data-ocid="admin.students.section">
-                    <h2 className="text-xl font-bold text-gray-900">
+                    <h2 className="text-2xl font-display font-bold text-[#111827]">
                       Students (
                       {students.filter((s) => s.role !== "admin").length})
                     </h2>
-                    <Card className="border-0 shadow-card rounded-2xl">
+                    <Card className="bg-white border border-[#E5E7EB] shadow-card rounded-2xl overflow-hidden">
                       <CardContent className="p-0">
                         {students.filter((s) => s.role !== "admin").length ===
                         0 ? (
@@ -1152,13 +1168,25 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                           <div className="overflow-x-auto">
                             <Table data-ocid="admin.students.table">
                               <TableHeader>
-                                <TableRow>
-                                  <TableHead>Name</TableHead>
-                                  <TableHead>Course</TableHead>
-                                  <TableHead>Email</TableHead>
-                                  <TableHead>Progress</TableHead>
-                                  <TableHead>Status</TableHead>
-                                  <TableHead>Update</TableHead>
+                                <TableRow className="bg-[#F8FAFC] border-b border-[#E5E7EB]">
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Name
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Course
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Email
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Progress
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Status
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Update
+                                  </TableHead>
                                 </TableRow>
                               </TableHeader>
                               <TableBody>
@@ -1167,20 +1195,21 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                                   .map((s, i) => (
                                     <TableRow
                                       key={s.username}
+                                      className="border-b border-[#F3F4F6] hover:bg-[#F8FAFC] transition-colors"
                                       data-ocid={`admin.students.item.${i + 1}`}
                                     >
                                       <TableCell>
-                                        <div className="font-medium">
+                                        <div className="font-medium text-[#111827] text-sm">
                                           {s.fullName}
                                         </div>
-                                        <div className="text-xs text-gray-400">
+                                        <div className="text-xs text-[#9CA3AF]">
                                           @{s.username}
                                         </div>
                                       </TableCell>
-                                      <TableCell className="text-sm">
+                                      <TableCell className="text-sm text-[#111827]">
                                         {s.course}
                                       </TableCell>
-                                      <TableCell className="text-sm text-gray-600">
+                                      <TableCell className="text-sm text-[#6B7280]">
                                         {s.email}
                                       </TableCell>
                                       <TableCell>
@@ -1189,7 +1218,7 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                                             value={Number(s.progress)}
                                             className="h-2 flex-1"
                                           />
-                                          <span className="text-xs text-gray-500">
+                                          <span className="text-xs text-[#4F46E5] font-semibold">
                                             {Number(s.progress)}%
                                           </span>
                                         </div>
@@ -1198,8 +1227,8 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                                         <Badge
                                           className={
                                             s.isActive
-                                              ? "bg-emerald-100 text-emerald-700 border-0"
-                                              : "bg-red-100 text-red-700 border-0"
+                                              ? "bg-emerald-50 text-[#10B981] border-0 rounded-full px-3 py-1 text-xs font-semibold"
+                                              : "bg-red-50 text-[#EF4444] border-0 rounded-full px-3 py-1 text-xs font-semibold"
                                           }
                                         >
                                           {s.isActive ? "Active" : "Inactive"}
@@ -1223,7 +1252,7 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                                                 [s.username]: e.target.value,
                                               }))
                                             }
-                                            className="h-8 w-16 text-xs rounded-lg"
+                                            className="h-8 w-16 text-xs rounded-lg border-[#E5E7EB]"
                                             data-ocid={`admin.progress.input.${i + 1}`}
                                           />
                                           <Button
@@ -1234,7 +1263,7 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                                             disabled={
                                               updatingProgress === s.username
                                             }
-                                            className="h-8 px-2 gradient-primary text-white border-0 text-xs rounded-lg"
+                                            className="h-8 px-2 btn-primary text-white border-0 text-xs rounded-lg"
                                             data-ocid={`admin.progress.save_button.${i + 1}`}
                                           >
                                             {updatingProgress === s.username ? (
@@ -1256,16 +1285,16 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                   </div>
                 )}
 
-                {/* ── Admissions ────────────────────────────────────────────────── */}
+                {/* Admissions */}
                 {activeSection === "admissions" && (
                   <div
                     className="space-y-6"
                     data-ocid="admin.admissions.section"
                   >
-                    <h2 className="text-xl font-bold text-gray-900">
+                    <h2 className="text-2xl font-display font-bold text-[#111827]">
                       Admissions ({admissions.length})
                     </h2>
-                    <Card className="border-0 shadow-card rounded-2xl">
+                    <Card className="bg-white border border-[#E5E7EB] shadow-card rounded-2xl overflow-hidden">
                       <CardContent className="p-0">
                         {admissions.length === 0 ? (
                           <div className="p-6">
@@ -1278,33 +1307,50 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                           <div className="overflow-x-auto">
                             <Table data-ocid="admin.admissions.table">
                               <TableHeader>
-                                <TableRow>
-                                  <TableHead>Name</TableHead>
-                                  <TableHead>Course</TableHead>
-                                  <TableHead>City</TableHead>
-                                  <TableHead>Email</TableHead>
-                                  <TableHead>Phone</TableHead>
-                                  <TableHead>Date</TableHead>
+                                <TableRow className="bg-[#F8FAFC] border-b border-[#E5E7EB]">
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Name
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Course
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    City
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Email
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Phone
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Date
+                                  </TableHead>
                                 </TableRow>
                               </TableHeader>
                               <TableBody>
                                 {admissions.map((a, i) => (
                                   <TableRow
                                     key={String(a.id)}
+                                    className="border-b border-[#F3F4F6] hover:bg-[#F8FAFC] transition-colors"
                                     data-ocid={`admin.admissions.item.${i + 1}`}
                                   >
-                                    <TableCell className="font-medium">
+                                    <TableCell className="font-medium text-[#111827] text-sm">
                                       {a.name}
                                     </TableCell>
-                                    <TableCell>{a.course}</TableCell>
-                                    <TableCell>{a.city}</TableCell>
-                                    <TableCell className="text-sm text-gray-600">
+                                    <TableCell className="text-[#111827] text-sm">
+                                      {a.course}
+                                    </TableCell>
+                                    <TableCell className="text-[#111827] text-sm">
+                                      {a.city}
+                                    </TableCell>
+                                    <TableCell className="text-sm text-[#6B7280]">
                                       {a.email}
                                     </TableCell>
-                                    <TableCell className="text-sm text-gray-600">
+                                    <TableCell className="text-sm text-[#6B7280]">
                                       {a.phone}
                                     </TableCell>
-                                    <TableCell className="text-sm text-gray-500">
+                                    <TableCell className="text-sm text-[#6B7280]">
                                       {formatDate(a.timestamp)}
                                     </TableCell>
                                   </TableRow>
@@ -1318,16 +1364,16 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                   </div>
                 )}
 
-                {/* ── Franchise ─────────────────────────────────────────────────── */}
+                {/* Franchise */}
                 {activeSection === "franchise" && (
                   <div
                     className="space-y-6"
                     data-ocid="admin.franchise.section"
                   >
-                    <h2 className="text-xl font-bold text-gray-900">
+                    <h2 className="text-2xl font-display font-bold text-[#111827]">
                       Franchise Leads ({franchise.length})
                     </h2>
-                    <Card className="border-0 shadow-card rounded-2xl">
+                    <Card className="bg-white border border-[#E5E7EB] shadow-card rounded-2xl overflow-hidden">
                       <CardContent className="p-0">
                         {franchise.length === 0 ? (
                           <div className="p-6">
@@ -1340,37 +1386,52 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                           <div className="overflow-x-auto">
                             <Table data-ocid="admin.franchise.table">
                               <TableHeader>
-                                <TableRow>
-                                  <TableHead>Name</TableHead>
-                                  <TableHead>City</TableHead>
-                                  <TableHead>Investment</TableHead>
-                                  <TableHead>Email</TableHead>
-                                  <TableHead>Phone</TableHead>
-                                  <TableHead>Date</TableHead>
+                                <TableRow className="bg-[#F8FAFC] border-b border-[#E5E7EB]">
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Name
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    City
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Investment
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Email
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Phone
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Date
+                                  </TableHead>
                                 </TableRow>
                               </TableHeader>
                               <TableBody>
                                 {franchise.map((f, i) => (
                                   <TableRow
                                     key={String(f.id)}
+                                    className="border-b border-[#F3F4F6] hover:bg-[#F8FAFC] transition-colors"
                                     data-ocid={`admin.franchise.item.${i + 1}`}
                                   >
-                                    <TableCell className="font-medium">
+                                    <TableCell className="font-medium text-[#111827] text-sm">
                                       {f.name}
                                     </TableCell>
-                                    <TableCell>{f.city}</TableCell>
+                                    <TableCell className="text-[#111827] text-sm">
+                                      {f.city}
+                                    </TableCell>
                                     <TableCell>
-                                      <Badge className="bg-amber-100 text-amber-700 border-0">
+                                      <Badge className="bg-[#FEF3C7] text-[#D97706] border-0 rounded-full px-3 py-1 text-xs font-semibold">
                                         {f.investment}
                                       </Badge>
                                     </TableCell>
-                                    <TableCell className="text-sm text-gray-600">
+                                    <TableCell className="text-sm text-[#6B7280]">
                                       {f.email}
                                     </TableCell>
-                                    <TableCell className="text-sm text-gray-600">
+                                    <TableCell className="text-sm text-[#6B7280]">
                                       {f.phone}
                                     </TableCell>
-                                    <TableCell className="text-sm text-gray-500">
+                                    <TableCell className="text-sm text-[#6B7280]">
                                       {formatDate(f.timestamp)}
                                     </TableCell>
                                   </TableRow>
@@ -1384,13 +1445,13 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                   </div>
                 )}
 
-                {/* ── Messages ──────────────────────────────────────────────────── */}
+                {/* Messages */}
                 {activeSection === "messages" && (
                   <div className="space-y-6" data-ocid="admin.messages.section">
-                    <h2 className="text-xl font-bold text-gray-900">
+                    <h2 className="text-2xl font-display font-bold text-[#111827]">
                       Contact Messages ({messages.length})
                     </h2>
-                    <Card className="border-0 shadow-card rounded-2xl">
+                    <Card className="bg-white border border-[#E5E7EB] shadow-card rounded-2xl overflow-hidden">
                       <CardContent className="p-0">
                         {messages.length === 0 ? (
                           <div className="p-6">
@@ -1403,35 +1464,46 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                           <div className="overflow-x-auto">
                             <Table data-ocid="admin.messages.table">
                               <TableHeader>
-                                <TableRow>
-                                  <TableHead>Name</TableHead>
-                                  <TableHead>Email</TableHead>
-                                  <TableHead>Phone</TableHead>
-                                  <TableHead>Message</TableHead>
-                                  <TableHead>Date</TableHead>
+                                <TableRow className="bg-[#F8FAFC] border-b border-[#E5E7EB]">
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Name
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Email
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Phone
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Message
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Date
+                                  </TableHead>
                                 </TableRow>
                               </TableHeader>
                               <TableBody>
                                 {messages.map((m, i) => (
                                   <TableRow
                                     key={String(m.id)}
+                                    className="border-b border-[#F3F4F6] hover:bg-[#F8FAFC] transition-colors"
                                     data-ocid={`admin.messages.item.${i + 1}`}
                                   >
-                                    <TableCell className="font-medium">
+                                    <TableCell className="font-medium text-[#111827] text-sm">
                                       {m.name}
                                     </TableCell>
-                                    <TableCell className="text-sm text-gray-600">
+                                    <TableCell className="text-sm text-[#6B7280]">
                                       {m.email}
                                     </TableCell>
-                                    <TableCell className="text-sm text-gray-600">
+                                    <TableCell className="text-sm text-[#6B7280]">
                                       {m.phone}
                                     </TableCell>
-                                    <TableCell className="text-sm text-gray-600 max-w-xs">
+                                    <TableCell className="text-sm text-[#6B7280] max-w-xs">
                                       <p className="line-clamp-2">
                                         {m.message}
                                       </p>
                                     </TableCell>
-                                    <TableCell className="text-sm text-gray-500">
+                                    <TableCell className="text-sm text-[#6B7280]">
                                       {formatDate(m.timestamp)}
                                     </TableCell>
                                   </TableRow>
@@ -1445,20 +1517,20 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                   </div>
                 )}
 
-                {/* ── Announcements ─────────────────────────────────────────────── */}
+                {/* Announcements */}
                 {activeSection === "announcements" && (
                   <div
                     className="space-y-6"
                     data-ocid="admin.announcements.section"
                   >
-                    <h2 className="text-xl font-bold text-gray-900">
+                    <h2 className="text-2xl font-display font-bold text-[#111827]">
                       Announcements
                     </h2>
 
-                    <Card className="border-0 shadow-card rounded-2xl border-l-4 border-l-pdit-indigo">
+                    <Card className="bg-white border border-[#E5E7EB] border-l-4 border-l-[#4F46E5] shadow-card rounded-2xl">
                       <CardHeader className="pb-3">
-                        <CardTitle className="text-base flex items-center gap-2">
-                          <Plus className="w-4 h-4 text-pdit-indigo" />
+                        <CardTitle className="text-base font-display flex items-center gap-2 text-[#111827]">
+                          <Plus className="w-4 h-4 text-[#4F46E5]" />
                           Post New Announcement
                         </CardTitle>
                       </CardHeader>
@@ -1468,7 +1540,7 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                           className="space-y-3"
                         >
                           <div className="space-y-1.5">
-                            <Label className="text-sm font-medium text-gray-700">
+                            <Label className="text-sm font-medium text-[#111827]">
                               Title
                             </Label>
                             <Input
@@ -1480,12 +1552,12 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                                   title: e.target.value,
                                 }))
                               }
-                              className="h-11 rounded-xl"
+                              className="h-11 rounded-xl border-[#E5E7EB] focus:border-[#4F46E5] focus:ring-2 focus:ring-indigo-100"
                               data-ocid="admin.announcement.title.input"
                             />
                           </div>
                           <div className="space-y-1.5">
-                            <Label className="text-sm font-medium text-gray-700">
+                            <Label className="text-sm font-medium text-[#111827]">
                               Content
                             </Label>
                             <Textarea
@@ -1497,7 +1569,7 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                                   content: e.target.value,
                                 }))
                               }
-                              className="rounded-xl resize-none"
+                              className="rounded-xl resize-none border-[#E5E7EB] focus:border-[#4F46E5] focus:ring-2 focus:ring-indigo-100"
                               rows={3}
                               data-ocid="admin.announcement.content.textarea"
                             />
@@ -1505,7 +1577,7 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                           <Button
                             type="submit"
                             disabled={addingAnn}
-                            className="gradient-primary text-white border-0 rounded-xl hover:opacity-90"
+                            className="btn-primary rounded-xl border-0"
                             data-ocid="admin.announcement.submit_button"
                           >
                             {addingAnn ? (
@@ -1526,7 +1598,7 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
 
                     {announcements.length === 0 ? (
                       <Card
-                        className="border-0 shadow-card rounded-2xl"
+                        className="bg-white border border-[#E5E7EB] shadow-card rounded-2xl"
                         data-ocid="admin.announcements.empty_state"
                       >
                         <CardContent className="py-12">
@@ -1541,22 +1613,22 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                         {announcements.map((ann, i) => (
                           <Card
                             key={String(ann.id)}
-                            className="border-0 shadow-card rounded-2xl"
+                            className="bg-white border border-[#E5E7EB] shadow-sm rounded-xl hover-lift"
                             data-ocid={`admin.announcements.item.${i + 1}`}
                           >
                             <CardContent className="p-5">
                               <div className="flex items-start gap-4">
-                                <div className="w-10 h-10 rounded-xl bg-slate-700 flex items-center justify-center flex-shrink-0">
+                                <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center flex-shrink-0">
                                   <Bell className="w-5 h-5 text-white" />
                                 </div>
                                 <div className="flex-1">
-                                  <h3 className="font-semibold text-gray-900">
+                                  <h3 className="font-display font-semibold text-[#111827]">
                                     {ann.title}
                                   </h3>
-                                  <p className="text-sm text-gray-600 mt-1">
+                                  <p className="text-sm text-[#6B7280] mt-1">
                                     {ann.content}
                                   </p>
-                                  <p className="text-xs text-gray-400 mt-2">
+                                  <p className="text-xs text-[#9CA3AF] mt-2">
                                     Posted by {ann.postedBy}
                                   </p>
                                 </div>
@@ -1569,11 +1641,11 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                   </div>
                 )}
 
-                {/* ── Courses ─────────────────────────────────────────────────────── */}
+                {/* Courses */}
                 {activeSection === "courses" && (
                   <div className="space-y-6" data-ocid="admin.courses.section">
                     <div className="flex items-center justify-between">
-                      <h2 className="text-xl font-bold text-gray-900">
+                      <h2 className="text-2xl font-display font-bold text-[#111827]">
                         Courses ({courses.length})
                       </h2>
                       <Button
@@ -1581,14 +1653,14 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                           setEditingCourse(null);
                           setCourseModalOpen(true);
                         }}
-                        className="gradient-primary text-white border-0 rounded-xl hover:opacity-90 flex items-center gap-2"
+                        className="btn-primary rounded-xl border-0 flex items-center gap-2"
                         data-ocid="admin.courses.open_modal_button"
                       >
                         <Plus className="w-4 h-4" /> Add New Course
                       </Button>
                     </div>
 
-                    <Card className="border-0 shadow-card rounded-2xl">
+                    <Card className="bg-white border border-[#E5E7EB] shadow-card rounded-2xl overflow-hidden">
                       <CardContent className="p-0">
                         {courses.length === 0 ? (
                           <div className="p-6">
@@ -1601,13 +1673,23 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                           <div className="overflow-x-auto">
                             <Table data-ocid="admin.courses.table">
                               <TableHeader>
-                                <TableRow>
-                                  <TableHead>Course</TableHead>
-                                  <TableHead>Duration</TableHead>
-                                  <TableHead>Fee</TableHead>
-                                  <TableHead>Topics</TableHead>
-                                  <TableHead>Status</TableHead>
-                                  <TableHead className="text-right">
+                                <TableRow className="bg-[#F8FAFC] border-b border-[#E5E7EB]">
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Course
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Duration
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Fee
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Topics
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Status
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider text-right">
                                     Actions
                                   </TableHead>
                                 </TableRow>
@@ -1616,6 +1698,7 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                                 {courses.map((course, i) => (
                                   <TableRow
                                     key={String(course.id)}
+                                    className="border-b border-[#F3F4F6] hover:bg-[#F8FAFC] transition-colors"
                                     data-ocid={`admin.courses.item.${i + 1}`}
                                   >
                                     <TableCell>
@@ -1627,25 +1710,25 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                                           }}
                                         />
                                         <div>
-                                          <div className="font-semibold text-gray-900">
+                                          <div className="font-semibold text-[#111827] text-sm">
                                             {course.title}
                                           </div>
-                                          <div className="text-xs text-gray-400">
+                                          <div className="text-xs text-[#9CA3AF]">
                                             {course.subtitle}
                                           </div>
                                         </div>
                                       </div>
                                     </TableCell>
-                                    <TableCell className="text-sm text-gray-600">
+                                    <TableCell className="text-sm text-[#6B7280]">
                                       {course.duration}
                                     </TableCell>
                                     <TableCell>
-                                      <Badge className="bg-green-100 text-green-700 border-0 font-semibold">
+                                      <Badge className="bg-emerald-50 text-[#10B981] border-0 rounded-full px-3 py-1 text-xs font-semibold">
                                         {course.fee}
                                       </Badge>
                                     </TableCell>
                                     <TableCell>
-                                      <Badge className="bg-indigo-50 text-pdit-indigo border-0">
+                                      <Badge className="bg-indigo-50 text-[#4F46E5] border-0 rounded-full px-3 py-1 text-xs font-semibold">
                                         {course.topics.length} topics
                                       </Badge>
                                     </TableCell>
@@ -1653,8 +1736,8 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                                       <Badge
                                         className={
                                           course.isActive
-                                            ? "bg-emerald-100 text-emerald-700 border-0"
-                                            : "bg-red-100 text-red-700 border-0"
+                                            ? "bg-emerald-50 text-[#10B981] border-0 rounded-full px-3 py-1 text-xs font-semibold"
+                                            : "bg-red-50 text-[#EF4444] border-0 rounded-full px-3 py-1 text-xs font-semibold"
                                         }
                                       >
                                         {course.isActive
@@ -1666,24 +1749,22 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                                       <div className="flex items-center justify-end gap-1.5">
                                         <Button
                                           size="sm"
-                                          variant="outline"
                                           onClick={() => {
                                             setEditingCourse(course);
                                             setCourseModalOpen(true);
                                           }}
-                                          className="h-8 px-2.5 rounded-lg text-xs border-gray-200 hover:border-pdit-indigo hover:text-pdit-indigo"
+                                          className="h-8 px-2.5 rounded-lg text-xs bg-indigo-50 text-[#4F46E5] hover:bg-[#4F46E5] hover:text-white border-0 transition-all"
                                           data-ocid={`admin.courses.edit_button.${i + 1}`}
                                         >
                                           <Edit className="w-3.5 h-3.5" />
                                         </Button>
                                         <Button
                                           size="sm"
-                                          variant="outline"
                                           onClick={() => {
                                             setDeletingCourse(course);
                                             setDeleteDialogOpen(true);
                                           }}
-                                          className="h-8 px-2.5 rounded-lg text-xs border-gray-200 hover:border-red-400 hover:text-red-600"
+                                          className="h-8 px-2.5 rounded-lg text-xs bg-red-50 text-[#EF4444] hover:bg-[#EF4444] hover:text-white border-0 transition-all"
                                           data-ocid={`admin.courses.delete_button.${i + 1}`}
                                         >
                                           <Trash2 className="w-3.5 h-3.5" />
@@ -1701,22 +1782,22 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                   </div>
                 )}
 
-                {/* ── Brochure Requests ─────────────────────────────────────────────── */}
+                {/* Brochure Requests */}
                 {activeSection === "brochures" && (
                   <div
                     className="space-y-6"
                     data-ocid="admin.brochures.section"
                   >
                     <div className="flex items-center gap-3">
-                      <h2 className="text-xl font-bold text-gray-900">
+                      <h2 className="text-2xl font-display font-bold text-[#111827]">
                         Brochure Requests
                       </h2>
-                      <Badge className="bg-indigo-100 text-pdit-indigo border-0 text-sm px-3">
+                      <Badge className="bg-indigo-50 text-[#4F46E5] border-0 rounded-full px-3 py-1 text-xs font-semibold">
                         {brochureRequests.length} total
                       </Badge>
                     </div>
 
-                    <Card className="border-0 shadow-card rounded-2xl">
+                    <Card className="bg-white border border-[#E5E7EB] shadow-card rounded-2xl overflow-hidden">
                       <CardContent className="p-0">
                         {brochureRequests.length === 0 ? (
                           <div className="p-6">
@@ -1729,35 +1810,46 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                           <div className="overflow-x-auto">
                             <Table data-ocid="admin.brochures.table">
                               <TableHeader>
-                                <TableRow>
-                                  <TableHead>Name</TableHead>
-                                  <TableHead>Phone</TableHead>
-                                  <TableHead>Email</TableHead>
-                                  <TableHead>Course</TableHead>
-                                  <TableHead>Date</TableHead>
+                                <TableRow className="bg-[#F8FAFC] border-b border-[#E5E7EB]">
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Name
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Phone
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Email
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Course
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Date
+                                  </TableHead>
                                 </TableRow>
                               </TableHeader>
                               <TableBody>
                                 {brochureRequests.map((req, i) => (
                                   <TableRow
                                     key={String(req.id)}
+                                    className="border-b border-[#F3F4F6] hover:bg-[#F8FAFC] transition-colors"
                                     data-ocid={`admin.brochures.item.${i + 1}`}
                                   >
-                                    <TableCell className="font-medium">
+                                    <TableCell className="font-medium text-[#111827] text-sm">
                                       {req.name}
                                     </TableCell>
-                                    <TableCell className="text-sm text-gray-600">
+                                    <TableCell className="text-sm text-[#6B7280]">
                                       {req.phone}
                                     </TableCell>
-                                    <TableCell className="text-sm text-gray-600">
+                                    <TableCell className="text-sm text-[#6B7280]">
                                       {req.email}
                                     </TableCell>
                                     <TableCell>
-                                      <Badge className="bg-indigo-50 text-pdit-indigo border-0">
+                                      <Badge className="bg-indigo-50 text-[#4F46E5] border-0 rounded-full px-3 py-1 text-xs font-semibold">
                                         {req.courseName}
                                       </Badge>
                                     </TableCell>
-                                    <TableCell className="text-sm text-gray-500">
+                                    <TableCell className="text-sm text-[#6B7280]">
                                       {new Date(
                                         Number(
                                           req.timestamp / BigInt(1_000_000),
@@ -1775,17 +1867,19 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                   </div>
                 )}
 
-                {/* ── Leads ─────────────────────────────────────────────────────────── */}
+                {/* Leads */}
                 {activeSection === "leads" && (
                   <div className="space-y-6" data-ocid="admin.leads.section">
                     <div className="flex items-center justify-between flex-wrap gap-4">
-                      <h2 className="text-xl font-bold text-gray-900">Leads</h2>
+                      <h2 className="text-2xl font-display font-bold text-[#111827]">
+                        Leads
+                      </h2>
                       <Button
                         onClick={() =>
                           exportLeadsCSV(filteredLeads, leadsFilter)
                         }
                         variant="outline"
-                        className="flex items-center gap-2 rounded-xl border-gray-300 hover:border-pdit-indigo hover:text-pdit-indigo"
+                        className="btn-secondary rounded-xl flex items-center gap-2"
                         data-ocid="admin.leads.export.button"
                       >
                         <Download className="w-4 h-4" />
@@ -1799,43 +1893,37 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                         {
                           label: "Total Leads",
                           value: courseLeads.length + franchiseLeads.length,
-                          color: "text-pdit-indigo bg-indigo-50",
-                          icon: <Users className="w-5 h-5" />,
+                          icon: <Users className="w-5 h-5 text-white" />,
                         },
                         {
                           label: "Course Leads",
                           value: courseLeads.length,
-                          color: "text-blue-600 bg-blue-50",
-                          icon: <BookOpen className="w-5 h-5" />,
+                          icon: <BookOpen className="w-5 h-5 text-white" />,
                         },
                         {
                           label: "Franchise Leads",
                           value: franchiseLeads.length,
-                          color: "text-green-600 bg-green-50",
-                          icon: <Briefcase className="w-5 h-5" />,
+                          icon: <Briefcase className="w-5 h-5 text-white" />,
                         },
                         {
                           label: "Total Downloads",
                           value: totalDownloads,
-                          color: "text-amber-600 bg-amber-50",
-                          icon: <Download className="w-5 h-5" />,
+                          icon: <Download className="w-5 h-5 text-white" />,
                         },
                       ].map((stat) => (
                         <Card
                           key={stat.label}
-                          className="border-0 shadow-card rounded-2xl"
+                          className="bg-white border border-[#E5E7EB] shadow-card rounded-2xl hover-lift"
                           data-ocid="admin.leads.stats.card"
                         >
                           <CardContent className="p-4">
-                            <div
-                              className={`w-10 h-10 rounded-xl ${stat.color} flex items-center justify-center mb-3`}
-                            >
+                            <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center mb-3">
                               {stat.icon}
                             </div>
-                            <div className="text-2xl font-bold text-gray-900">
+                            <div className="text-2xl font-display font-bold text-[#4F46E5]">
                               {stat.value}
                             </div>
-                            <div className="text-xs text-gray-500 mt-0.5">
+                            <div className="text-xs text-[#6B7280] mt-0.5">
                               {stat.label}
                             </div>
                           </CardContent>
@@ -1861,8 +1949,8 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                           onClick={() => setLeadsFilter(f.key)}
                           className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
                             leadsFilter === f.key
-                              ? "bg-pdit-indigo text-white shadow"
-                              : "bg-white text-gray-600 border border-gray-200 hover:border-pdit-indigo hover:text-pdit-indigo"
+                              ? "bg-[#4F46E5] text-white shadow"
+                              : "bg-white text-[#6B7280] border border-[#E5E7EB] hover:border-[#4F46E5] hover:text-[#4F46E5]"
                           }`}
                           data-ocid={`admin.leads.${f.key}.tab`}
                         >
@@ -1871,14 +1959,14 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                       ))}
                     </div>
 
-                    <Card className="border-0 shadow-card rounded-2xl">
+                    <Card className="bg-white border border-[#E5E7EB] shadow-card rounded-2xl overflow-hidden">
                       <CardContent className="p-0">
                         {leadsLoading ? (
                           <div
                             className="flex items-center justify-center py-12"
                             data-ocid="admin.leads.loading_state"
                           >
-                            <Loader2 className="w-6 h-6 animate-spin text-pdit-indigo" />
+                            <Loader2 className="w-6 h-6 animate-spin text-[#4F46E5]" />
                           </div>
                         ) : filteredLeads.length === 0 ? (
                           <div
@@ -1894,15 +1982,31 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                           <div className="overflow-x-auto">
                             <Table data-ocid="admin.leads.table">
                               <TableHeader>
-                                <TableRow>
-                                  <TableHead>Type</TableHead>
-                                  <TableHead>Name</TableHead>
-                                  <TableHead>Email</TableHead>
-                                  <TableHead>Phone</TableHead>
-                                  <TableHead>Course / City</TableHead>
-                                  <TableHead>Investment</TableHead>
-                                  <TableHead>Downloads</TableHead>
-                                  <TableHead>Date</TableHead>
+                                <TableRow className="bg-[#F8FAFC] border-b border-[#E5E7EB]">
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Type
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Name
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Email
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Phone
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Course / City
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Investment
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Downloads
+                                  </TableHead>
+                                  <TableHead className="text-[#6B7280] text-xs font-semibold uppercase tracking-wider">
+                                    Date
+                                  </TableHead>
                                 </TableRow>
                               </TableHeader>
                               <TableBody>
@@ -1911,44 +2015,45 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                                   return (
                                     <TableRow
                                       key={String(lead.id)}
+                                      className="border-b border-[#F3F4F6] hover:bg-[#F8FAFC] transition-colors"
                                       data-ocid={`admin.leads.item.${i + 1}`}
                                     >
                                       <TableCell>
                                         <Badge
                                           className={
                                             isCourse
-                                              ? "bg-blue-100 text-blue-700 border-0"
-                                              : "bg-green-100 text-green-700 border-0"
+                                              ? "bg-indigo-50 text-[#4F46E5] border-0 rounded-full px-3 py-1 text-xs font-semibold"
+                                              : "bg-emerald-50 text-[#10B981] border-0 rounded-full px-3 py-1 text-xs font-semibold"
                                           }
                                         >
                                           {isCourse ? "Course" : "Franchise"}
                                         </Badge>
                                       </TableCell>
-                                      <TableCell className="font-medium">
+                                      <TableCell className="font-medium text-[#111827] text-sm">
                                         {lead.name}
                                       </TableCell>
-                                      <TableCell className="text-sm text-gray-600">
+                                      <TableCell className="text-sm text-[#6B7280]">
                                         {lead.email}
                                       </TableCell>
-                                      <TableCell className="text-sm text-gray-600">
+                                      <TableCell className="text-sm text-[#6B7280]">
                                         {lead.phone}
                                       </TableCell>
-                                      <TableCell className="text-sm">
+                                      <TableCell className="text-sm text-[#111827]">
                                         {isCourse
                                           ? (lead as CourseLead).courseName
                                           : (lead as FranchiseLead).city}
                                       </TableCell>
-                                      <TableCell className="text-sm">
+                                      <TableCell className="text-sm text-[#111827]">
                                         {isCourse
-                                          ? "—"
+                                          ? "-"
                                           : (lead as FranchiseLead).investment}
                                       </TableCell>
                                       <TableCell>
-                                        <Badge className="bg-gray-100 text-gray-700 border-0">
+                                        <Badge className="bg-[#F8FAFC] text-[#6B7280] border border-[#E5E7EB] rounded-full px-3 py-1 text-xs font-semibold">
                                           {Number(lead.downloadCount)}
                                         </Badge>
                                       </TableCell>
-                                      <TableCell className="text-sm text-gray-500">
+                                      <TableCell className="text-sm text-[#6B7280]">
                                         {formatDate(lead.timestamp)}
                                       </TableCell>
                                     </TableRow>
@@ -1963,27 +2068,27 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                   </div>
                 )}
 
-                {/* ── Brochure URLs ────────────────────────────────────────────────── */}
+                {/* Brochure URLs */}
                 {activeSection === "brochure-urls" && (
                   <div
                     className="space-y-6"
                     data-ocid="admin.brochure_urls.section"
                   >
                     <div>
-                      <h2 className="text-xl font-bold text-gray-900 mb-1">
+                      <h2 className="text-2xl font-display font-bold text-[#111827] mb-1">
                         Manage Brochure URLs
                       </h2>
-                      <p className="text-gray-500 text-sm">
+                      <p className="text-[#6B7280] text-sm">
                         Set the PDF brochure download URL for each course and
                         for the franchise page.
                       </p>
                     </div>
 
                     {/* Course Brochures */}
-                    <Card className="border-0 shadow-card rounded-2xl">
+                    <Card className="bg-white border border-[#E5E7EB] shadow-card rounded-2xl">
                       <CardHeader className="pb-3">
-                        <CardTitle className="text-base font-semibold flex items-center gap-2">
-                          <BookOpen className="w-4 h-4 text-pdit-indigo" />
+                        <CardTitle className="text-base font-display font-semibold flex items-center gap-2 text-[#111827]">
+                          <BookOpen className="w-4 h-4 text-[#4F46E5]" />
                           Course Brochures
                         </CardTitle>
                       </CardHeader>
@@ -2005,7 +2110,7 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                             return (
                               <div
                                 key={String(course.id)}
-                                className="flex items-center gap-3 p-4 bg-gray-50 rounded-xl"
+                                className="flex items-center gap-3 p-4 bg-[#F8FAFC] rounded-xl border border-[#E5E7EB]"
                                 data-ocid={`admin.brochure_urls.item.${i + 1}`}
                               >
                                 <div
@@ -2016,11 +2121,11 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                                 />
                                 <div className="flex-1 min-w-0">
                                   <div className="flex items-center gap-2 mb-1">
-                                    <span className="font-medium text-sm text-gray-800">
+                                    <span className="font-medium text-sm text-[#111827]">
                                       {course.title}
                                     </span>
                                     {isSet && (
-                                      <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                                      <CheckCircle className="w-4 h-4 text-[#10B981] flex-shrink-0" />
                                     )}
                                   </div>
                                   <Input
@@ -2032,7 +2137,7 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                                         [key]: e.target.value,
                                       }))
                                     }
-                                    className="h-9 rounded-lg text-sm"
+                                    className="h-9 rounded-lg text-sm border-[#E5E7EB] focus:border-[#4F46E5]"
                                     data-ocid={`admin.brochure_urls.url.input.${i + 1}`}
                                   />
                                 </div>
@@ -2048,7 +2153,7 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                                     savingBrochureUrl === key ||
                                     !currentUrl.trim()
                                   }
-                                  className="h-9 px-3 gradient-primary text-white border-0 rounded-lg flex-shrink-0"
+                                  className="h-9 px-3 btn-primary border-0 rounded-lg flex-shrink-0"
                                   data-ocid={`admin.brochure_urls.save_button.${i + 1}`}
                                 >
                                   {savingBrochureUrl === key ? (
@@ -2065,10 +2170,10 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                     </Card>
 
                     {/* Franchise Brochure */}
-                    <Card className="border-0 shadow-card rounded-2xl border-l-4 border-l-cyan-500">
+                    <Card className="bg-white border border-[#E5E7EB] border-l-4 border-l-[#06B6D4] shadow-card rounded-2xl">
                       <CardHeader className="pb-3">
-                        <CardTitle className="text-base font-semibold flex items-center gap-2">
-                          <Briefcase className="w-4 h-4 text-cyan-600" />
+                        <CardTitle className="text-base font-display font-semibold flex items-center gap-2 text-[#111827]">
+                          <Briefcase className="w-4 h-4 text-[#06B6D4]" />
                           Franchise Brochure
                         </CardTitle>
                       </CardHeader>
@@ -2080,7 +2185,7 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                             onChange={(e) =>
                               setFranchiseBrochureEdit(e.target.value)
                             }
-                            className="h-11 rounded-xl"
+                            className="h-11 rounded-xl border-[#E5E7EB] focus:border-[#4F46E5] focus:ring-2 focus:ring-indigo-100"
                             data-ocid="admin.brochure_urls.franchise.input"
                           />
                           <Button
@@ -2089,7 +2194,7 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                               savingFranchiseBrochure ||
                               !franchiseBrochureEdit.trim()
                             }
-                            className="h-11 px-5 gradient-primary text-white border-0 rounded-xl flex-shrink-0 flex items-center gap-2"
+                            className="h-11 px-5 btn-primary border-0 rounded-xl flex-shrink-0 flex items-center gap-2"
                             data-ocid="admin.brochure_urls.franchise.save_button"
                           >
                             {savingFranchiseBrochure ? (
@@ -2101,7 +2206,7 @@ export default function AdminPanel({ onNavigate }: AdminPanelProps) {
                             )}
                           </Button>
                         </div>
-                        <p className="text-xs text-gray-400 mt-2">
+                        <p className="text-xs text-[#9CA3AF] mt-2">
                           This URL will be offered for download on the Franchise
                           page after lead capture.
                         </p>

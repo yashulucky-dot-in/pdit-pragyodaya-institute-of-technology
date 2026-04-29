@@ -156,8 +156,10 @@ export default function StudentDashboard({
             <GraduationCap className="w-5 h-5 text-white" />
           </div>
           <div>
-            <div className="text-white font-bold text-sm">PDIT</div>
-            <div className="text-indigo-300 text-[10px]">Student Portal</div>
+            <div className="text-white font-display font-bold text-sm">
+              PDIT
+            </div>
+            <div className="text-[#9CA3AF] text-[10px]">Student Portal</div>
           </div>
         </div>
       </div>
@@ -165,8 +167,8 @@ export default function StudentDashboard({
       {/* User */}
       <div className="px-6 py-4 border-b border-white/10">
         <div className="flex items-center gap-3">
-          <Avatar className="w-10 h-10">
-            <AvatarFallback className="bg-indigo-400 text-white font-semibold text-sm">
+          <Avatar className="w-10 h-10 ring-2 ring-[#4F46E5]/30 border-2 border-white/20">
+            <AvatarFallback className="gradient-primary text-white font-semibold text-sm">
               {currentUser?.fullName?.charAt(0)?.toUpperCase() ?? "S"}
             </AvatarFallback>
           </Avatar>
@@ -174,9 +176,9 @@ export default function StudentDashboard({
             <div className="text-white text-sm font-semibold truncate">
               {currentUser?.fullName ?? "Student"}
             </div>
-            <Badge className="bg-cyan-500/20 text-cyan-300 border-0 text-[10px] px-2 py-0 mt-0.5">
+            <span className="inline-block bg-[#4F46E5] text-white text-[10px] rounded-full px-2 py-0.5 mt-0.5 font-medium">
               Student
-            </Badge>
+            </span>
           </div>
         </div>
       </div>
@@ -192,10 +194,10 @@ export default function StudentDashboard({
               setSidebarOpen(false);
             }}
             data-ocid={`student.${item.id}.link`}
-            className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
+            className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${
               activeSection === item.id
-                ? "bg-white/15 text-white shadow-sm"
-                : "text-indigo-200 hover:bg-white/10 hover:text-white"
+                ? "bg-[#4F46E5] text-white shadow-sm font-semibold"
+                : "text-[#9CA3AF] hover:bg-white/10 hover:text-white"
             }`}
           >
             {item.icon}
@@ -209,7 +211,7 @@ export default function StudentDashboard({
         <button
           type="button"
           onClick={() => onNavigate("home")}
-          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-indigo-300 hover:text-white hover:bg-white/10 transition-all"
+          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#9CA3AF] hover:text-white hover:bg-white/10 transition-all"
           data-ocid="student.back_to_website.link"
         >
           <ArrowLeft className="w-4 h-4" />
@@ -218,7 +220,7 @@ export default function StudentDashboard({
         <button
           type="button"
           onClick={handleLogout}
-          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-red-300 hover:text-white hover:bg-red-500/20 transition-all"
+          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-red-300 hover:text-white hover:bg-red-500/20 transition-all"
           data-ocid="student.logout.button"
         >
           <LogOut className="w-4 h-4" />
@@ -229,9 +231,9 @@ export default function StudentDashboard({
   );
 
   return (
-    <div className="min-h-screen flex bg-gray-50">
+    <div className="min-h-screen flex bg-[#F8FAFC]">
       {/* Desktop Sidebar */}
-      <aside className="hidden lg:flex flex-col w-64 bg-gradient-to-b from-[#3730a3] to-[#1e1b4b] flex-shrink-0">
+      <aside className="hidden lg:flex flex-col w-64 bg-[#111827] flex-shrink-0">
         <SidebarContent />
       </aside>
 
@@ -251,7 +253,7 @@ export default function StudentDashboard({
               animate={{ x: 0 }}
               exit={{ x: -256 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="fixed left-0 top-0 bottom-0 w-64 bg-gradient-to-b from-[#3730a3] to-[#1e1b4b] z-50 lg:hidden"
+              className="fixed left-0 top-0 bottom-0 w-64 bg-[#111827] z-50 lg:hidden"
             >
               <SidebarContent />
             </motion.aside>
@@ -262,19 +264,19 @@ export default function StudentDashboard({
       {/* Main Content */}
       <main className="flex-1 min-w-0 flex flex-col">
         {/* Top bar */}
-        <div className="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between sticky top-0 z-30">
+        <div className="bg-white border-b border-[#E5E7EB] px-6 py-4 flex items-center justify-between sticky top-0 z-30 shadow-sm">
           <div className="flex items-center gap-3">
             <button
               type="button"
               onClick={() => setSidebarOpen(true)}
-              className="lg:hidden p-2 rounded-lg hover:bg-gray-100 text-gray-600"
+              className="lg:hidden p-2 rounded-lg hover:bg-[#F8FAFC] text-[#6B7280] transition-colors"
               aria-label="Open sidebar"
               data-ocid="student.menu.button"
             >
               <Home className="w-5 h-5" />
             </button>
             <div>
-              <h1 className="text-base font-semibold text-gray-900 capitalize">
+              <h1 className="text-base font-display font-bold text-[#111827] capitalize">
                 {activeSection === "dashboard"
                   ? "Overview"
                   : activeSection === "course"
@@ -283,12 +285,12 @@ export default function StudentDashboard({
                       ? "Announcements"
                       : "My Profile"}
               </h1>
-              <p className="text-xs text-gray-500">PDIT Student Portal</p>
+              <p className="text-xs text-[#6B7280]">PDIT Student Portal</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <Avatar className="w-8 h-8">
-              <AvatarFallback className="bg-pdit-indigo text-white text-xs font-semibold">
+            <Avatar className="w-8 h-8 ring-2 ring-[#4F46E5]/20">
+              <AvatarFallback className="gradient-primary text-white text-xs font-semibold">
                 {currentUser?.fullName?.charAt(0)?.toUpperCase() ?? "S"}
               </AvatarFallback>
             </Avatar>
@@ -310,13 +312,12 @@ export default function StudentDashboard({
                   data-ocid="student.dashboard.section"
                 >
                   {/* Welcome */}
-                  <div className="bg-gradient-to-r from-pdit-indigo to-pdit-cyan rounded-2xl p-6 text-white">
+                  <div className="bg-gradient-to-r from-[#4F46E5] to-[#06B6D4] rounded-2xl p-6 text-white">
                     <div className="flex items-start justify-between">
                       <div>
-                        <h2 className="text-xl font-bold">
+                        <h2 className="text-xl font-display font-bold">
                           Welcome back,{" "}
                           {currentUser?.fullName?.split(" ")[0] ?? "Student"}!
-                          👋
                         </h2>
                         <p className="text-indigo-100 text-sm mt-1">
                           Keep up the great work on your learning journey.
@@ -329,9 +330,9 @@ export default function StudentDashboard({
                     <div className="mt-4">
                       <div className="flex justify-between text-sm text-indigo-100 mb-1.5">
                         <span>Course Progress</span>
-                        <span>{progress}%</span>
+                        <span className="font-semibold">{progress}%</span>
                       </div>
-                      <div className="h-2 bg-white/20 rounded-full overflow-hidden">
+                      <div className="h-2.5 bg-white/20 rounded-full overflow-hidden">
                         <div
                           className="h-full bg-white rounded-full transition-all duration-700"
                           style={{ width: `${progress}%` }}
@@ -346,43 +347,37 @@ export default function StudentDashboard({
                       {
                         label: "Enrolled Course",
                         value: currentUser?.course ?? "N/A",
-                        icon: <BookOpen className="w-5 h-5" />,
-                        color: "text-pdit-indigo bg-indigo-50",
+                        icon: <BookOpen className="w-5 h-5 text-white" />,
                       },
                       {
                         label: "Progress",
                         value: `${progress}%`,
-                        icon: <TrendingUp className="w-5 h-5" />,
-                        color: "text-emerald-600 bg-emerald-50",
+                        icon: <TrendingUp className="w-5 h-5 text-white" />,
                       },
                       {
                         label: "Attendance",
                         value: "85%",
-                        icon: <CheckCircle2 className="w-5 h-5" />,
-                        color: "text-amber-600 bg-amber-50",
+                        icon: <CheckCircle2 className="w-5 h-5 text-white" />,
                       },
                       {
                         label: "Enrolled Date",
                         value: enrolledDate,
-                        icon: <Calendar className="w-5 h-5" />,
-                        color: "text-cyan-600 bg-cyan-50",
+                        icon: <Calendar className="w-5 h-5 text-white" />,
                       },
                     ].map((stat) => (
                       <Card
                         key={stat.label}
-                        className="border-0 shadow-card rounded-2xl"
+                        className="bg-white border border-[#E5E7EB] shadow-card rounded-2xl hover-lift"
                         data-ocid="student.stats.card"
                       >
                         <CardContent className="p-4">
-                          <div
-                            className={`w-10 h-10 rounded-xl ${stat.color} flex items-center justify-center mb-3`}
-                          >
+                          <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center mb-3">
                             {stat.icon}
                           </div>
-                          <div className="text-lg font-bold text-gray-900 truncate">
+                          <div className="text-lg font-display font-bold text-[#4F46E5] truncate">
                             {stat.value}
                           </div>
-                          <div className="text-xs text-gray-500 mt-0.5">
+                          <div className="text-xs text-[#6B7280] mt-0.5">
                             {stat.label}
                           </div>
                         </CardContent>
@@ -391,16 +386,16 @@ export default function StudentDashboard({
                   </div>
 
                   {/* Recent Announcements */}
-                  <Card className="border-0 shadow-card rounded-2xl">
+                  <Card className="bg-white border border-[#E5E7EB] shadow-card rounded-2xl">
                     <CardHeader className="pb-3">
                       <div className="flex items-center justify-between">
-                        <CardTitle className="text-base font-semibold">
+                        <CardTitle className="text-base font-display font-semibold text-[#111827]">
                           Recent Announcements
                         </CardTitle>
                         <button
                           type="button"
                           onClick={() => setActiveSection("announcements")}
-                          className="text-xs text-pdit-indigo hover:underline"
+                          className="text-xs text-[#4F46E5] hover:text-[#4338CA] font-medium hover:underline transition-colors"
                         >
                           View all
                         </button>
@@ -412,11 +407,11 @@ export default function StudentDashboard({
                           className="flex items-center justify-center py-6"
                           data-ocid="student.announcements.loading_state"
                         >
-                          <Loader2 className="w-5 h-5 animate-spin text-pdit-indigo" />
+                          <Loader2 className="w-5 h-5 animate-spin text-[#4F46E5]" />
                         </div>
                       ) : announcements.length === 0 ? (
                         <div
-                          className="text-center py-6 text-gray-400 text-sm"
+                          className="text-center py-6 text-[#9CA3AF] text-sm"
                           data-ocid="student.announcements.empty_state"
                         >
                           No announcements yet.
@@ -426,17 +421,20 @@ export default function StudentDashboard({
                           {announcements.slice(0, 3).map((ann, i) => (
                             <div
                               key={String(ann.id)}
-                              className="flex gap-3 p-3 bg-indigo-50 rounded-xl"
+                              className="flex gap-3 p-3 bg-indigo-50/60 rounded-xl border border-[#E5E7EB]"
                               data-ocid={`student.announcements.item.${i + 1}`}
                             >
-                              <div className="w-8 h-8 rounded-lg bg-pdit-indigo flex items-center justify-center flex-shrink-0">
+                              <div className="w-8 h-8 rounded-lg gradient-primary flex items-center justify-center flex-shrink-0">
                                 <Bell className="w-4 h-4 text-white" />
                               </div>
                               <div className="min-w-0">
-                                <div className="text-sm font-semibold text-gray-800 truncate">
-                                  {ann.title}
+                                <div className="flex items-center gap-2">
+                                  <div className="w-2 h-2 rounded-full bg-[#4F46E5] flex-shrink-0" />
+                                  <div className="text-sm font-semibold text-[#111827] truncate">
+                                    {ann.title}
+                                  </div>
                                 </div>
-                                <div className="text-xs text-gray-500 mt-0.5 line-clamp-2">
+                                <div className="text-xs text-[#6B7280] mt-0.5 line-clamp-2">
                                   {ann.content}
                                 </div>
                               </div>
@@ -451,16 +449,18 @@ export default function StudentDashboard({
 
               {activeSection === "course" && (
                 <div className="space-y-6" data-ocid="student.course.section">
-                  <h2 className="text-xl font-bold text-gray-900">My Course</h2>
-                  <Card className="border-0 shadow-card rounded-2xl overflow-hidden">
+                  <h2 className="text-2xl font-display font-bold text-[#111827]">
+                    My Course
+                  </h2>
+                  <Card className="bg-white border border-[#E5E7EB] shadow-card rounded-2xl overflow-hidden">
                     <div className="gradient-primary h-2" />
                     <CardContent className="p-6">
                       <div className="flex items-start justify-between mb-4">
                         <div>
-                          <h3 className="text-xl font-bold text-gray-900">
+                          <h3 className="text-xl font-display font-bold text-[#111827]">
                             {currentUser?.course ?? "Not enrolled"}
                           </h3>
-                          <Badge className="bg-indigo-100 text-pdit-indigo border-0 mt-2">
+                          <Badge className="bg-emerald-50 text-[#10B981] border-0 rounded-full px-3 py-1 text-xs font-semibold mt-2">
                             Active
                           </Badge>
                         </div>
@@ -469,51 +469,53 @@ export default function StudentDashboard({
                         </div>
                       </div>
 
-                      <p className="text-gray-600 text-sm mb-6">
+                      <p className="text-[#6B7280] text-sm mb-6">
                         {COURSE_DESCRIPTIONS[currentUser?.course ?? ""] ??
                           "Your course content will be available here."}
                       </p>
 
-                      <Separator className="mb-6" />
+                      <Separator className="mb-6 bg-[#E5E7EB]" />
 
                       <div className="space-y-3">
                         <div className="flex justify-between text-sm">
-                          <span className="text-gray-600 font-medium">
+                          <span className="text-[#6B7280] font-medium">
                             Overall Progress
                           </span>
-                          <span className="text-pdit-indigo font-bold">
+                          <span className="text-[#4F46E5] font-bold">
                             {progress}%
                           </span>
                         </div>
-                        <Progress
-                          value={progress}
-                          className="h-3 rounded-full"
-                        />
-                        <p className="text-xs text-gray-400">
+                        <div className="h-3 bg-[#E5E7EB] rounded-full overflow-hidden">
+                          <div
+                            className="h-full bg-[#4F46E5] rounded-full transition-all duration-700"
+                            style={{ width: `${progress}%` }}
+                          />
+                        </div>
+                        <p className="text-xs text-[#9CA3AF]">
                           {progress < 30
-                            ? "Just getting started — keep going!"
+                            ? "Just getting started - keep going!"
                             : progress < 70
                               ? "Great progress! You're halfway there."
                               : progress < 100
                                 ? "Almost there! Great work!"
-                                : "Course completed! 🎉"}
+                                : "Course completed! Well done!"}
                         </p>
                       </div>
 
                       <div className="grid grid-cols-2 gap-4 mt-6">
-                        <div className="bg-gray-50 rounded-xl p-4">
-                          <div className="text-xs text-gray-500 mb-1">
+                        <div className="bg-[#F8FAFC] rounded-xl p-4 border border-[#E5E7EB]">
+                          <div className="text-xs text-[#6B7280] mb-1">
                             Enrolled Date
                           </div>
-                          <div className="text-sm font-semibold text-gray-800">
+                          <div className="text-sm font-semibold text-[#111827]">
                             {enrolledDate}
                           </div>
                         </div>
-                        <div className="bg-gray-50 rounded-xl p-4">
-                          <div className="text-xs text-gray-500 mb-1">
+                        <div className="bg-[#F8FAFC] rounded-xl p-4 border border-[#E5E7EB]">
+                          <div className="text-xs text-[#6B7280] mb-1">
                             Attendance
                           </div>
-                          <div className="text-sm font-semibold text-gray-800">
+                          <div className="text-sm font-semibold text-[#111827]">
                             85%
                           </div>
                         </div>
@@ -528,7 +530,7 @@ export default function StudentDashboard({
                   className="space-y-6"
                   data-ocid="student.announcements.section"
                 >
-                  <h2 className="text-xl font-bold text-gray-900">
+                  <h2 className="text-2xl font-display font-bold text-[#111827]">
                     Announcements
                   </h2>
                   {loadingAnnouncements ? (
@@ -536,16 +538,16 @@ export default function StudentDashboard({
                       className="flex items-center justify-center py-12"
                       data-ocid="student.announcements.loading_state"
                     >
-                      <Loader2 className="w-6 h-6 animate-spin text-pdit-indigo" />
+                      <Loader2 className="w-6 h-6 animate-spin text-[#4F46E5]" />
                     </div>
                   ) : announcements.length === 0 ? (
                     <Card
-                      className="border-0 shadow-card rounded-2xl"
+                      className="bg-white border border-[#E5E7EB] shadow-card rounded-2xl"
                       data-ocid="student.announcements.empty_state"
                     >
                       <CardContent className="py-12 text-center">
-                        <Bell className="w-10 h-10 text-gray-300 mx-auto mb-3" />
-                        <p className="text-gray-500">No announcements yet.</p>
+                        <Bell className="w-10 h-10 text-[#E5E7EB] mx-auto mb-3" />
+                        <p className="text-[#9CA3AF]">No announcements yet.</p>
                       </CardContent>
                     </Card>
                   ) : (
@@ -553,7 +555,7 @@ export default function StudentDashboard({
                       {announcements.map((ann, i) => (
                         <Card
                           key={String(ann.id)}
-                          className="border-0 shadow-card rounded-2xl"
+                          className="bg-white border border-[#E5E7EB] shadow-sm rounded-xl hover-lift"
                           data-ocid={`student.announcements.item.${i + 1}`}
                         >
                           <CardContent className="p-5">
@@ -562,13 +564,13 @@ export default function StudentDashboard({
                                 <Bell className="w-5 h-5 text-white" />
                               </div>
                               <div className="flex-1 min-w-0">
-                                <h3 className="font-semibold text-gray-900">
+                                <h3 className="font-display font-semibold text-[#111827]">
                                   {ann.title}
                                 </h3>
-                                <p className="text-sm text-gray-600 mt-1">
+                                <p className="text-sm text-[#6B7280] mt-1">
                                   {ann.content}
                                 </p>
-                                <p className="text-xs text-gray-400 mt-2">
+                                <p className="text-xs text-[#9CA3AF] mt-2">
                                   Posted by {ann.postedBy}
                                 </p>
                               </div>
@@ -583,36 +585,36 @@ export default function StudentDashboard({
 
               {activeSection === "profile" && (
                 <div className="space-y-6" data-ocid="student.profile.section">
-                  <h2 className="text-xl font-bold text-gray-900">
+                  <h2 className="text-2xl font-display font-bold text-[#111827]">
                     My Profile
                   </h2>
-                  <Card className="border-0 shadow-card rounded-2xl">
+                  <Card className="bg-white border border-[#E5E7EB] shadow-card rounded-2xl">
                     <CardContent className="p-6">
                       <div className="flex items-center gap-4 mb-6">
-                        <Avatar className="w-16 h-16">
-                          <AvatarFallback className="bg-pdit-indigo text-white font-bold text-xl">
+                        <Avatar className="w-16 h-16 ring-2 ring-[#4F46E5]/20 border-2 border-white">
+                          <AvatarFallback className="gradient-primary text-white font-bold text-xl">
                             {currentUser?.fullName?.charAt(0)?.toUpperCase() ??
                               "S"}
                           </AvatarFallback>
                         </Avatar>
                         <div>
-                          <h3 className="text-lg font-bold text-gray-900">
+                          <h3 className="text-lg font-display font-bold text-[#111827]">
                             {currentUser?.fullName}
                           </h3>
-                          <p className="text-sm text-gray-500">
+                          <p className="text-sm text-[#6B7280]">
                             @{currentUser?.username}
                           </p>
-                          <Badge className="bg-indigo-100 text-pdit-indigo border-0 mt-1">
+                          <Badge className="bg-indigo-50 text-[#4F46E5] border-0 rounded-full px-3 py-1 text-xs font-semibold mt-1">
                             Student
                           </Badge>
                         </div>
                       </div>
 
-                      <Separator className="mb-6" />
+                      <Separator className="mb-6 bg-[#E5E7EB]" />
 
                       <div className="space-y-4">
                         <div className="space-y-1.5">
-                          <Label className="text-sm font-medium text-gray-700">
+                          <Label className="text-sm font-medium text-[#111827]">
                             Full Name
                           </Label>
                           <Input
@@ -623,12 +625,12 @@ export default function StudentDashboard({
                                 fullName: e.target.value,
                               }))
                             }
-                            className="h-11 rounded-xl"
+                            className="h-11 rounded-xl border-[#E5E7EB] focus:border-[#4F46E5] focus:ring-2 focus:ring-indigo-100"
                             data-ocid="student.profile.fullname.input"
                           />
                         </div>
                         <div className="space-y-1.5">
-                          <Label className="text-sm font-medium text-gray-700">
+                          <Label className="text-sm font-medium text-[#111827]">
                             Email
                           </Label>
                           <Input
@@ -640,12 +642,12 @@ export default function StudentDashboard({
                                 email: e.target.value,
                               }))
                             }
-                            className="h-11 rounded-xl"
+                            className="h-11 rounded-xl border-[#E5E7EB] focus:border-[#4F46E5] focus:ring-2 focus:ring-indigo-100"
                             data-ocid="student.profile.email.input"
                           />
                         </div>
                         <div className="space-y-1.5">
-                          <Label className="text-sm font-medium text-gray-700">
+                          <Label className="text-sm font-medium text-[#111827]">
                             Phone
                           </Label>
                           <Input
@@ -656,28 +658,28 @@ export default function StudentDashboard({
                                 phone: e.target.value,
                               }))
                             }
-                            className="h-11 rounded-xl"
+                            className="h-11 rounded-xl border-[#E5E7EB] focus:border-[#4F46E5] focus:ring-2 focus:ring-indigo-100"
                             data-ocid="student.profile.phone.input"
                           />
                         </div>
                         <div className="space-y-1.5">
-                          <Label className="text-sm font-medium text-gray-700">
+                          <Label className="text-sm font-medium text-[#111827]">
                             Username
                           </Label>
                           <Input
                             value={currentUser?.username ?? ""}
                             disabled
-                            className="h-11 rounded-xl bg-gray-50"
+                            className="h-11 rounded-xl bg-[#F8FAFC] border-[#E5E7EB] text-[#9CA3AF]"
                           />
                         </div>
                         <div className="space-y-1.5">
-                          <Label className="text-sm font-medium text-gray-700">
+                          <Label className="text-sm font-medium text-[#111827]">
                             Course
                           </Label>
                           <Input
                             value={currentUser?.course ?? ""}
                             disabled
-                            className="h-11 rounded-xl bg-gray-50"
+                            className="h-11 rounded-xl bg-[#F8FAFC] border-[#E5E7EB] text-[#9CA3AF]"
                           />
                         </div>
                       </div>
@@ -685,7 +687,7 @@ export default function StudentDashboard({
                       <Button
                         onClick={handleSaveProfile}
                         disabled={savingProfile}
-                        className="mt-6 gradient-primary text-white border-0 rounded-xl hover:opacity-90"
+                        className="mt-6 btn-primary rounded-xl border-0"
                         data-ocid="student.profile.save_button"
                       >
                         {savingProfile ? (

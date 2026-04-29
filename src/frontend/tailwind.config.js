@@ -17,7 +17,10 @@ export default {
     extend: {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
-        sans: ["Poppins", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
+        sans: ["Inter", "sans-serif"],
+        display: ["Poppins", "sans-serif"],
+        body: ["Inter", "sans-serif"],
       },
       colors: {
         border: "oklch(var(--border))",
@@ -72,11 +75,20 @@ export default {
         },
         pdit: {
           indigo: "#4F46E5",
-          "indigo-dark": "#3F3CDA",
-          "indigo-deep": "#2E2AA8",
+          "indigo-dark": "#4338CA",
+          "indigo-deep": "#3730A3",
           cyan: "#06B6D4",
           "cyan-light": "#67E8F9",
-          bg: "#F9FAFB",
+          bg: "#F8FAFC",
+          accent: "#F59E0B",
+          gold: "#F59E0B",
+          "gold-dark": "#D97706",
+          "secondary-text": "#6B7280",
+          muted: "#9CA3AF",
+          "footer-bg": "#111827",
+          "footer-text": "#F9FAFB",
+          success: "#10B981",
+          danger: "#EF4444",
         },
       },
       borderRadius: {
@@ -85,11 +97,17 @@ export default {
         sm: "calc(var(--radius) - 4px)",
         "2xl": "1rem",
         "3xl": "1.5rem",
+        "4xl": "2rem",
+        pill: "50px",
       },
       boxShadow: {
         xs: "0 1px 2px 0 rgba(0,0,0,0.05)",
-        card: "0 4px 6px -1px rgba(79,70,229,0.08), 0 2px 4px -1px rgba(79,70,229,0.05)",
-        "card-hover": "0 20px 40px -10px rgba(79,70,229,0.2), 0 10px 20px -5px rgba(6,182,212,0.1)",
+        card: "0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(79,70,229,0.06)",
+        "card-hover": "0 8px 30px rgba(79,70,229,0.18), 0 4px 12px rgba(0,0,0,0.06)",
+        "btn-primary": "0 8px 25px rgba(79,70,229,0.35)",
+        "btn-accent": "0 8px 25px rgba(245,158,11,0.35)",
+        "btn-cta": "0 10px 30px rgba(79,70,229,0.4)",
+        subtle: "0 1px 4px rgba(0,0,0,0.04), 0 2px 8px rgba(79,70,229,0.04)",
       },
       keyframes: {
         "accordion-down": {

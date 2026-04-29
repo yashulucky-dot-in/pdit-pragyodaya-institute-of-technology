@@ -42,10 +42,10 @@ type FormState = {
 type FormErrors = Partial<Record<keyof FormState, string>>;
 
 const INVESTMENT_OPTIONS = [
-  { value: "₹1–2 Lakhs", label: "₹1 – 2 Lakhs (Starter)" },
-  { value: "₹2–5 Lakhs", label: "₹2 – 5 Lakhs (Standard)" },
-  { value: "₹5–10 Lakhs", label: "₹5 – 10 Lakhs (Premium)" },
-  { value: "₹10+ Lakhs", label: "₹10+ Lakhs (Master Franchise)" },
+  { value: "Rs.1-2 Lakhs", label: "Rs.1 - 2 Lakhs (Starter)" },
+  { value: "Rs.2-5 Lakhs", label: "Rs.2 - 5 Lakhs (Standard)" },
+  { value: "Rs.5-10 Lakhs", label: "Rs.5 - 10 Lakhs (Premium)" },
+  { value: "Rs.10+ Lakhs", label: "Rs.10+ Lakhs (Master Franchise)" },
 ];
 
 export default function FranchiseBrochurePopup({
@@ -109,7 +109,7 @@ export default function FranchiseBrochurePopup({
         );
         await fullActor.trackDownload(leadId, "franchise").catch(() => {});
       }
-      sessionStorage.setItem("franchise_popup_shown", "1");
+      localStorage.setItem("pdit_franchise_popup_v2", "1");
       setSubmitted(true);
       toast.success("Franchise brochure downloaded!");
       if (franchiseBrochureUrl) {
@@ -173,39 +173,39 @@ export default function FranchiseBrochurePopup({
             className="fixed inset-0 z-50 flex items-center justify-center p-4"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="bg-white rounded-3xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
+            <div className="bg-white rounded-3xl shadow-2xl border border-[#E5E7EB] w-full max-w-lg max-h-[90vh] overflow-y-auto">
               {/* Header */}
               <div
                 className="relative px-7 pt-8 pb-6 rounded-t-3xl"
                 style={{
                   background:
-                    "linear-gradient(135deg, #0891B2 0%, #06B6D4 50%, #0E7490 100%)",
+                    "linear-gradient(135deg, #0891B2 0%, #06B6D4 55%, #22D3EE 100%)",
                 }}
               >
                 <button
                   type="button"
                   onClick={handleClose}
                   data-ocid="franchise_brochure.close_button"
-                  className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors"
+                  className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/20 hover:bg-white/35 flex items-center justify-center transition-all duration-200"
                   aria-label="Close"
                 >
                   <X className="w-4 h-4 text-white" />
                 </button>
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 rounded-2xl bg-white/20 border border-white/30 flex items-center justify-center flex-shrink-0 shadow-sm">
                     <Building2 className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <p className="text-cyan-100 text-xs font-medium uppercase tracking-wider mb-1">
+                    <p className="text-cyan-100 text-xs font-semibold uppercase tracking-widest mb-1 font-body">
                       Franchise Partner Program
                     </p>
-                    <h2 className="text-xl font-bold text-white leading-tight">
+                    <h2 className="text-xl font-bold text-white leading-tight font-display">
                       Get Franchise Brochure
                     </h2>
                   </div>
                 </div>
-                <div className="mt-4 bg-white/15 rounded-xl px-4 py-2.5 text-white/90 text-sm">
-                  🏢 Own a PDIT franchise — low investment, high returns
+                <div className="mt-4 bg-white/15 border border-white/20 rounded-xl px-4 py-2.5 text-white/90 text-sm font-body">
+                  Own a PDIT franchise - low investment, high returns
                 </div>
               </div>
 
@@ -218,13 +218,13 @@ export default function FranchiseBrochurePopup({
                     className="text-center py-6"
                     data-ocid="franchise_brochure.success_state"
                   >
-                    <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <CheckCircle className="w-9 h-9 text-green-500" />
+                    <div className="w-16 h-16 bg-emerald-50 border-2 border-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <CheckCircle className="w-9 h-9 text-[#10B981]" />
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    <h3 className="text-xl font-bold text-[#111827] mb-2 font-display">
                       Franchise brochure downloaded!
                     </h3>
-                    <p className="text-gray-500 text-sm mb-6">
+                    <p className="text-[#6B7280] text-sm mb-6 font-body">
                       Our franchise team will contact you within 48 hours.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -234,7 +234,11 @@ export default function FranchiseBrochurePopup({
                           target="_blank"
                           rel="noopener noreferrer"
                           data-ocid="franchise_brochure.download.button"
-                          className="inline-flex items-center justify-center gap-2 bg-cyan-600 hover:bg-cyan-700 text-white font-semibold px-6 py-3 rounded-xl transition-colors text-sm"
+                          className="inline-flex items-center justify-center gap-2 text-white font-semibold px-6 py-3 rounded-full transition-all duration-200 text-sm shadow-md hover:shadow-lg hover:-translate-y-0.5"
+                          style={{
+                            background:
+                              "linear-gradient(135deg, #0891B2 0%, #06B6D4 100%)",
+                          }}
                         >
                           <Download className="w-4 h-4" /> Download Now
                         </a>
@@ -244,7 +248,7 @@ export default function FranchiseBrochurePopup({
                         target="_blank"
                         rel="noopener noreferrer"
                         data-ocid="franchise_brochure.whatsapp.button"
-                        className="inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-xl transition-colors text-sm"
+                        className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#22C55E] text-white font-semibold px-6 py-3 rounded-full transition-all duration-200 text-sm shadow-md hover:shadow-[0_4px_15px_rgba(37,211,102,0.35)] hover:-translate-y-0.5"
                       >
                         <MessageSquare className="w-4 h-4" /> Chat on WhatsApp
                       </a>
@@ -252,7 +256,7 @@ export default function FranchiseBrochurePopup({
                   </motion.div>
                 ) : (
                   <>
-                    <p className="text-gray-500 text-sm mb-5">
+                    <p className="text-[#6B7280] text-sm mb-5 font-body">
                       Fill in your details to receive the franchise brochure
                       instantly.
                     </p>
@@ -265,9 +269,9 @@ export default function FranchiseBrochurePopup({
                       <div className="space-y-1.5">
                         <Label
                           htmlFor="fb-name"
-                          className="text-sm font-medium text-gray-700"
+                          className="text-sm font-medium text-[#374151] font-body"
                         >
-                          Full Name <span className="text-red-500">*</span>
+                          Full Name <span className="text-[#EF4444]">*</span>
                         </Label>
                         <Input
                           id="fb-name"
@@ -275,15 +279,17 @@ export default function FranchiseBrochurePopup({
                           placeholder="e.g. Amit Gupta"
                           value={form.name}
                           onChange={(e) => updateField("name", e.target.value)}
-                          className={`h-11 rounded-xl ${
-                            errors.name ? "border-red-400" : ""
+                          className={`h-11 rounded-xl border border-[#E5E7EB] bg-white text-[#111827] placeholder-[#9CA3AF] px-4 focus:border-[#0891B2] focus:ring-2 focus:ring-cyan-100 transition-all text-sm font-body ${
+                            errors.name
+                              ? "border-[#EF4444] focus:border-[#EF4444] focus:ring-red-100"
+                              : ""
                           }`}
                           data-ocid="franchise_brochure.name.input"
                           autoComplete="name"
                         />
                         {errors.name && (
                           <p
-                            className="text-red-500 text-xs"
+                            className="text-[#EF4444] text-xs mt-1 font-body"
                             data-ocid="franchise_brochure.name.error_state"
                           >
                             {errors.name}
@@ -295,9 +301,10 @@ export default function FranchiseBrochurePopup({
                       <div className="space-y-1.5">
                         <Label
                           htmlFor="fb-email"
-                          className="text-sm font-medium text-gray-700"
+                          className="text-sm font-medium text-[#374151] font-body"
                         >
-                          Email Address <span className="text-red-500">*</span>
+                          Email Address{" "}
+                          <span className="text-[#EF4444]">*</span>
                         </Label>
                         <Input
                           id="fb-email"
@@ -305,15 +312,17 @@ export default function FranchiseBrochurePopup({
                           placeholder="e.g. amit@example.com"
                           value={form.email}
                           onChange={(e) => updateField("email", e.target.value)}
-                          className={`h-11 rounded-xl ${
-                            errors.email ? "border-red-400" : ""
+                          className={`h-11 rounded-xl border border-[#E5E7EB] bg-white text-[#111827] placeholder-[#9CA3AF] px-4 focus:border-[#0891B2] focus:ring-2 focus:ring-cyan-100 transition-all text-sm font-body ${
+                            errors.email
+                              ? "border-[#EF4444] focus:border-[#EF4444] focus:ring-red-100"
+                              : ""
                           }`}
                           data-ocid="franchise_brochure.email.input"
                           autoComplete="email"
                         />
                         {errors.email && (
                           <p
-                            className="text-red-500 text-xs"
+                            className="text-[#EF4444] text-xs mt-1 font-body"
                             data-ocid="franchise_brochure.email.error_state"
                           >
                             {errors.email}
@@ -325,9 +334,9 @@ export default function FranchiseBrochurePopup({
                       <div className="space-y-1.5">
                         <Label
                           htmlFor="fb-phone"
-                          className="text-sm font-medium text-gray-700"
+                          className="text-sm font-medium text-[#374151] font-body"
                         >
-                          Phone Number <span className="text-red-500">*</span>
+                          Phone Number <span className="text-[#EF4444]">*</span>
                         </Label>
                         <Input
                           id="fb-phone"
@@ -335,15 +344,17 @@ export default function FranchiseBrochurePopup({
                           placeholder="e.g. 9876543210"
                           value={form.phone}
                           onChange={(e) => updateField("phone", e.target.value)}
-                          className={`h-11 rounded-xl ${
-                            errors.phone ? "border-red-400" : ""
+                          className={`h-11 rounded-xl border border-[#E5E7EB] bg-white text-[#111827] placeholder-[#9CA3AF] px-4 focus:border-[#0891B2] focus:ring-2 focus:ring-cyan-100 transition-all text-sm font-body ${
+                            errors.phone
+                              ? "border-[#EF4444] focus:border-[#EF4444] focus:ring-red-100"
+                              : ""
                           }`}
                           data-ocid="franchise_brochure.phone.input"
                           autoComplete="tel"
                         />
                         {errors.phone && (
                           <p
-                            className="text-red-500 text-xs"
+                            className="text-[#EF4444] text-xs mt-1 font-body"
                             data-ocid="franchise_brochure.phone.error_state"
                           >
                             {errors.phone}
@@ -355,24 +366,26 @@ export default function FranchiseBrochurePopup({
                       <div className="space-y-1.5">
                         <Label
                           htmlFor="fb-city"
-                          className="text-sm font-medium text-gray-700"
+                          className="text-sm font-medium text-[#374151] font-body"
                         >
-                          City <span className="text-red-500">*</span>
+                          City <span className="text-[#EF4444]">*</span>
                         </Label>
                         <Input
                           id="fb-city"
                           placeholder="e.g. Delhi, Mumbai, Pune"
                           value={form.city}
                           onChange={(e) => updateField("city", e.target.value)}
-                          className={`h-11 rounded-xl ${
-                            errors.city ? "border-red-400" : ""
+                          className={`h-11 rounded-xl border border-[#E5E7EB] bg-white text-[#111827] placeholder-[#9CA3AF] px-4 focus:border-[#0891B2] focus:ring-2 focus:ring-cyan-100 transition-all text-sm font-body ${
+                            errors.city
+                              ? "border-[#EF4444] focus:border-[#EF4444] focus:ring-red-100"
+                              : ""
                           }`}
                           data-ocid="franchise_brochure.city.input"
                           autoComplete="address-level2"
                         />
                         {errors.city && (
                           <p
-                            className="text-red-500 text-xs"
+                            className="text-[#EF4444] text-xs mt-1 font-body"
                             data-ocid="franchise_brochure.city.error_state"
                           >
                             {errors.city}
@@ -382,9 +395,9 @@ export default function FranchiseBrochurePopup({
 
                       {/* Investment Budget */}
                       <div className="space-y-1.5">
-                        <Label className="text-sm font-medium text-gray-700">
+                        <Label className="text-sm font-medium text-[#374151] font-body">
                           Investment Budget{" "}
-                          <span className="text-red-500">*</span>
+                          <span className="text-[#EF4444]">*</span>
                         </Label>
                         <Select
                           value={form.investment}
@@ -392,8 +405,10 @@ export default function FranchiseBrochurePopup({
                         >
                           <SelectTrigger
                             data-ocid="franchise_brochure.investment.select"
-                            className={`h-11 rounded-xl ${
-                              errors.investment ? "border-red-400" : ""
+                            className={`h-11 rounded-xl border border-[#E5E7EB] bg-white text-[#111827] focus:border-[#0891B2] focus:ring-2 focus:ring-cyan-100 transition-all text-sm font-body ${
+                              errors.investment
+                                ? "border-[#EF4444] focus:border-[#EF4444] focus:ring-red-100"
+                                : ""
                             }`}
                           >
                             <SelectValue placeholder="Select investment range" />
@@ -408,7 +423,7 @@ export default function FranchiseBrochurePopup({
                         </Select>
                         {errors.investment && (
                           <p
-                            className="text-red-500 text-xs"
+                            className="text-[#EF4444] text-xs mt-1 font-body"
                             data-ocid="franchise_brochure.investment.error_state"
                           >
                             {errors.investment}
@@ -420,10 +435,10 @@ export default function FranchiseBrochurePopup({
                       <div className="space-y-1.5">
                         <Label
                           htmlFor="fb-message"
-                          className="text-sm font-medium text-gray-700"
+                          className="text-sm font-medium text-[#374151] font-body"
                         >
                           Short Message{" "}
-                          <span className="text-gray-400 text-xs font-normal">
+                          <span className="text-[#9CA3AF] text-xs font-normal">
                             (optional)
                           </span>
                         </Label>
@@ -434,7 +449,7 @@ export default function FranchiseBrochurePopup({
                           onChange={(e) =>
                             updateField("message", e.target.value)
                           }
-                          className="rounded-xl resize-none"
+                          className="rounded-xl resize-none border border-[#E5E7EB] bg-white text-[#111827] placeholder-[#9CA3AF] px-4 focus:border-[#0891B2] focus:ring-2 focus:ring-cyan-100 transition-all text-sm font-body"
                           rows={2}
                           data-ocid="franchise_brochure.message.textarea"
                         />
@@ -444,7 +459,7 @@ export default function FranchiseBrochurePopup({
                         type="submit"
                         disabled={submitting}
                         data-ocid="franchise_brochure.submit_button"
-                        className="w-full h-12 rounded-xl text-white font-semibold text-base border-0"
+                        className="w-full h-12 rounded-full text-white font-semibold text-base border-0 shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
                         style={{
                           background:
                             "linear-gradient(135deg, #0891B2 0%, #06B6D4 100%)",
@@ -463,8 +478,8 @@ export default function FranchiseBrochurePopup({
                         )}
                       </Button>
 
-                      <p className="text-center text-xs text-gray-400">
-                        🔒 Your information is secure and will not be shared.
+                      <p className="text-center text-xs text-[#9CA3AF] font-body">
+                        Your information is secure and will not be shared.
                       </p>
                     </form>
                   </>

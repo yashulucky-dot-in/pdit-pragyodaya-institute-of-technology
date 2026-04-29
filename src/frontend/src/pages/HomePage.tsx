@@ -29,7 +29,7 @@ import CourseBrochurePopup from "../components/CourseBrochurePopup";
 import type { PageType } from "../components/Navbar";
 import { useActor } from "../hooks/useActor";
 
-// ── Static data ────────────────────────────────────────────────────────────────
+// -- Static data --
 
 const HERO_STATS = [
   { value: "10,000+", label: "Students Trained", icon: Users },
@@ -42,7 +42,8 @@ const EXPERTS = [
   {
     name: "Dr. Rajesh Sharma",
     title: "Full Stack Developer",
-    initials: "RS",
+    photo:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces",
     experience: "12 Years",
     tags: ["React", "Node.js", "AWS"],
     color: "from-indigo-500 to-purple-600",
@@ -50,7 +51,8 @@ const EXPERTS = [
   {
     name: "Priya Agarwal",
     title: "Digital Marketing Expert",
-    initials: "PA",
+    photo:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=faces",
     experience: "9 Years",
     tags: ["SEO", "Google Ads", "Analytics"],
     color: "from-cyan-500 to-blue-500",
@@ -58,7 +60,8 @@ const EXPERTS = [
   {
     name: "Vikram Singh",
     title: "Data Science Lead",
-    initials: "VS",
+    photo:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces",
     experience: "11 Years",
     tags: ["Python", "ML", "Power BI"],
     color: "from-emerald-500 to-teal-500",
@@ -66,7 +69,8 @@ const EXPERTS = [
   {
     name: "Neha Gupta",
     title: "UI/UX & Graphic Design",
-    initials: "NG",
+    photo:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=faces",
     experience: "8 Years",
     tags: ["Figma", "Adobe CC", "Branding"],
     color: "from-pink-500 to-rose-500",
@@ -74,7 +78,8 @@ const EXPERTS = [
   {
     name: "Amit Verma",
     title: "Cloud & DevOps Engineer",
-    initials: "AV",
+    photo:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces",
     experience: "10 Years",
     tags: ["Docker", "CI/CD", "Azure"],
     color: "from-orange-500 to-amber-500",
@@ -82,7 +87,8 @@ const EXPERTS = [
   {
     name: "Sunita Yadav",
     title: "Placement & Career Coach",
-    initials: "SY",
+    photo:
+      "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=200&h=200&fit=crop&crop=faces",
     experience: "7 Years",
     tags: ["Resume", "Interviews", "HR"],
     color: "from-violet-500 to-indigo-500",
@@ -127,7 +133,7 @@ const ADVANTAGES = [
   {
     icon: Users,
     title: "Industry Mentors",
-    desc: "Learn from professionals with 7–15 years of real industry experience who bring live projects into the classroom.",
+    desc: "Learn from professionals with 7-15 years of real industry experience who bring live projects into the classroom.",
     color: "from-cyan-50 to-cyan-100",
     iconBg: "bg-cyan-500",
   },
@@ -160,7 +166,7 @@ const TESTIMONIALS = [
     name: "Priya Verma",
     course: "Digital Marketing",
     company: "Freelancer (5 LPA)",
-    text: "I was a commerce graduate with zero tech knowledge. PDIT's Digital Marketing course gave me the skills to build my own agency. Now earning ₹5 LPA working from home!",
+    text: "I was a commerce graduate with zero tech knowledge. PDIT's Digital Marketing course gave me the skills to build my own agency. Now earning Rs.5 LPA working from home!",
     rating: 5,
     avatar: "PV",
   },
@@ -168,7 +174,7 @@ const TESTIMONIALS = [
     name: "Amit Kumar",
     course: "Web Development",
     company: "Infosys",
-    text: "The instructors at PDIT are fantastic. They don't just teach theory — they solve real problems and teach you how to think like a developer. Best investment I've made in my career.",
+    text: "The instructors at PDIT are fantastic. They don't just teach theory - they solve real problems and teach you how to think like a developer. Best investment I've made in my career.",
     rating: 5,
     avatar: "AK",
   },
@@ -184,7 +190,7 @@ const WHY_CHOOSE = [
   {
     icon: Users,
     title: "Expert Instructors",
-    desc: "Learn from working professionals with 5–15 years of industry experience in their respective domains.",
+    desc: "Learn from working professionals with 5-15 years of industry experience in their respective domains.",
     color: "bg-indigo-100 text-indigo-600",
   },
   {
@@ -204,28 +210,28 @@ const WHY_CHOOSE = [
 const CERTIFICATES = [
   {
     name: "Diploma in Computer Applications",
-    body: "PDIT — Ministry of MSME Recognized",
+    body: "PDIT - Ministry of MSME Recognized",
     desc: "A comprehensive certification covering MS Office, Tally, and internet fundamentals for office professionals.",
     badge: "Foundation",
     color: "from-blue-500 to-cyan-500",
   },
   {
     name: "Advanced Web Development",
-    body: "PDIT — ISO 9001:2015 Certified",
+    body: "PDIT - ISO 9001:2015 Certified",
     desc: "Industry-recognized credential validating full-stack development skills using modern frameworks.",
     badge: "Advanced",
     color: "from-indigo-500 to-purple-600",
   },
   {
     name: "Data Analytics Professional",
-    body: "PDIT — NSDC Affiliated",
+    body: "PDIT - NSDC Affiliated",
     desc: "Certifies proficiency in Excel, Python, and Power BI for data-driven decision making in enterprises.",
     badge: "Professional",
     color: "from-emerald-500 to-teal-500",
   },
   {
     name: "Digital Marketing Specialist",
-    body: "PDIT — Google Partner Institution",
+    body: "PDIT - Google Partner Institution",
     desc: "Validates expertise in SEO, PPC, social media, and digital campaign management across platforms.",
     badge: "Specialist",
     color: "from-pink-500 to-rose-500",
@@ -233,57 +239,93 @@ const CERTIFICATES = [
 ];
 
 const HIRING_PARTNERS = [
-  "TCS",
-  "Infosys",
-  "Wipro",
-  "HCL",
-  "Tech Mahindra",
-  "Accenture",
-  "IBM",
-  "Capgemini",
-  "Cognizant",
-  "L&T Infotech",
-  "Hexaware",
-  "Mphasis",
+  {
+    name: "TCS",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Tata_Consultancy_Services_Logo.svg",
+  },
+  {
+    name: "Infosys",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg",
+  },
+  {
+    name: "Wipro",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Wipro_Primary_Logo_Color_RGB.svg",
+  },
+  {
+    name: "HCL",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/8/84/HCL_Technologies_logo.svg",
+  },
+  {
+    name: "Tech Mahindra",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/b/b3/Tech_Mahindra_New_Logo.svg",
+  },
+  {
+    name: "Accenture",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg",
+  },
+  {
+    name: "IBM",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg",
+  },
+  {
+    name: "Capgemini",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/f/f2/Capgemini_logo.svg",
+  },
+  { name: "Cognizant", logo: null },
+  { name: "LTIMindtree", logo: null },
+  { name: "Hexaware", logo: null },
+  { name: "Mphasis", logo: null },
 ];
 
 const TUTORIALS = [
   {
-    title: "HTML & CSS for Beginners — Full Course",
+    title: "HTML & CSS for Beginners - Full Course",
     instructor: "Rajesh Sharma",
     duration: "2h 15m",
     level: "Beginner",
     featured: true,
+    thumb:
+      "https://images.unsplash.com/photo-1621839673705-6617adf9e890?w=400&h=220&fit=crop",
   },
   {
-    title: "JavaScript ES6 — Modern JS Fundamentals",
+    title: "JavaScript ES6 - Modern JS Fundamentals",
     instructor: "Rajesh Sharma",
     duration: "1h 45m",
     level: "Beginner",
+    thumb:
+      "https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?w=400&h=220&fit=crop",
   },
   {
     title: "React.js Complete Guide 2024",
     instructor: "Priya Agarwal",
     duration: "3h 20m",
     level: "Intermediate",
+    thumb:
+      "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=220&fit=crop",
   },
   {
     title: "Digital Marketing Crash Course",
     instructor: "Priya Agarwal",
     duration: "1h 30m",
     level: "Beginner",
+    thumb:
+      "https://images.unsplash.com/photo-1533750516457-a7f992034fec?w=400&h=220&fit=crop",
   },
   {
     title: "Python for Data Science",
     instructor: "Vikram Singh",
     duration: "2h 40m",
     level: "Intermediate",
+    thumb:
+      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400&h=220&fit=crop",
   },
   {
     title: "Figma UI Design Masterclass",
     instructor: "Neha Gupta",
     duration: "1h 55m",
     level: "Beginner",
+    thumb:
+      "https://images.unsplash.com/photo-1609921212029-bb5a28e60960?w=400&h=220&fit=crop",
   },
 ];
 
@@ -331,6 +373,8 @@ const ALUMNI = [
     name: "Sneha Kapoor",
     company: "Wipro",
     role: "Junior Developer",
+    photo:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=220&fit=crop",
     quote:
       "PDIT's placement team was relentless. Three rounds of mock interviews prepared me completely for Wipro's hiring process.",
   },
@@ -338,6 +382,8 @@ const ALUMNI = [
     name: "Rohan Mishra",
     company: "Infosys",
     role: "Digital Analyst",
+    photo:
+      "https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=400&h=220&fit=crop",
     quote:
       "The Digital Marketing course gave me real campaign experience. Infosys was impressed by my live project portfolio.",
   },
@@ -345,13 +391,17 @@ const ALUMNI = [
     name: "Ankita Singh",
     company: "HCL Technologies",
     role: "UI Developer",
+    photo:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=220&fit=crop",
     quote:
-      "From Figma to React — PDIT covered it all. I got placed in HCL within 45 days of course completion.",
+      "From Figma to React - PDIT covered it all. I got placed in HCL within 45 days of course completion.",
   },
   {
     name: "Deepak Yadav",
     company: "TCS",
     role: "Full Stack Developer",
+    photo:
+      "https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?w=400&h=220&fit=crop",
     quote:
       "MERN stack expertise built at PDIT helped me clear TCS Digital's technical round with confidence.",
   },
@@ -360,7 +410,7 @@ const ALUMNI = [
 const FAQS = [
   {
     q: "What courses does PDIT offer?",
-    a: "PDIT offers 50+ courses including Web Development, Full Stack Development, Digital Marketing, Graphic Design, Data Analytics, Computer Applications, Python, Tally, and Freelancing Skills — all designed for career transformation.",
+    a: "PDIT offers 50+ courses including Web Development, Full Stack Development, Digital Marketing, Graphic Design, Data Analytics, Computer Applications, Python, Tally, and Freelancing Skills - all designed for career transformation.",
   },
   {
     q: "Is there 100% job placement support?",
@@ -368,7 +418,7 @@ const FAQS = [
   },
   {
     q: "What is the course duration?",
-    a: "Courses range from 1 month (Freelancing Skills) to 6 months (Full Stack Development). Most popular courses are 2–3 months, designed to fit working professionals and students.",
+    a: "Courses range from 1 month (Freelancing Skills) to 6 months (Full Stack Development). Most popular courses are 2-3 months, designed to fit working professionals and students.",
   },
   {
     q: "Do you provide industry-recognized certificates?",
@@ -380,15 +430,15 @@ const FAQS = [
   },
   {
     q: "What are the eligibility criteria?",
-    a: "There are no strict eligibility requirements. Whether you're a school pass-out, graduate, working professional, or career changer — all are welcome. Basic computer knowledge is helpful but not mandatory.",
+    a: "There are no strict eligibility requirements. Whether you're a school pass-out, graduate, working professional, or career changer - all are welcome. Basic computer knowledge is helpful but not mandatory.",
   },
   {
     q: "What is the fee structure?",
-    a: "Course fees range from ₹3,000 to ₹15,000 depending on the program. We offer flexible EMI options, group discounts, and scholarships for meritorious students from underprivileged backgrounds.",
+    a: "Course fees range from Rs.3,000 to Rs.15,000 depending on the program. We offer flexible EMI options, group discounts, and scholarships for meritorious students from underprivileged backgrounds.",
   },
   {
     q: "How is the teaching quality at PDIT?",
-    a: "All faculty are working industry professionals with 7–15 years of experience. Classes include live projects, code reviews, real client case studies, and regular assessments to ensure practical skill development.",
+    a: "All faculty are working industry professionals with 7-15 years of experience. Classes include live projects, code reviews, real client case studies, and regular assessments to ensure practical skill development.",
   },
 ];
 
@@ -400,7 +450,7 @@ const FALLBACK_COURSES: Course[] = [
     description: "Master HTML, CSS, JavaScript & React.",
     topics: ["HTML5", "CSS3", "JavaScript", "React"],
     duration: "3 months",
-    fee: "₹8,000",
+    fee: "Rs.8,000",
     badge: "Popular",
     colorKey: "#3B82F6",
     isActive: true,
@@ -412,7 +462,7 @@ const FALLBACK_COURSES: Course[] = [
     description: "MERN Stack from database to frontend.",
     topics: ["MongoDB", "Express", "React", "Node"],
     duration: "6 months",
-    fee: "₹15,000",
+    fee: "Rs.15,000",
     badge: "Best Value",
     colorKey: "#7C3AED",
     isActive: true,
@@ -424,7 +474,7 @@ const FALLBACK_COURSES: Course[] = [
     description: "SEO, Social Media & Google Ads mastery.",
     topics: ["SEO", "Google Ads", "Social Media"],
     duration: "2 months",
-    fee: "₹6,000",
+    fee: "Rs.6,000",
     badge: "Fast Track",
     colorKey: "#059669",
     isActive: true,
@@ -436,7 +486,7 @@ const FALLBACK_COURSES: Course[] = [
     description: "Adobe Photoshop, Illustrator & Canva.",
     topics: ["Photoshop", "Illustrator", "Canva"],
     duration: "2 months",
-    fee: "₹5,000",
+    fee: "Rs.5,000",
     badge: "Creative",
     colorKey: "#DB2777",
     isActive: true,
@@ -448,7 +498,7 @@ const FALLBACK_COURSES: Course[] = [
     description: "MS Office, Excel, Tally & more.",
     topics: ["MS Office", "Excel", "Tally"],
     duration: "3 months",
-    fee: "₹4,000",
+    fee: "Rs.4,000",
     badge: "Foundation",
     colorKey: "#EA580C",
     isActive: true,
@@ -460,12 +510,29 @@ const FALLBACK_COURSES: Course[] = [
     description: "Python, Power BI & advanced Excel.",
     topics: ["Python", "Power BI", "Excel"],
     duration: "4 months",
-    fee: "₹10,000",
+    fee: "Rs.10,000",
     badge: "In Demand",
     colorKey: "#0891B2",
     isActive: true,
   },
 ];
+
+const COURSE_IMAGES: Record<string, string> = {
+  "Web Development":
+    "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=200&fit=crop",
+  "Full Stack Development":
+    "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=400&h=200&fit=crop",
+  "Digital Marketing":
+    "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=400&h=200&fit=crop",
+  "Graphic Design":
+    "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=200&fit=crop",
+  "Computer Applications":
+    "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=200&fit=crop",
+  "Data Analytics":
+    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop",
+  "Freelancing Skills":
+    "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&h=200&fit=crop",
+};
 
 const LEVEL_COLORS: Record<string, string> = {
   Beginner: "bg-green-100 text-green-700",
@@ -473,7 +540,7 @@ const LEVEL_COLORS: Record<string, string> = {
   Advanced: "bg-red-100 text-red-700",
 };
 
-// ── Sub-components ────────────────────────────────────────────────────────────
+// -- Sub-components --
 
 function SectionBadge({
   icon: Icon,
@@ -500,39 +567,41 @@ function CourseCard({
 }: { course: Course; onEnroll: (c: Course) => void }) {
   const colorKey =
     typeof course.colorKey === "string" ? course.colorKey : "#4F46E5";
+  const courseImage = COURSE_IMAGES[course.title];
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 border border-gray-100 flex flex-col"
+      className="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-2 border border-[#E5E7EB] flex flex-col card-hover"
       data-ocid="programs.course.card"
     >
-      {/* Course banner */}
-      <div
-        className="h-32 flex items-center justify-center relative overflow-hidden"
-        style={{
-          background: `linear-gradient(135deg, ${colorKey}22 0%, ${colorKey}44 100%)`,
-        }}
-      >
+      {/* Course image */}
+      <div className="relative h-40 overflow-hidden">
+        {courseImage ? (
+          <img
+            src={courseImage}
+            alt={course.title}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+        ) : (
+          <div
+            className="w-full h-full flex items-center justify-center"
+            style={{
+              background: `linear-gradient(135deg, ${colorKey}22 0%, ${colorKey}44 100%)`,
+            }}
+          >
+            <BookOpen className="w-10 h-10" style={{ color: colorKey }} />
+          </div>
+        )}
+        {/* Colored overlay bar at bottom */}
         <div
-          className="absolute inset-0"
-          style={{
-            background: `radial-gradient(circle at 70% 30%, ${colorKey}55 0%, transparent 60%)`,
-          }}
+          className="absolute bottom-0 left-0 right-0 h-1"
+          style={{ background: colorKey }}
         />
-        <div
-          className="relative w-16 h-16 rounded-2xl flex items-center justify-center"
-          style={{
-            background: `${colorKey}22`,
-            border: `2px solid ${colorKey}44`,
-          }}
-        >
-          <BookOpen className="w-8 h-8" style={{ color: colorKey }} />
-        </div>
         {course.badge && (
           <span
-            className="absolute top-3 right-3 text-xs font-bold px-2.5 py-1 rounded-full text-white"
+            className="absolute top-3 right-3 text-xs font-bold px-2.5 py-1 rounded-full text-white shadow-md"
             style={{ background: colorKey }}
           >
             {course.badge}
@@ -540,14 +609,12 @@ function CourseCard({
         )}
       </div>
       <div className="p-5 flex flex-col flex-1">
-        <h3 className="font-bold text-foreground text-base mb-1 leading-tight">
+        <h3 className="font-semibold text-[#111827] font-display text-base mb-1 leading-tight">
           {course.title}
         </h3>
-        <p className="text-muted-foreground text-sm mb-4 flex-1">
-          {course.subtitle}
-        </p>
+        <p className="text-[#6B7280] text-sm mb-4 flex-1">{course.subtitle}</p>
         <div className="flex items-center gap-2 mb-4">
-          <span className="inline-flex items-center gap-1 text-xs bg-muted px-3 py-1 rounded-full text-muted-foreground">
+          <span className="inline-flex items-center gap-1 text-xs bg-indigo-50 text-[#4F46E5] px-3 py-1 rounded-full font-medium">
             <Clock className="w-3 h-3" /> {course.duration}
           </span>
         </div>
@@ -555,7 +622,7 @@ function CourseCard({
           type="button"
           onClick={() => onEnroll(course)}
           data-ocid="programs.enroll.button"
-          className="w-full bg-indigo-50 hover:bg-pdit-indigo hover:text-white text-pdit-indigo font-semibold text-sm py-2.5 rounded-xl transition-all duration-200"
+          className="btn-primary w-full py-2.5 text-sm justify-center"
         >
           Enroll Now
         </button>
@@ -570,23 +637,23 @@ function VideoCard({
   duration,
   level,
   featured,
+  thumb,
 }: {
   title: string;
   instructor: string;
   duration: string;
   level: string;
   featured?: boolean;
+  thumb?: string;
 }) {
   const [playing, setPlaying] = useState(false);
   return (
     <div
-      className={`bg-white rounded-2xl overflow-hidden shadow-card border border-gray-100 ${featured ? "md:col-span-2" : ""}`}
+      className={`bg-white rounded-2xl overflow-hidden shadow-card border border-[#E5E7EB] hover:shadow-card-hover transition-all duration-300 ${featured ? "md:col-span-2" : ""}`}
       data-ocid="tutorials.video.card"
     >
       {playing ? (
-        <div
-          className={`relative ${featured ? "aspect-video" : "aspect-video"}`}
-        >
+        <div className="relative aspect-video">
           <iframe
             src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
             title={title}
@@ -604,35 +671,43 @@ function VideoCard({
           data-ocid="tutorials.play.button"
         >
           <div
-            className={`${featured ? "h-52" : "h-36"} relative overflow-hidden flex items-center justify-center`}
-            style={{
-              background:
-                "linear-gradient(135deg, #1a1660 0%, #2d2994 60%, #1e6bb8 100%)",
-            }}
+            className={`${featured ? "h-52" : "h-44"} relative overflow-hidden flex items-center justify-center`}
           >
-            <div
-              className="absolute inset-0 opacity-20"
-              style={{
-                backgroundImage:
-                  "radial-gradient(circle at 50% 50%, #06B6D4 0%, transparent 60%)",
-              }}
-            />
-            <div className="relative z-10 w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200 border-2 border-white/40">
-              <Play className="w-6 h-6 text-white ml-0.5" fill="white" />
+            {thumb ? (
+              <img
+                src={thumb}
+                alt={title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+            ) : (
+              <div
+                className="w-full h-full"
+                style={{
+                  background:
+                    "linear-gradient(135deg, #1a1660 0%, #2d2994 60%, #1e6bb8 100%)",
+                }}
+              />
+            )}
+            {/* Dark overlay for readability */}
+            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors duration-200" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-14 h-14 gradient-primary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200 shadow-lg border-2 border-white/40">
+                <Play className="w-6 h-6 text-white ml-0.5" fill="white" />
+              </div>
             </div>
           </div>
         </button>
       )}
       <div className="p-4">
         <span
-          className={`text-xs font-semibold px-2 py-0.5 rounded-full ${LEVEL_COLORS[level] ?? "bg-gray-100 text-gray-600"}`}
+          className={`text-xs font-semibold px-2 py-0.5 rounded-full ${LEVEL_COLORS[level] ?? "bg-indigo-50 text-[#4F46E5]"}`}
         >
           {level}
         </span>
-        <h4 className="font-semibold text-foreground text-sm mt-2 mb-1 leading-snug line-clamp-2">
+        <h4 className="font-semibold text-[#111827] text-sm mt-2 mb-1 leading-snug line-clamp-2">
           {title}
         </h4>
-        <div className="flex items-center justify-between text-xs text-muted-foreground">
+        <div className="flex items-center justify-between text-xs text-[#6B7280]">
           <span>{instructor}</span>
           <span className="flex items-center gap-1">
             <Clock className="w-3 h-3" />
@@ -649,7 +724,14 @@ function AlumniVideoCard({
   company,
   role,
   quote,
-}: { name: string; company: string; role: string; quote: string }) {
+  photo,
+}: {
+  name: string;
+  company: string;
+  role: string;
+  quote: string;
+  photo?: string;
+}) {
   const [playing, setPlaying] = useState(false);
   const initials = name
     .split(" ")
@@ -658,7 +740,7 @@ function AlumniVideoCard({
     .slice(0, 2);
   return (
     <div
-      className="bg-white rounded-2xl overflow-hidden shadow-card border border-gray-100"
+      className="bg-white rounded-2xl overflow-hidden shadow-card border border-[#E5E7EB] hover:shadow-card-hover transition-all duration-300 card-hover"
       data-ocid="alumni.video.card"
     >
       {playing ? (
@@ -678,24 +760,25 @@ function AlumniVideoCard({
           className="w-full relative group"
           aria-label={`Play ${name}'s testimonial`}
         >
-          <div
-            className="h-44 relative overflow-hidden flex items-center justify-center"
-            style={{
-              background: "linear-gradient(135deg, #1e3a5f 0%, #1a1660 100%)",
-            }}
-          >
-            <div
-              className="absolute inset-0 opacity-20"
-              style={{
-                backgroundImage:
-                  "radial-gradient(circle at 30% 70%, #4F46E5 0%, transparent 50%), radial-gradient(circle at 70% 30%, #06B6D4 0%, transparent 50%)",
-              }}
-            />
-            <div className="relative z-10 text-center">
-              <div className="w-16 h-16 rounded-full gradient-primary flex items-center justify-center text-white font-bold text-xl mx-auto mb-2">
-                {initials}
-              </div>
-              <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
+          <div className="h-44 relative overflow-hidden flex items-center justify-center">
+            {photo ? (
+              <img
+                src={photo}
+                alt={name}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+            ) : (
+              <div
+                className="w-full h-full"
+                style={{
+                  background:
+                    "linear-gradient(135deg, #1e3a5f 0%, #1a1660 100%)",
+                }}
+              />
+            )}
+            <div className="absolute inset-0 bg-black/35 group-hover:bg-black/25 transition-colors duration-200" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-12 h-12 gradient-primary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg border-2 border-white/40">
                 <Play className="w-5 h-5 text-white ml-0.5" fill="white" />
               </div>
             </div>
@@ -703,7 +786,7 @@ function AlumniVideoCard({
         </button>
       )}
       <div className="p-5">
-        <p className="text-muted-foreground text-sm italic mb-4 line-clamp-3">
+        <p className="text-[#6B7280] text-sm italic mb-4 line-clamp-3">
           "{quote}"
         </p>
         <div className="flex items-center gap-3">
@@ -711,9 +794,12 @@ function AlumniVideoCard({
             {initials}
           </div>
           <div>
-            <div className="font-semibold text-foreground text-sm">{name}</div>
-            <div className="text-xs text-muted-foreground">
-              {role} · {company}
+            <div className="font-semibold text-[#111827] text-sm">{name}</div>
+            <div className="flex items-center gap-1.5 mt-0.5">
+              <span className="bg-[#F59E0B] text-white rounded-full px-2.5 py-0.5 text-xs font-semibold">
+                {company}
+              </span>
+              <span className="text-xs text-[#6B7280]">{role}</span>
             </div>
           </div>
         </div>
@@ -730,19 +816,19 @@ function FAQItem({
 }: { q: string; a: string; open: boolean; onToggle: () => void }) {
   return (
     <div
-      className="border border-border rounded-2xl overflow-hidden"
+      className="border border-[#E5E7EB] rounded-2xl overflow-hidden shadow-sm"
       data-ocid="faq.item"
     >
       <button
         type="button"
         onClick={onToggle}
-        className="w-full flex items-center justify-between gap-4 p-5 text-left bg-white hover:bg-muted/30 transition-colors"
+        className="w-full flex items-center justify-between gap-4 p-5 text-left bg-white hover:bg-indigo-50/50 transition-colors duration-200"
         data-ocid="faq.toggle.button"
       >
-        <span className="font-semibold text-foreground text-sm md:text-base">
+        <span className="font-semibold text-[#111827] text-sm md:text-base">
           {q}
         </span>
-        <span className="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-50 flex items-center justify-center text-pdit-indigo">
+        <span className="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-50 flex items-center justify-center text-[#4F46E5]">
           {isOpen ? (
             <ChevronUp className="w-4 h-4" />
           ) : (
@@ -759,7 +845,7 @@ function FAQItem({
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
           >
-            <div className="px-5 pb-5 pt-1 text-muted-foreground text-sm leading-relaxed border-t border-border bg-muted/20">
+            <div className="px-5 pb-5 pt-1 text-[#6B7280] text-sm leading-relaxed border-t border-[#E5E7EB] bg-indigo-50/20">
               {a}
             </div>
           </motion.div>
@@ -769,7 +855,7 @@ function FAQItem({
   );
 }
 
-// ── Main Component ────────────────────────────────────────────────────────────
+// -- Main Component --
 
 interface HomePageProps {
   onNavigate: (page: PageType) => void;
@@ -829,7 +915,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
 
   return (
     <main>
-      {/* ── 1. HERO ─────────────────────────────────────────────────── */}
+      {/* 1. HERO */}
       <section
         className="relative min-h-screen flex items-center overflow-hidden"
         style={{
@@ -880,7 +966,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
                   data-ocid="hero.enroll_now.primary_button"
-                  className="flex items-center gap-2 bg-pdit-indigo hover:bg-pdit-indigo-dark text-white px-8 py-4 rounded-full font-semibold text-base transition-all duration-300 hover:shadow-2xl hover:scale-105"
+                  className="btn-cta flex items-center gap-2"
                 >
                   Enroll Now <ArrowRight className="w-5 h-5" />
                 </button>
@@ -891,7 +977,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
                   data-ocid="hero.franchise.secondary_button"
-                  className="flex items-center gap-2 border-2 border-pdit-cyan text-pdit-cyan hover:bg-pdit-cyan hover:text-white px-8 py-4 rounded-full font-semibold text-base transition-all duration-300"
+                  className="flex items-center gap-2 border-2 border-white/60 text-white hover:bg-white/10 hover:border-white px-8 py-4 rounded-full font-semibold text-base transition-all duration-300"
                 >
                   Open Franchise <ChevronRight className="w-5 h-5" />
                 </button>
@@ -904,9 +990,9 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 ].map(({ text, icon: Icon }) => (
                   <div
                     key={text}
-                    className="flex items-center gap-2 text-indigo-200 text-sm"
+                    className="flex items-center gap-2 text-white/80 text-sm"
                   >
-                    <Icon className="w-4 h-4 text-cyan-400" />
+                    <Icon className="w-4 h-4 text-[#06B6D4]" />
                     {text}
                   </div>
                 ))}
@@ -916,44 +1002,53 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="hidden lg:block"
+              className="block w-full"
             >
               <div className="relative">
-                <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 rounded-3xl blur-2xl" />
+                <div
+                  className="absolute -inset-4 bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 rounded-3xl blur-2xl pointer-events-none"
+                  style={{ zIndex: 0 }}
+                />
                 <img
                   src="/assets/generated/hero-pdit.dim_1200x600.jpg"
                   alt="PDIT Technology Training"
                   className="relative rounded-3xl shadow-2xl w-full object-cover"
-                  style={{ maxHeight: "420px" }}
+                  style={{ maxHeight: "420px", zIndex: 1 }}
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    target.onerror = null;
+                    target.src =
+                      "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=1200&h=600&fit=crop&q=80";
+                  }}
                 />
-                <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-4 shadow-xl">
+                <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-4 shadow-xl border border-[#E5E7EB]">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center">
                       <Users className="w-5 h-5 text-green-600" />
                     </div>
                     <div>
-                      <div className="font-bold text-gray-800 text-lg leading-none">
+                      <div className="font-bold text-[#111827] text-lg leading-none">
                         10,000+
                       </div>
-                      <div className="text-gray-500 text-xs">
+                      <div className="text-[#6B7280] text-xs">
                         Students Placed
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="absolute -top-6 -right-6 bg-white rounded-2xl p-4 shadow-xl">
+                <div className="absolute -top-6 -right-6 bg-white rounded-2xl p-4 shadow-xl border border-[#E5E7EB]">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 bg-indigo-100 rounded-xl flex items-center justify-center">
                       <Star
-                        className="w-5 h-5 text-indigo-600"
+                        className="w-5 h-5 text-[#4F46E5]"
                         fill="currentColor"
                       />
                     </div>
                     <div>
-                      <div className="font-bold text-gray-800 text-lg leading-none">
+                      <div className="font-bold text-[#111827] text-lg leading-none">
                         4.9/5
                       </div>
-                      <div className="text-gray-500 text-xs">
+                      <div className="text-[#6B7280] text-xs">
                         Student Rating
                       </div>
                     </div>
@@ -990,7 +1085,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      {/* ── 2. OUR PROGRAMS ─────────────────────────────────────────── */}
+      {/* 2. OUR PROGRAMS */}
       <section
         className="section-padding bg-white"
         data-ocid="programs.section"
@@ -1050,7 +1145,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
               data-ocid="programs.view_all.button"
-              className="inline-flex items-center gap-2 text-pdit-indigo font-semibold hover:gap-3 transition-all duration-200"
+              className="inline-flex items-center gap-2 text-[#4F46E5] font-semibold hover:gap-3 transition-all duration-200 hover:text-[#4338CA]"
             >
               View All Courses <ArrowRight className="w-5 h-5" />
             </button>
@@ -1058,7 +1153,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      {/* ── 3. EXPERT TEAM ──────────────────────────────────────────── */}
+      {/* 3. EXPERT TEAM */}
       <section
         className="section-padding section-alt"
         data-ocid="experts.section"
@@ -1086,28 +1181,26 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="bg-white rounded-2xl p-5 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 text-center group"
+                className="bg-white rounded-2xl p-5 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-2 text-center group border border-[#E5E7EB] card-hover"
                 data-ocid="experts.expert.card"
               >
-                <div
-                  className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${expert.color} flex items-center justify-center text-white font-bold text-lg mx-auto mb-3`}
-                >
-                  {expert.initials}
-                </div>
-                <h3 className="font-bold text-foreground text-sm mb-0.5 leading-tight">
+                <img
+                  src={expert.photo}
+                  alt={expert.name}
+                  className="w-20 h-20 rounded-full object-cover mx-auto mb-3 border-2 border-[#E5E7EB] shadow-md"
+                />
+                <h3 className="font-semibold text-[#111827] font-display text-sm mb-0.5 leading-tight">
                   {expert.name}
                 </h3>
-                <p className="text-muted-foreground text-xs mb-2">
-                  {expert.title}
-                </p>
-                <p className="text-xs text-pdit-indigo font-medium mb-2">
+                <p className="text-[#6B7280] text-xs mb-2">{expert.title}</p>
+                <p className="text-xs text-[#4F46E5] font-semibold mb-3">
                   {expert.experience} exp.
                 </p>
                 <div className="flex flex-wrap gap-1 justify-center">
                   {expert.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-xs bg-indigo-50 text-pdit-indigo px-2 py-0.5 rounded-full"
+                      className="text-xs bg-indigo-50 text-[#4F46E5] px-2 py-0.5 rounded-full font-medium"
                     >
                       {tag}
                     </span>
@@ -1119,7 +1212,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      {/* ── 4. CAREER GROWTH ROADMAP ─────────────────────────────── */}
+      {/* 4. CAREER GROWTH ROADMAP */}
       <section className="section-padding bg-white" data-ocid="roadmap.section">
         <div className="container mx-auto px-4 max-w-7xl">
           <motion.div
@@ -1133,7 +1226,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               Your Career <span className="text-gradient">Growth Roadmap</span>
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto">
-              A clear path from enrollment to your dream job — step by step.
+              A clear path from enrollment to your dream job - step by step.
             </p>
           </motion.div>
           <div className="relative">
@@ -1154,14 +1247,14 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                     <div className="w-24 h-24 rounded-2xl gradient-primary flex items-center justify-center shadow-lg">
                       <step.icon className="w-10 h-10 text-white" />
                     </div>
-                    <div className="absolute -top-2 -right-2 w-7 h-7 bg-white border-2 border-indigo-200 rounded-full flex items-center justify-center text-xs font-bold text-pdit-indigo">
+                    <div className="absolute -top-2 -right-2 w-7 h-7 bg-[#4F46E5] border-2 border-white rounded-full flex items-center justify-center text-xs font-bold text-white shadow-md">
                       {step.num}
                     </div>
                   </div>
-                  <h3 className="font-bold text-foreground mb-2 text-base">
+                  <h3 className="font-semibold text-[#111827] font-display mb-2 text-base">
                     {step.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
+                  <p className="text-[#6B7280] text-sm leading-relaxed">
                     {step.desc}
                   </p>
                   {i < ROADMAP_STEPS.length - 1 && (
@@ -1174,7 +1267,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      {/* ── 5. ADVANTAGE ───────────────────────────────────────────── */}
+      {/* 5. ADVANTAGE */}
       <section
         className="section-padding section-alt"
         data-ocid="advantage.section"
@@ -1196,7 +1289,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               Us
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto">
-              Our advantages go beyond education — we are your career partner.
+              Our advantages go beyond education - we are your career partner.
             </p>
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -1207,7 +1300,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className={`bg-gradient-to-br ${item.color} rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1`}
+                className={`bg-gradient-to-br ${item.color} rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-2 border border-[#E5E7EB]/60 card-hover`}
                 data-ocid="advantage.item.card"
               >
                 <div
@@ -1215,10 +1308,10 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 >
                   <item.icon className="w-7 h-7 text-white" />
                 </div>
-                <h3 className="font-bold text-foreground text-lg mb-2">
+                <h3 className="font-semibold text-[#111827] font-display text-lg mb-2">
                   {item.title}
                 </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
+                <p className="text-[#6B7280] text-sm leading-relaxed">
                   {item.desc}
                 </p>
               </motion.div>
@@ -1227,7 +1320,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      {/* ── 6. SUCCESS STORIES ──────────────────────────────────────── */}
+      {/* 6. SUCCESS STORIES */}
       <section
         className="section-padding bg-white"
         data-ocid="testimonials.section"
@@ -1256,31 +1349,31 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white rounded-2xl p-6 shadow-card border border-gray-100"
+                className="bg-white rounded-2xl p-6 shadow-card border border-[#E5E7EB] hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 card-hover"
                 data-ocid="testimonials.card"
               >
                 <div className="flex gap-1 mb-4">
                   {Array.from({ length: t.rating }).map((_, idx) => (
                     <Star
                       key={String(idx)}
-                      className="w-4 h-4 text-yellow-400"
+                      className="w-4 h-4 text-[#F59E0B]"
                       fill="currentColor"
                     />
                   ))}
                 </div>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-5 italic">
+                <p className="text-[#6B7280] text-sm leading-relaxed mb-5 italic">
                   "{t.text}"
                 </p>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 gradient-primary rounded-full flex items-center justify-center text-white font-bold text-sm">
+                  <div className="w-10 h-10 gradient-primary rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
                     {t.avatar}
                   </div>
                   <div>
-                    <div className="font-semibold text-foreground text-sm">
+                    <div className="font-semibold text-[#111827] text-sm">
                       {t.name}
                     </div>
-                    <div className="text-xs text-muted-foreground">
-                      {t.course} · {t.company}
+                    <div className="text-xs text-[#6B7280]">
+                      {t.course} | {t.company}
                     </div>
                   </div>
                 </div>
@@ -1290,7 +1383,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      {/* ── 7. WHY CHOOSE US ────────────────────────────────────────── */}
+      {/* 7. WHY CHOOSE US */}
       <section
         className="section-padding section-alt"
         data-ocid="why_choose.section"
@@ -1319,16 +1412,18 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1"
+                className="bg-white rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 border border-[#E5E7EB] card-hover"
                 data-ocid="why_choose.card"
               >
                 <div
-                  className={`w-12 h-12 ${item.color} rounded-xl flex items-center justify-center mb-4`}
+                  className={`w-12 h-12 ${item.color} rounded-xl flex items-center justify-center mb-4 shadow-sm`}
                 >
                   <item.icon className="w-6 h-6" />
                 </div>
-                <h3 className="font-bold text-foreground mb-2">{item.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
+                <h3 className="font-semibold text-[#111827] font-display mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-[#6B7280] text-sm leading-relaxed">
                   {item.desc}
                 </p>
               </motion.div>
@@ -1337,7 +1432,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      {/* ── 8. CERTIFICATES ─────────────────────────────────────────── */}
+      {/* 8. CERTIFICATES */}
       <section
         className="section-padding bg-white"
         data-ocid="certificates.section"
@@ -1367,7 +1462,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 border border-gray-100"
+                className="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 border border-[#E5E7EB] card-hover"
                 data-ocid="certificates.cert.card"
               >
                 {/* Certificate mockup header */}
@@ -1391,13 +1486,13 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                   </span>
                 </div>
                 <div className="p-5">
-                  <h3 className="font-bold text-foreground text-sm leading-tight mb-1">
+                  <h3 className="font-semibold text-[#111827] font-display text-sm leading-tight mb-1">
                     {cert.name}
                   </h3>
-                  <p className="text-xs text-pdit-indigo font-medium mb-2">
+                  <p className="text-xs text-[#4F46E5] font-semibold mb-2">
                     {cert.body}
                   </p>
-                  <p className="text-muted-foreground text-xs leading-relaxed">
+                  <p className="text-[#6B7280] text-xs leading-relaxed">
                     {cert.desc}
                   </p>
                 </div>
@@ -1407,7 +1502,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      {/* ── 9. TRANSFORM YOUR CAREER TODAY ─────────────────────────── */}
+      {/* 9. TRANSFORM YOUR CAREER TODAY */}
       <section
         className="py-20 gradient-primary relative overflow-hidden"
         data-ocid="transform.section"
@@ -1462,7 +1557,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               type="button"
               onClick={() => openEnrollPopup(displayCourses[0])}
               data-ocid="transform.start_learning.button"
-              className="bg-white text-pdit-indigo font-bold px-10 py-4 rounded-full text-base hover:shadow-xl hover:scale-105 transition-all duration-300"
+              className="bg-white text-[#4F46E5] font-bold px-10 py-4 rounded-full text-base hover:shadow-xl hover:scale-105 transition-all duration-300"
             >
               Start Learning Today
             </button>
@@ -1470,7 +1565,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               type="button"
               onClick={scrollToCta}
               data-ocid="transform.talk_counselor.button"
-              className="border-2 border-white/60 text-white font-semibold px-10 py-4 rounded-full text-base hover:bg-white/10 transition-all duration-300"
+              className="border-2 border-white/60 text-white font-semibold px-10 py-4 rounded-full text-base hover:bg-white/10 hover:border-white transition-all duration-300"
             >
               Talk to Counselor
             </button>
@@ -1478,7 +1573,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      {/* ── 10. HIRING PARTNERS ─────────────────────────────────────── */}
+      {/* 10. HIRING PARTNERS */}
       <section
         className="section-padding section-alt"
         data-ocid="hiring_partners.section"
@@ -1499,31 +1594,39 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               Our <span className="text-gradient">Hiring Partners</span>
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto">
-              Top Companies Trust Our Graduates — 100+ hiring partners across
+              Top Companies Trust Our Graduates - 100+ hiring partners across
               India.
             </p>
           </motion.div>
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
-            {HIRING_PARTNERS.map((company, i) => (
+            {HIRING_PARTNERS.map((partner, i) => (
               <motion.div
-                key={company}
+                key={partner.name}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                className="bg-white rounded-2xl p-4 shadow-card flex items-center justify-center hover:shadow-card-hover transition-all duration-300 group h-16"
+                className="bg-white rounded-xl p-4 shadow-sm border border-[#E5E7EB] flex items-center justify-center hover:shadow-card transition-all duration-300 hover:-translate-y-0.5 group h-16"
                 data-ocid="hiring_partners.partner.logo"
               >
-                <span className="text-xs font-bold text-muted-foreground group-hover:text-pdit-indigo transition-colors text-center leading-tight">
-                  {company}
-                </span>
+                {partner.logo ? (
+                  <img
+                    src={partner.logo}
+                    alt={partner.name}
+                    className="h-8 w-auto object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300 max-w-full"
+                  />
+                ) : (
+                  <span className="text-xs font-bold text-[#6B7280] group-hover:text-[#4F46E5] transition-colors text-center leading-tight">
+                    {partner.name}
+                  </span>
+                )}
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── 11. TUTORIALS & LEARNING HUB ──────────────────────────── */}
+      {/* 11. TUTORIALS & LEARNING HUB */}
       <section
         className="section-padding bg-white"
         data-ocid="tutorials.section"
@@ -1541,7 +1644,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               <span className="text-gradient">Learning Hub</span>
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto">
-              Free Resources to Get You Started — curated by our expert faculty.
+              Free Resources to Get You Started - curated by our expert faculty.
             </p>
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -1560,7 +1663,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      {/* ── 12. OUR RESOURCES ──────────────────────────────────────── */}
+      {/* 12. OUR RESOURCES */}
       <section
         className="section-padding section-alt"
         data-ocid="resources.section"
@@ -1581,7 +1684,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               Our <span className="text-gradient">Resources</span>
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto">
-              Everything You Need to Succeed — free guides, templates, and
+              Everything You Need to Succeed - free guides, templates, and
               checklists.
             </p>
           </motion.div>
@@ -1593,21 +1696,23 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="bg-white rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 border border-gray-100 flex flex-col"
+                className="bg-white rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 border border-[#E5E7EB] flex flex-col card-hover"
                 data-ocid="resources.resource.card"
               >
-                <div className="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center mb-4">
-                  <res.icon className="w-6 h-6 text-pdit-indigo" />
+                <div className="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center mb-4 shadow-sm">
+                  <res.icon className="w-6 h-6 text-[#4F46E5]" />
                 </div>
-                <h3 className="font-bold text-foreground mb-2">{res.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-4 flex-1">
+                <h3 className="font-semibold text-[#111827] font-display mb-2">
+                  {res.title}
+                </h3>
+                <p className="text-[#6B7280] text-sm leading-relaxed mb-4 flex-1">
                   {res.desc}
                 </p>
                 <button
                   type="button"
                   onClick={() => openEnrollPopup(displayCourses[0])}
                   data-ocid="resources.access.button"
-                  className="inline-flex items-center gap-2 text-pdit-indigo font-semibold text-sm hover:gap-3 transition-all duration-200"
+                  className="inline-flex items-center gap-2 text-[#4F46E5] font-semibold text-sm hover:gap-3 transition-all duration-200 hover:text-[#4338CA]"
                 >
                   <Download className="w-4 h-4" />
                   {res.btn}
@@ -1618,7 +1723,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      {/* ── 13. ALUMNI AT TOP COMPANIES ─────────────────────────────── */}
+      {/* 13. ALUMNI AT TOP COMPANIES */}
       <section className="section-padding bg-white" data-ocid="alumni.section">
         <div className="container mx-auto px-4 max-w-7xl">
           <motion.div
@@ -1632,7 +1737,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               Alumni at <span className="text-gradient">Top Companies</span>
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto">
-              Real Stories from Our Students — placed at India's leading IT
+              Real Stories from Our Students - placed at India's leading IT
               companies.
             </p>
           </motion.div>
@@ -1652,7 +1757,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      {/* ── 14. FAQ'S ────────────────────────────────────────────────── */}
+      {/* 14. FAQ'S */}
       <section className="section-padding section-alt" data-ocid="faq.section">
         <div className="container mx-auto px-4 max-w-4xl">
           <motion.div
@@ -1690,7 +1795,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      {/* ── 15. READY TO START YOUR JOURNEY? (CTA) ─────────────────── */}
+      {/* 15. READY TO START YOUR JOURNEY? (CTA) */}
       <section
         id="cta-section"
         className="section-padding bg-white"
@@ -1699,26 +1804,26 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="bg-gradient-to-br from-indigo-50 via-white to-cyan-50 rounded-3xl overflow-hidden shadow-xl border border-indigo-100">
             <div className="grid lg:grid-cols-2 gap-0 items-stretch">
-              {/* Left — Form */}
+              {/* Left - Form */}
               <div className="p-8 md:p-12 flex flex-col justify-center">
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                 >
-                  <div className="inline-flex items-center gap-2 bg-indigo-100 text-pdit-indigo text-xs px-3 py-1.5 rounded-full mb-4 font-semibold uppercase tracking-wide">
+                  <div className="inline-flex items-center gap-2 bg-indigo-100 text-[#4F46E5] text-xs px-3 py-1.5 rounded-full mb-4 font-semibold uppercase tracking-wide">
                     Free Counseling
                   </div>
                   <h2
-                    className="text-3xl md:text-4xl font-bold text-foreground mb-3 leading-tight"
+                    className="text-3xl md:text-4xl font-bold text-[#111827] mb-3 leading-tight"
                     style={{ fontFamily: "var(--font-display)" }}
                   >
                     Ready to Start Your{" "}
                     <span className="text-gradient">Journey?</span>
                   </h2>
-                  <p className="text-muted-foreground mb-8 leading-relaxed">
+                  <p className="text-[#6B7280] mb-8 leading-relaxed">
                     Talk to our expert career counselor for free. We'll help you
-                    choose the right course and map your career path — no
+                    choose the right course and map your career path - no
                     commitment required.
                   </p>
                   <form
@@ -1775,23 +1880,19 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                     <button
                       type="submit"
                       data-ocid="cta.submit.button"
-                      className="w-full h-12 rounded-xl text-white font-bold text-base transition-all duration-300 hover:shadow-xl hover:scale-[1.02]"
-                      style={{
-                        background:
-                          "linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%)",
-                      }}
+                      className="btn-cta w-full h-12 justify-center text-base"
                     >
-                      Get Free Counseling →
+                      Get Free Counseling &gt;&gt;
                     </button>
                   </form>
-                  <p className="text-xs text-muted-foreground mt-3 flex items-center gap-1.5">
+                  <p className="text-xs text-[#6B7280] mt-3 flex items-center gap-1.5">
                     <Shield className="w-3.5 h-3.5" /> Your information is 100%
                     secure and will never be shared.
                   </p>
                 </motion.div>
               </div>
 
-              {/* Right — Counselor visual */}
+              {/* Right - Counselor visual */}
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -1807,69 +1908,19 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 <div className="absolute top-20 right-20 w-24 h-24 rounded-full bg-white/10" />
                 <div className="absolute bottom-12 left-8 w-32 h-32 rounded-full bg-white/10" />
 
-                {/* Counselor silhouette */}
-                <div className="relative z-10 flex flex-col items-center pb-12">
-                  <svg
-                    viewBox="0 0 200 320"
-                    className="w-52 h-auto"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                  >
-                    {/* Head */}
-                    <ellipse
-                      cx="100"
-                      cy="60"
-                      rx="35"
-                      ry="40"
-                      fill="rgba(255,255,255,0.9)"
+                {/* Counselor photo */}
+                <div className="relative z-10 flex flex-col items-center pb-8 px-8 w-full">
+                  <div className="relative mb-4">
+                    <img
+                      src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=460&fit=crop&crop=top"
+                      alt="Ms. Kavita Sharma - Senior Career Counselor"
+                      className="w-52 h-64 object-cover rounded-2xl shadow-2xl border-4 border-white/30"
                     />
-                    {/* Hair */}
-                    <ellipse
-                      cx="100"
-                      cy="30"
-                      rx="36"
-                      ry="18"
-                      fill="rgba(255,255,255,0.7)"
-                    />
-                    {/* Body */}
-                    <path
-                      d="M50 140 Q100 120 150 140 L160 280 Q100 300 40 280 Z"
-                      fill="rgba(255,255,255,0.85)"
-                    />
-                    {/* Arms */}
-                    <path
-                      d="M50 150 Q20 200 30 240"
-                      stroke="rgba(255,255,255,0.85)"
-                      strokeWidth="18"
-                      strokeLinecap="round"
-                      fill="none"
-                    />
-                    <path
-                      d="M150 150 Q180 200 170 240"
-                      stroke="rgba(255,255,255,0.85)"
-                      strokeWidth="18"
-                      strokeLinecap="round"
-                      fill="none"
-                    />
-                    {/* Neck */}
-                    <rect
-                      x="88"
-                      y="95"
-                      width="24"
-                      height="28"
-                      rx="8"
-                      fill="rgba(255,255,255,0.9)"
-                    />
-                    {/* Collar */}
-                    <path
-                      d="M70 130 Q100 115 130 130"
-                      stroke="rgba(255,255,255,0.6)"
-                      strokeWidth="3"
-                      fill="none"
-                    />
-                  </svg>
-                  <div className="text-center mt-2 px-6">
+                    <div className="absolute -bottom-3 -right-3 w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center shadow-lg">
+                      <Star className="w-6 h-6 text-white" fill="white" />
+                    </div>
+                  </div>
+                  <div className="text-center">
                     <div className="text-white font-bold text-lg">
                       Ms. Kavita Sharma
                     </div>
@@ -1877,9 +1928,9 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                       Senior Career Counselor
                     </div>
                     <div className="flex items-center justify-center gap-1 mt-2">
-                      {Array.from({ length: 5 }).map((_, i) => (
+                      {Array.from({ length: 5 }).map((_, idx) => (
                         <Star
-                          key={String(i)}
+                          key={String(idx)}
                           className="w-3.5 h-3.5 text-yellow-300"
                           fill="currentColor"
                         />

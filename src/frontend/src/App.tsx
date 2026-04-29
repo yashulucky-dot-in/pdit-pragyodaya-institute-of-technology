@@ -7,6 +7,7 @@ import { AuthProvider, useAuth } from "./context/AuthContext";
 import AboutPage from "./pages/AboutPage";
 import AdminPanel from "./pages/AdminPanel";
 import AdmissionPage from "./pages/AdmissionPage";
+import CampusPage from "./pages/CampusPage";
 import ContactPage from "./pages/ContactPage";
 import CoursesPage from "./pages/CoursesPage";
 import FranchisePage from "./pages/FranchisePage";
@@ -46,6 +47,7 @@ function AppContent() {
       "home",
       "about",
       "courses",
+      "our-campus",
       "admission",
       "franchise",
       "contact",
@@ -100,6 +102,8 @@ function AppContent() {
         return <AboutPage onNavigate={navigateTo} />;
       case "courses":
         return <CoursesPage onNavigate={navigateTo} />;
+      case "our-campus":
+        return <CampusPage onNavigate={navigateTo} />;
       case "admission":
         return <AdmissionPage />;
       case "franchise":

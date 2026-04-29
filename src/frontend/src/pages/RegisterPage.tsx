@@ -108,15 +108,22 @@ export default function RegisterPage({ onNavigate }: RegisterPageProps) {
         course,
       );
       onNavigate("student-dashboard" as PageType);
-    } catch (err: any) {
-      setError(err.message || "Registration failed. Please try again.");
+    } catch (err: unknown) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Registration failed. Please try again.",
+      );
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  const inputClass =
+    "h-11 rounded-xl border border-[#E5E7EB] focus:border-[#4F46E5] focus:ring-2 focus:ring-indigo-100 text-[#111827] placeholder:text-[#9CA3AF] transition-colors";
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 via-white to-cyan-50 px-4 py-12">
+    <div className="min-h-screen flex items-center justify-center bg-[#F8FAFC] px-4 py-12">
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
@@ -128,38 +135,38 @@ export default function RegisterPage({ onNavigate }: RegisterPageProps) {
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl gradient-primary shadow-lg mb-4">
             <GraduationCap className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-2xl font-bold text-gray-900">
-            Join <span className="text-gradient">PDIT</span>
+          <h1 className="text-2xl font-bold font-display text-gradient">
+            Join PDIT
           </h1>
-          <p className="text-gray-500 text-sm mt-1">
+          <p className="text-[#6B7280] text-sm mt-1 font-body">
             Create your student account
           </p>
         </div>
 
-        <Card className="shadow-card border-0 rounded-2xl">
+        <Card className="bg-white rounded-3xl shadow-2xl border border-[#E5E7EB]">
           <CardHeader className="pb-0 pt-6 px-6">
-            <h2 className="text-lg font-semibold text-gray-800">
+            <h2 className="text-lg font-semibold text-[#111827] font-display">
               Student Registration
             </h2>
           </CardHeader>
-          <CardContent className="p-6">
+          <CardContent className="p-8">
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
                   <Label
                     htmlFor="fullName"
-                    className="text-sm font-medium text-gray-700"
+                    className="text-sm font-medium text-[#374151]"
                   >
                     Full Name
                   </Label>
                   <div className="relative">
-                    <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                    <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#9CA3AF]" />
                     <Input
                       id="fullName"
                       placeholder="Your full name"
                       value={form.fullName}
                       onChange={update("fullName")}
-                      className="pl-10 h-11 rounded-xl"
+                      className={`pl-10 ${inputClass}`}
                       autoComplete="name"
                       data-ocid="register.fullname.input"
                     />
@@ -169,19 +176,19 @@ export default function RegisterPage({ onNavigate }: RegisterPageProps) {
                 <div className="space-y-1.5">
                   <Label
                     htmlFor="email"
-                    className="text-sm font-medium text-gray-700"
+                    className="text-sm font-medium text-[#374151]"
                   >
                     Email
                   </Label>
                   <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#9CA3AF]" />
                     <Input
                       id="email"
                       type="email"
                       placeholder="your@email.com"
                       value={form.email}
                       onChange={update("email")}
-                      className="pl-10 h-11 rounded-xl"
+                      className={`pl-10 ${inputClass}`}
                       autoComplete="email"
                       data-ocid="register.email.input"
                     />
@@ -191,19 +198,19 @@ export default function RegisterPage({ onNavigate }: RegisterPageProps) {
                 <div className="space-y-1.5">
                   <Label
                     htmlFor="phone"
-                    className="text-sm font-medium text-gray-700"
+                    className="text-sm font-medium text-[#374151]"
                   >
                     Phone
                   </Label>
                   <div className="relative">
-                    <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                    <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#9CA3AF]" />
                     <Input
                       id="phone"
                       type="tel"
                       placeholder="+91 98765 43210"
                       value={form.phone}
                       onChange={update("phone")}
-                      className="pl-10 h-11 rounded-xl"
+                      className={`pl-10 ${inputClass}`}
                       autoComplete="tel"
                       data-ocid="register.phone.input"
                     />
@@ -213,18 +220,18 @@ export default function RegisterPage({ onNavigate }: RegisterPageProps) {
                 <div className="space-y-1.5">
                   <Label
                     htmlFor="username"
-                    className="text-sm font-medium text-gray-700"
+                    className="text-sm font-medium text-[#374151]"
                   >
                     Username
                   </Label>
                   <div className="relative">
-                    <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                    <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#9CA3AF]" />
                     <Input
                       id="username"
                       placeholder="Choose a username"
                       value={form.username}
                       onChange={update("username")}
-                      className="pl-10 h-11 rounded-xl"
+                      className={`pl-10 ${inputClass}`}
                       autoComplete="username"
                       data-ocid="register.username.input"
                     />
@@ -234,26 +241,26 @@ export default function RegisterPage({ onNavigate }: RegisterPageProps) {
                 <div className="space-y-1.5">
                   <Label
                     htmlFor="password"
-                    className="text-sm font-medium text-gray-700"
+                    className="text-sm font-medium text-[#374151]"
                   >
                     Password
                   </Label>
                   <div className="relative">
-                    <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                    <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#9CA3AF]" />
                     <Input
                       id="password"
                       type={showPassword ? "text" : "password"}
                       placeholder="Min. 6 characters"
                       value={form.password}
                       onChange={update("password")}
-                      className="pl-10 pr-10 h-11 rounded-xl"
+                      className={`pl-10 pr-10 ${inputClass}`}
                       autoComplete="new-password"
                       data-ocid="register.password.input"
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-[#6B7280] hover:text-[#111827] transition-colors"
                       aria-label="Toggle password visibility"
                     >
                       {showPassword ? (
@@ -268,26 +275,26 @@ export default function RegisterPage({ onNavigate }: RegisterPageProps) {
                 <div className="space-y-1.5">
                   <Label
                     htmlFor="confirmPassword"
-                    className="text-sm font-medium text-gray-700"
+                    className="text-sm font-medium text-[#374151]"
                   >
                     Confirm Password
                   </Label>
                   <div className="relative">
-                    <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                    <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#9CA3AF]" />
                     <Input
                       id="confirmPassword"
                       type={showConfirm ? "text" : "password"}
                       placeholder="Repeat password"
                       value={form.confirmPassword}
                       onChange={update("confirmPassword")}
-                      className="pl-10 pr-10 h-11 rounded-xl"
+                      className={`pl-10 pr-10 ${inputClass}`}
                       autoComplete="new-password"
                       data-ocid="register.confirm_password.input"
                     />
                     <button
                       type="button"
                       onClick={() => setShowConfirm(!showConfirm)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-[#6B7280] hover:text-[#111827] transition-colors"
                       aria-label="Toggle confirm password visibility"
                     >
                       {showConfirm ? (
@@ -301,7 +308,7 @@ export default function RegisterPage({ onNavigate }: RegisterPageProps) {
               </div>
 
               <div className="space-y-1.5">
-                <Label className="text-sm font-medium text-gray-700">
+                <Label className="text-sm font-medium text-[#374151]">
                   Course
                 </Label>
                 <Select
@@ -312,7 +319,7 @@ export default function RegisterPage({ onNavigate }: RegisterPageProps) {
                   data-ocid="register.course.select"
                 >
                   <SelectTrigger
-                    className="h-11 rounded-xl"
+                    className="h-11 rounded-xl border border-[#E5E7EB] focus:border-[#4F46E5] focus:ring-2 focus:ring-indigo-100 text-[#111827]"
                     data-ocid="register.course.select"
                   >
                     <SelectValue placeholder="Select your course" />
@@ -333,7 +340,7 @@ export default function RegisterPage({ onNavigate }: RegisterPageProps) {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
-                    className="bg-red-50 border border-red-200 rounded-xl px-4 py-3 text-sm text-red-600"
+                    className="bg-red-50 border border-red-100 rounded-xl px-4 py-3 text-sm text-[#EF4444]"
                     data-ocid="register.error_state"
                   >
                     {error}
@@ -344,7 +351,7 @@ export default function RegisterPage({ onNavigate }: RegisterPageProps) {
               <Button
                 type="submit"
                 disabled={isSubmitting || isFetching}
-                className="w-full h-11 rounded-xl gradient-primary text-white font-semibold hover:opacity-90 transition-opacity border-0"
+                className="w-full h-11 btn-primary border-0 disabled:opacity-60"
                 data-ocid="register.submit_button"
               >
                 {isSubmitting ? (
@@ -358,12 +365,12 @@ export default function RegisterPage({ onNavigate }: RegisterPageProps) {
               </Button>
             </form>
 
-            <div className="mt-4 text-center text-sm text-gray-500">
+            <div className="mt-4 text-center text-sm text-[#6B7280] font-body">
               Already have an account?{" "}
               <button
                 type="button"
                 onClick={() => onNavigate("login" as PageType)}
-                className="text-pdit-indigo font-semibold hover:underline"
+                className="text-[#4F46E5] font-medium hover:text-[#4338CA] transition-colors"
                 data-ocid="register.login.link"
               >
                 Sign in
@@ -374,10 +381,10 @@ export default function RegisterPage({ onNavigate }: RegisterPageProps) {
               <button
                 type="button"
                 onClick={() => onNavigate("home")}
-                className="text-xs text-gray-400 hover:text-gray-600 transition-colors"
+                className="text-xs text-[#6B7280] hover:text-[#111827] transition-colors"
                 data-ocid="register.back_to_website.link"
               >
-                ← Back to Website
+                &laquo; Back to Website
               </button>
             </div>
           </CardContent>
